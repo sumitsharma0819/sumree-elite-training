@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#DADAE1"/>
+<title>Sumo — Coaching System</title>
+
+<style>
+:root{
+  --bg:#DBDBE2;
+  --surface:#FCFCFD;
+  --surface2:#F5F5F8;
+  --surface3:#EFEFF4;
+  --text:#18181B;
+  --text-2:#111214;
+  --muted:#636369;
+  --muted-2:#7B7B82;
+  --line:rgba(60,60,67,0.12);
+  --line2:rgba(60,60,67,0.18);
+  --shadow-sm:0 10px 28px rgba(15,23,42,0.055);
+  --shadow-md:0 18px 44px rgba(15,23,42,0.08);
+  --glass:rgba(250,250,252,0.72);
+  --orange:#FF6A00;
+  --orange-d:rgba(255,106,0,0.11);
+  --orange-b:rgba(255,106,0,0.18);
+  --blue:#0A84FF;
+  --blue-d:rgba(10,132,255,0.10);
+  --blue-b:rgba(10,132,255,0.17);
+  --green:#30D158;
+  --green-d:rgba(48,209,88,0.10);
+  --green-b:rgba(48,209,88,0.17);
+  --yellow:#FF9F0A;
+  --yellow-d:rgba(255,159,10,0.10);
+  --yellow-b:rgba(255,159,10,0.18);
+  --red:#FF453A;
+  --red-d:rgba(255,69,58,0.10);
+  --red-b:rgba(255,69,58,0.17);
+  --purple:#BF5AF2;
+  --purple-d:rgba(191,90,242,0.10);
+  --purple-b:rgba(191,90,242,0.17);
+  --r:22px;
+  --rs:16px;
+  --pill:999px;
+  --f:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:radial-gradient(circle at top, rgba(255,255,255,0.42), transparent 0 20%), linear-gradient(180deg, #E4E4EB 0%, var(--bg) 24%, #D5D5DD 100%);color:var(--text);font-family:var(--f);font-size:16px;line-height:1.5;overscroll-behavior:none}
+body{min-height:100vh;background-attachment:fixed}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;font-family:var(--f)}
+input,select,button,textarea{font-family:var(--f);font-size:15px}
+h2{margin:0 0 4px;font-size:1.2rem;font-weight:700;color:var(--text-2);letter-spacing:-0.02em}
+h3{margin:1rem 0 .4rem;font-size:1rem;font-weight:650;color:var(--text-2);letter-spacing:-0.01em}
+p{margin:.35rem 0}
+strong{color:var(--text-2)}
+
+strong{color:var(--text-2)}
+:focus-visible{outline:none}
+@media (prefers-reduced-motion:no-preference){
+  .page.active{animation:pageIn .36s cubic-bezier(.22,.61,.36,1)}
+  .card,.stat,.banner,.hero-panel,.bnav,.page-header,.day-btn,.segment-btn,.btn,.pill,.ex-card,.week-block,.hevy-result{transition:transform .22s ease, box-shadow .22s ease, background-color .22s ease, color .22s ease, opacity .22s ease, border-color .22s ease}
+  .card:hover,.ex-card:hover,.stat:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(15,23,42,0.08)}
+  .btn:hover,.day-btn:hover,.segment-btn:hover,.bnav__btn:hover{transform:translateY(-1px)}
+  .is-updated{animation:softPulse .6s cubic-bezier(.22,.61,.36,1)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes softPulse{0%{transform:scale(.985);box-shadow:0 0 0 0 rgba(10,132,255,0)}50%{transform:scale(1.01);box-shadow:0 0 0 8px rgba(10,132,255,0.08)}100%{transform:none;box-shadow:none}}
+
+/* ── BOTTOM NAV ── */
+.bnav{
+  position:fixed;left:12px;right:12px;bottom:12px;
+  background:var(--glass);
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(22px);
+  border:1px solid rgba(255,255,255,0.52);
+  box-shadow:var(--shadow-md);
+  display:flex;align-items:stretch;z-index:100;
+  padding:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom));
+  border-radius:26px;
+}
+.bnav__btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;padding:10px 4px;border:none;background:transparent;
+  color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.03em;
+  text-transform:uppercase;transition:all .18s ease;border-radius:18px;
+}
+.bnav__btn.active{color:var(--blue);background:rgba(255,255,255,0.54);box-shadow:0 10px 18px rgba(15,23,42,0.06)}
+.bnav__icon{font-size:1.12rem;line-height:1;opacity:.9;transition:transform .22s ease, opacity .22s ease}
+.bnav__label{transition:opacity .22s ease}
+.bnav__btn.active .bnav__icon{transform:translateY(-1px) scale(1.02);opacity:1}
+
+/* ── PAGES ── */
+.page{display:none;flex-direction:column;min-height:100vh;padding-bottom:calc(98px + env(safe-area-inset-bottom))}
+.page.active{display:flex}
+.page-header{
+  padding:16px 18px 14px;
+  background:var(--glass);
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  border-bottom:1px solid rgba(255,255,255,0.42);
+  box-shadow:0 1px 0 rgba(60,60,67,0.08);
+  position:sticky;top:0;z-index:50;
+}
+.page-title{font-size:1.45rem;font-weight:750;color:var(--text-2);margin:0;letter-spacing:-0.03em}
+.page-sub{font-size:.86rem;color:var(--muted);margin:3px 0 0}
+.page-body{width:min(100%,920px);margin:0 auto;padding:18px 16px 20px;display:flex;flex-direction:column;gap:16px}
+
+/* ── CARDS ── */
+.card{
+  background:var(--surface);
+  border:none;
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.card-header{padding:16px 18px 12px;border-bottom:1px solid rgba(60,60,67,0.08);background:linear-gradient(180deg, rgba(247,247,250,0.96), rgba(252,252,253,0.94))}
+.card-body{padding:16px 18px 18px}
+.card-title{font-size:1rem;font-weight:700;color:var(--text-2);margin:0;letter-spacing:-0.01em}
+.card-sub{font-size:.82rem;color:var(--muted);margin:3px 0 0}
+
+/* ── HERO PANELS ── */
+.hero-panel{background:linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.52));backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border:1px solid rgba(255,255,255,0.55);border-radius:24px;padding:18px 18px 16px;box-shadow:var(--shadow-md)}
+.hero-eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px}
+.hero-title{font-size:1.22rem;font-weight:760;letter-spacing:-.03em;color:var(--text-2);margin:0 0 4px}
+.hero-sub{font-size:.9rem;color:var(--muted);margin:0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+/* ── BANNERS ── */
+.banner{border-radius:18px;padding:14px 16px;font-size:.92rem;font-weight:650;border:1px solid}
+.banner.green{background:var(--green-d);border-color:var(--green-b);color:#0E7A31}
+.banner.orange{background:var(--orange-d);border-color:var(--orange-b);color:#B25500}
+.banner.yellow{background:var(--yellow-d);border-color:var(--yellow-b);color:#A66400}
+.banner.red{background:var(--red-d);border-color:var(--red-b);color:#B42318}
+.banner.blue{background:var(--blue-d);border-color:var(--blue-b);color:#005ECC}
+.banner.purple{background:var(--purple-d);border-color:var(--purple-b);color:#7F2DBA}
+.banner .sub{font-size:.82rem;font-weight:500;color:var(--text);margin-top:6px;opacity:.9}
+
+/* ── CALLOUT BOXES ── */
+.info,.warn-box,.good-box,.danger-box{border-radius:18px;padding:13px 14px;font-size:.88rem;border:1px solid}
+.info{background:var(--blue-d);border-color:var(--blue-b);color:var(--text)}
+.warn-box{background:var(--yellow-d);border-color:var(--yellow-b);color:var(--text)}
+.good-box{background:var(--green-d);border-color:var(--green-b);color:var(--text)}
+.danger-box{background:var(--red-d);border-color:var(--red-b);color:var(--text)}
+
+/* ── STAT GRIDS ── */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat-grid.g3{grid-template-columns:repeat(3,1fr)}
+.stat{background:var(--surface3);border:none;border-radius:18px;padding:14px 14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.stat .label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-2);margin-bottom:6px}
+.stat .val{font-size:1.35rem;font-weight:780;color:var(--text-2);letter-spacing:-.04em}
+.stat .note{font-size:.76rem;color:var(--muted);margin-top:4px}
+.stat.orange{background:linear-gradient(180deg, #FFF7F1, #FFFFFF)}
+.stat.green{background:linear-gradient(180deg, #F2FFF5, #FFFFFF)}
+.stat.blue{background:linear-gradient(180deg, #F3F9FF, #FFFFFF)}
+
+/* ── FORM ELEMENTS ── */
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:.76rem;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em}
+.field input,.field select{
+  background:#F2F2F6;border:none;border-radius:16px;
+  color:var(--text-2);padding:13px 14px;width:100%;
+  -webkit-appearance:none;appearance:none;outline:none;
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);
+}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238E8E93' stroke-width='1.75' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.field input:focus,.field select:focus{box-shadow:inset 0 0 0 2px rgba(10,132,255,0.45), 0 0 0 4px rgba(10,132,255,0.10)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ── BUTTONS ── */
+.btn{
+  width:100%;padding:14px 16px;border-radius:18px;border:none;
+  font-size:.95rem;font-weight:700;letter-spacing:-.01em;
+  background:linear-gradient(180deg, #1D9BF0, var(--blue));color:#fff;
+  box-shadow:0 12px 24px rgba(10,132,255,0.20);transition:transform .1s,opacity .15s,box-shadow .15s;
+}
+.btn:hover{box-shadow:0 16px 28px rgba(10,132,255,0.24)}
+.btn:active{opacity:.92;transform:scale(.985)}
+.btn.secondary{background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.10);color:var(--text-2);box-shadow:none}
+.btn.ghost{background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.10);color:var(--muted);padding:11px;box-shadow:none}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:6px 11px;border-radius:var(--pill);font-size:.76rem;font-weight:650;border:none;background:#F4F4F7;color:var(--text)}
+.pill.orange{background:var(--orange-d);color:#B25500}
+.pill.green{background:var(--green-d);color:#167C36}
+.pill.blue{background:var(--blue-d);color:#005ECC}
+.pill.yellow{background:var(--yellow-d);color:#A66400}
+.pill.red{background:var(--red-d);color:#B42318}
+.pill.purple{background:var(--purple-d);color:#7F2DBA}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+
+/* ── LOAD BADGES ── */
+.load-badge{display:inline-block;padding:5px 10px;border-radius:12px;font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border:none}
+.load-heavy{background:rgba(255,69,58,0.12);color:#B42318}
+.load-moderate{background:rgba(255,159,10,0.12);color:#A66400}
+.load-light{background:rgba(10,132,255,0.10);color:#005ECC}
+.load-rehab{background:rgba(48,209,88,0.12);color:#167C36}
+
+/* ── MUSCLE TAGS ── */
+.muscle{display:inline-flex;align-items:center;gap:6px;padding:3px 8px 3px 3px;border-radius:999px;font-size:.72rem;font-weight:700;border:none;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.10)}
+.mi{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900}
+.muscle--chest{background:rgba(255,69,58,.10)}.muscle--chest .mi{background:rgba(255,69,58,.16)}
+.muscle--back{background:rgba(10,132,255,.10)}.muscle--back .mi{background:rgba(10,132,255,.16)}
+.muscle--shoulders{background:rgba(48,209,88,.10)}.muscle--shoulders .mi{background:rgba(48,209,88,.16)}
+.muscle--arms{background:rgba(191,90,242,.10)}.muscle--arms .mi{background:rgba(191,90,242,.16)}
+.muscle--legs{background:rgba(255,159,10,.10)}.muscle--legs .mi{background:rgba(255,159,10,.16)}
+.muscle--core{background:rgba(94,92,230,.10)}.muscle--core .mi{background:rgba(94,92,230,.16)}
+.muscle--grip{background:rgba(142,142,147,.12)}.muscle--grip .mi{background:rgba(142,142,147,.18)}
+
+/* ── PROGRESS BARS ── */
+.bar-shell{width:100%;height:10px;border-radius:999px;background:#ECECF1;overflow:hidden;margin:8px 0}
+.bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),#5AC8FA);transition:width .4s ease}
+
+/* ── EXERCISE CARDS ── */
+.ex-card{background:#F7F7FA;border:none;border-radius:18px;overflow:hidden;margin-bottom:12px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.ex-header{padding:13px 14px 11px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.ex-name{font-size:.92rem;font-weight:700;color:var(--text-2);flex:1;letter-spacing:-0.01em}
+.ex-body{padding:0 14px 0;display:block;max-height:0;opacity:0;overflow:hidden;transition:max-height .34s cubic-bezier(.22,.61,.36,1), opacity .22s ease, padding .22s ease}
+.ex-body.open{padding:0 14px 14px;max-height:540px;opacity:1}
+.ex-row{display:flex;justify-content:space-between;font-size:.83rem;padding:7px 0;border-bottom:1px solid rgba(60,60,67,0.08);gap:10px}
+.ex-row:last-child{border-bottom:none}
+.ex-row .key{color:var(--muted)}
+.ex-row .v{color:var(--text-2);font-weight:600;text-align:right;max-width:62%}
+.ex-toggle{font-size:.76rem;cursor:pointer;white-space:nowrap;padding:4px 8px;border-radius:10px;border:none;background:#ECECF1;color:var(--muted);transition:transform .26s ease, background-color .22s ease, color .22s ease}
+.ex-toggle.open{transform:rotate(180deg);background:rgba(10,132,255,0.10);color:var(--blue)}
+.video-btn{display:inline-flex;align-items:center;gap:4px;padding:7px 11px;border-radius:12px;background:var(--blue-d);color:#005ECC;font-size:.79rem;font-weight:700;margin-top:10px}
+
+/* ── DAY SELECTOR ── */
+.day-scroll{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.day-scroll::-webkit-scrollbar{display:none}
+.day-btn{flex-shrink:0;padding:10px 15px;border-radius:999px;border:none;background:rgba(255,255,255,0.74);color:var(--muted);font-size:.83rem;font-weight:650;cursor:pointer;white-space:nowrap;transition:all .15s;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.12)}
+.day-btn.active{background:var(--text-2);color:#fff;box-shadow:none}
+
+/* ── TIMELINE ── */
+.tl{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:12px;padding-bottom:16px;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:42px;flex-shrink:0}
+.tl-dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;border:none;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.10)}
+.tl-line{flex:1;width:2px;background:#E6E6EB;margin:5px 0}
+.tl-time{font-size:.72rem;font-weight:700;color:var(--muted);text-align:center;margin-top:4px}
+.tl-content{flex:1;padding-top:4px}
+.tl-title{font-size:.92rem;font-weight:700;color:var(--text-2);margin-bottom:6px}
+.tl-list{margin:0;padding:0 0 0 14px;font-size:.84rem;color:var(--text)}
+.tl-list li{margin:4px 0}
+
+/* ── RPE SECTION ── */
+.rpe-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rpe-block{background:#FBFBFD;border:none;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.rpe-head{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2)}
+.rpe-main{font-size:1.03rem;font-weight:780;color:var(--text-2);margin:6px 0 4px}
+.rpe-note{font-size:.77rem;color:var(--muted)}
+
+/* ── ACCORDION ── */
+.acc-item{border-bottom:1px solid rgba(60,60,67,0.08)}
+.acc-item:last-child{border-bottom:none}
+.acc-header{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:8px}
+.acc-title{font-size:.9rem;font-weight:650;color:var(--text)}
+.acc-arrow{color:var(--muted);font-size:.85rem;transition:transform .2s;flex-shrink:0}
+.acc-body{padding:0 16px 0;display:block;max-height:0;opacity:0;overflow:hidden;transition:max-height .34s cubic-bezier(.22,.61,.36,1), opacity .22s ease, padding .22s ease}
+.acc-body.open{padding:0 16px 16px;max-height:520px;opacity:1}
+.acc-arrow.open{transform:rotate(180deg)}
+
+/* ── WEEK STRIP ── */
+.week-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.week-block{border:none;border-radius:18px;padding:11px 8px;text-align:center;background:#FAFAFC;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.week-block .wk{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2)}
+.week-block .wkv{font-size:.87rem;font-weight:700;color:var(--text-2);margin-top:5px}
+.week-block.active{background:var(--blue-d);box-shadow:inset 0 0 0 1px rgba(10,132,255,0.16)}
+.week-block.active .wk,.week-block.active .wkv{color:#005ECC}
+
+/* ── CHECKBOX LIST ── */
+.check-list{list-style:none;margin:0;padding:0}
+.check-list li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(60,60,67,0.08);font-size:.86rem}
+.check-list li:last-child{border-bottom:none}
+.check-list .ck{width:22px;height:22px;border-radius:7px;border:none;background:#F4F4F7;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.12)}
+.check-list .ck.done{background:var(--green);box-shadow:none}
+.check-list .ck.done::after{content:'✓';color:#fff;font-size:.72rem;font-weight:900}
+
+/* SMALL UTILS */
+.small{font-size:.8rem;color:var(--muted)}
+.mt{margin-top:10px}
+.divider{border:none;border-top:1px solid rgba(60,60,67,0.08);margin:12px 0}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+
+/* ── REHAB CARDS ── */
+.rehab-site{border:none;border-radius:18px;overflow:hidden;margin-bottom:10px;background:#FFFFFF;box-shadow:var(--shadow-sm)}
+.rehab-site-header{padding:13px 15px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.rehab-site-title{font-size:.92rem;font-weight:700;color:var(--text-2)}
+.rehab-exercises{padding:0 15px 14px;display:none}
+.rehab-exercises.open{display:block}
+.rehab-ex{background:#FBFBFD;border-radius:14px;padding:11px 12px;margin-bottom:8px;font-size:.84rem;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.rehab-ex .ex-n{font-weight:700;color:var(--text-2);margin-bottom:4px}
+.rehab-ex .ex-d{color:var(--muted)}
+
+/* ── PRIORITY LIST ── */
+.priority-list{margin:0;padding:0 0 0 18px}
+.priority-list li{margin:8px 0;font-size:.86rem;line-height:1.48}
+
+/* ── HEVY OS ── */
+.hevy-result{background:#FBFBFD;border:none;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.hevy-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2);margin-bottom:5px}
+.hevy-val{font-size:1rem;font-weight:720;color:var(--text-2)}
+
+@media (min-width: 980px){
+  .page-body{padding-left:20px;padding-right:20px}
+}
+@media (max-width: 720px){
+  .stat-grid.g3,.stat-grid[style*="1fr 1fr 1fr"],.week-strip{grid-template-columns:1fr 1fr}
+  .form-grid,.btn-row,.rpe-grid{grid-template-columns:1fr}
+  .page-title{font-size:1.3rem}
+  .card-header,.card-body{padding-left:15px;padding-right:15px}
+  .bnav{left:10px;right:10px;bottom:10px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
+/* ── SECOND PASS: NATIVE IOS REFINEMENT ── */
+.section-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.72);color:var(--muted-2);font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);margin-bottom:8px}
+.page-header::after{content:'';display:block;height:2px;width:100%;margin-top:12px;background:linear-gradient(90deg, rgba(10,132,255,0.18), rgba(10,132,255,0));border-radius:999px}
+.page-title-wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.header-badge{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,0.76);color:var(--blue);font-size:.88rem;font-weight:700;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.hero-panel{background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,248,251,0.94));border-radius:26px;padding:16px 18px;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid rgba(255,255,255,0.55)}
+.hero-copy{min-width:0}
+.hero-title{font-size:1.05rem;font-weight:760;letter-spacing:-0.02em;color:var(--text-2);margin:0 0 4px}
+.hero-sub{font-size:.84rem;color:var(--muted);margin:0}
+.hero-meta{display:flex;gap:8px;flex-wrap:wrap}
+.metric-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);font-size:.76rem;font-weight:700;color:var(--text-2)}
+.metric-dot{width:8px;height:8px;border-radius:999px;background:var(--blue)}
+.segmented{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;background:#ECECF1;border-radius:18px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08), 0 8px 20px rgba(15,23,42,0.035)}
+.segment-btn{border:none;background:transparent;border-radius:14px;padding:11px 12px;font-size:.84rem;font-weight:700;color:var(--muted);transition:all .18s ease}
+.segment-btn.active{background:#FFFFFF;color:var(--text-2);box-shadow:0 8px 18px rgba(15,23,42,0.06), inset 0 0 0 1px rgba(60,60,67,0.08)}
+.compact-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.compact-stat{background:#FFFFFF;border-radius:18px;padding:12px 14px;box-shadow:var(--shadow-sm)}
+.compact-stat .eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted-2)}
+.compact-stat .big{font-size:1.12rem;font-weight:780;letter-spacing:-.03em;color:var(--text-2);margin-top:4px}
+.card-group{display:flex;flex-direction:column;gap:12px}
+.bnav__icon{font-size:1rem;line-height:1;width:26px;height:26px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.0);transition:all .18s ease}
+.bnav__btn.active .bnav__icon{background:rgba(10,132,255,0.12)}
+@media (max-width:720px){
+  .page-title-wrap{align-items:center}
+  .hero-panel{flex-direction:column;align-items:flex-start}
+  .compact-stats{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+
+<!-- PAGE: TODAY -->
+<div class="page active" id="page-today">
+  <div class="page-header compact">
+    <div class="section-kicker">Performance dashboard</div>
+    <div class="page-title-wrap"><div><div class="page-title">Today</div><div class="page-sub">Daily readiness · Coaching decisions</div></div><div class="header-badge">Now</div></div>
+  </div>
+  <div class="page-body">
+
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="hero-title">Coach view</div><p class="hero-sub">Use this screen first every day. It sets your load, warm-up depth, and weekly correction rules.</p></div>
+      <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Readiness</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span><span class="metric-pill"><span class="metric-dot"></span> Execution</span></div>
+    </div>
+
+    <div class="app-strip">
+      <div class="app-tile"><div class="eyebrow">Start here</div><div class="big">Readiness</div><div class="tiny">Run before training</div></div>
+      <div class="app-tile"><div class="eyebrow">Weekly</div><div class="big">Calories</div><div class="tiny">Adjust only on trend</div></div>
+      <div class="app-tile"><div class="eyebrow">Athlete</div><div class="big">Review</div><div class="tiny">Protect recovery first</div></div>
+    </div>
+
+    <!-- READINESS INPUTS -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Daily Readiness Check-In</div><div class="card-sub">Takes 20 seconds — drives every decision below</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Sleep (hrs)</label><input id="sleepHours" type="number" min="0" max="12" step="0.5" value="7.0"/></div>
+          <div class="field"><label>Recovery /100</label><input id="recoveryScore" type="number" min="0" max="100" step="1" value="72"/></div>
+          <div class="field"><label>Energy /10</label><input id="energyLevel" type="number" min="1" max="10" step="1" value="7"/></div>
+          <div class="field"><label>Joint Pain /10</label><input id="jointPain" type="number" min="0" max="10" step="1" value="2"/></div>
+          <div class="field"><label>Today's Session</label>
+            <select id="sessionType">
+              <option value="lift">Lift day</option>
+              <option value="hike">Hike day</option>
+              <option value="recovery">Recovery day</option>
+            </select>
+          </div>
+          <div class="field"><label>Motivation /10</label><input id="motivationLevel" type="number" min="1" max="10" step="1" value="7"/></div>
+        </div>
+        <div style="margin-top:12px">
+          <button class="btn" id="runReadiness" onclick="runReadiness()">Get today's coaching call →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT BANNER -->
+    <div class="banner green" id="decisionBanner">Green light: push the planned session as written.</div>
+    <p class="small" id="decisionText" style="margin:-6px 0 0">Run the check-in above to get your personalised coaching call.</p>
+
+    <!-- STAT CARDS -->
+    <div class="stat-grid g3">
+      <div class="stat"><div class="label">Mode</div><div class="val" id="modeOut">Push</div></div>
+      <div class="stat"><div class="label">Load adj.</div><div class="val" id="loadOut">0%</div></div>
+      <div class="stat"><div class="label">Warm-up</div><div class="val" id="warmupOut" style="font-size:.85rem;padding-top:3px">Rotation</div></div>
+    </div>
+
+    <!-- COACHING NOTES -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Session Override Rules</div></div>
+      <div class="card-body" style="font-size:.85rem">
+        <p><strong>Pain &gt; 3/10</strong> → drop one load tier, keep movement quality high, skip grinders.</p>
+        <p><strong>Sleep &lt; 6 hrs</strong> → hold load, add reps instead, shorten session if needed.</p>
+        <p><strong>Recovery &lt; 60</strong> → minimum effective day: one compound + rehab only.</p>
+        <p><strong>Joint unstable</strong> → stop the set immediately, reassess next session.</p>
+      </div>
+    </div>
+
+    <!-- WEEKLY CHECK-IN -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Weekly Calorie & Weight Adjuster</div><div class="card-sub">Update once per week, Sunday check-in</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Avg weight now</label><input id="avgWeightNow" type="number" min="150" max="250" step="0.1" value="184.0"/></div>
+          <div class="field"><label>Avg weight last wk</label><input id="avgWeightPrev" type="number" min="150" max="250" step="0.1" value="184.8"/></div>
+          <div class="field"><label>Current kcal/day</label><input id="currentCalories" type="number" min="1200" max="3500" step="25" value="2000"/></div>
+          <div class="field"><label>Strength trend</label>
+            <select id="strengthTrend"><option value="up">Up</option><option value="flat" selected>Flat</option><option value="down">Down</option></select>
+          </div>
+          <div class="field"><label>Hunger /10</label><input id="hungerLevel" type="number" min="1" max="10" step="1" value="5"/></div>
+          <div class="field"><label>Compliance %</label><input id="complianceLevel" type="number" min="0" max="100" step="1" value="88"/></div>
+        </div>
+        <div style="margin-top:12px"><button class="btn secondary" onclick="runWeekly()">Update weekly targets</button></div>
+        <ul class="priority-list mt" id="weeklyList">
+          <li>Stay near 2,000 kcal on lift days and hold protein at 160–175g.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WEEKLY ATHLETE REVIEW -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Weekly Athlete Review</div><div class="card-sub">Full system scan — run every Sunday</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Workout completion %</label><input id="weeklyCompletion" type="number" min="0" max="100" step="1" value="90"/></div>
+          <div class="field"><label>Avg sleep (hrs)</label><input id="weeklySleep" type="number" min="0" max="12" step="0.1" value="7.2"/></div>
+          <div class="field"><label>Avg energy /10</label><input id="weeklyEnergy" type="number" min="1" max="10" step="1" value="7"/></div>
+          <div class="field"><label>Avg joint pain /10</label><input id="weeklyPain" type="number" min="0" max="10" step="1" value="2"/></div>
+          <div class="field"><label>Weekly wt loss (lb)</label><input id="weeklyLoss" type="number" min="-5" max="5" step="0.1" value="0.7"/></div>
+          <div class="field"><label>Strength direction</label>
+            <select id="weeklyStrength"><option value="up">Up</option><option value="flat" selected>Flat</option><option value="down">Down</option></select>
+          </div>
+        </div>
+        <div style="margin-top:12px"><button class="btn secondary" onclick="runAthleteReview()">Update athlete priorities</button></div>
+        <ul class="priority-list mt" id="athletePriorityList"><li>Run the weekly review above.</li></ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE: TRAIN -->
+<div class="page" id="page-train">
+  <div class="page-header compact">
+    <div class="section-kicker">Training system</div>
+    <div class="page-title-wrap"><div><div class="page-title">Training</div><div class="page-sub">7-day schedule · Load strategy · Progression</div></div><div class="header-badge">7D</div></div>
+  </div>
+  <div class="page-body">
+
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="hero-title">Plan like a high-performance app</div><p class="hero-sub">Select the day, review the phase wave, then use Hevy data to earn the next progression step.</p></div>
+      <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Day flow</span><span class="metric-pill"><span class="metric-dot"></span> RPE</span><span class="metric-pill"><span class="metric-dot"></span> Hevy</span></div>
+    </div>
+
+    <div class="app-strip">
+      <div class="app-tile"><div class="eyebrow">Today</div><div class="big">Select day</div><div class="tiny">Follow the weekly wave</div></div>
+      <div class="app-tile"><div class="eyebrow">Session</div><div class="big">Log quality</div><div class="tiny">Top set earns change</div></div>
+      <div class="app-tile"><div class="eyebrow">Progress</div><div class="big">Hevy coach</div><div class="tiny">Reps first, then load</div></div>
+    </div>
+
+    <!-- DAY SELECTOR -->
+    <div class="day-scroll" id="dayScroll">
+      <button class="day-btn active" onclick="showDay('d1',this)">Mon Push</button>
+      <button class="day-btn" onclick="showDay('d2',this)">Tue Pull</button>
+      <button class="day-btn" onclick="showDay('d3',this)">Wed Rest</button>
+      <button class="day-btn" onclick="showDay('d4',this)">Thu Legs</button>
+      <button class="day-btn" onclick="showDay('d5',this)">Fri Upper</button>
+      <button class="day-btn" onclick="showDay('d6',this)">Sat Hike</button>
+      <button class="day-btn" onclick="showDay('d7',this)">Sun Rest</button>
+    </div>
+
+    <!-- LOAD KEY -->
+    <div class="pill-row">
+      <span class="load-badge load-heavy">Heavy</span>
+      <span class="load-badge load-moderate">Moderate</span>
+      <span class="load-badge load-light">Light</span>
+      <span class="load-badge load-rehab">Rehab</span>
+      <span class="small" style="align-self:center">— tap any exercise to expand</span>
+    </div>
+
+    <!-- DAY PANELS -->
+    <div id="d1">
+      <div class="info"><strong>Monday Push</strong> — Neural primer sets on bench + shoulder press. Left shoulder monitored every set. Post-session: 12–15 min Zone 2.</div>
+      <div id="d1-exercises"></div>
+    </div>
+    <div id="d2" style="display:none">
+      <div class="info"><strong>Tuesday Pull</strong> — Neural primers on pull-ups + rows. Lumbar-protective positions throughout. Aggressive arm volume for muscle memory.</div>
+      <div id="d2-exercises"></div>
+    </div>
+    <div id="d3" style="display:none">
+      <div class="good-box"><strong>Wednesday Active Recovery</strong><br/>10–20 min Zone 2 walk/row below 120 bpm. Ankle alphabets → clamshells → step-downs → single-leg balance → band pull-aparts → calf/hamstring stretch. This day is not optional — it enables Thursday's leg session.</div>
+    </div>
+    <div id="d4" style="display:none">
+      <div class="info"><strong>Thursday Legs</strong> — Neural primers on RDL. Right side starts every unilateral movement. Right calf gets 1 extra set when pain ≤ 3/10.</div>
+      <div id="d4-exercises"></div>
+    </div>
+    <div id="d5" style="display:none">
+      <div class="info"><strong>Friday Upper Hypertrophy</strong> — Shape day, not strength day. Higher reps, quality contractions, arm and shoulder aesthetics. Post-session: Zone 2 + full meal before Saturday hike.</div>
+      <div id="d5-exercises"></div>
+    </div>
+    <div id="d6" style="display:none">
+      <div class="info" style="background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.24)">🥾 <strong>Saturday Hike + Arms</strong> — Hike is the primary stimulus. Arm work follows 1–2 hrs after the hike. Pre-hike: 8 min ankle warm-up. Fuel: +300–400 kcal extra today.</div>
+      <div id="d6-exercises"></div>
+    </div>
+    <div id="d7" style="display:none">
+      <div class="good-box"><strong>Sunday Full Rest</strong><br/>Complete rest or 15–25 min gentle walk if fatigue is low. Assess right ankle stiffness, right calf soreness, knee state, and low back heading into Monday. Sleep target: 7.5–9 hrs. Recovery protein maintained — reduced carbs only.</div>
+    </div>
+
+    <!-- PHASE-WAVE CONTROLLER -->
+    <div class="card" style="margin-top:4px">
+      <div class="card-header"><div class="card-title">Phase-Wave Controller</div><div class="card-sub">4-week periodization engine</div></div>
+      <div class="card-body">
+        <div class="week-strip">
+          <div class="week-block active"><div class="wk">Week 1</div><div class="wkv">Build</div></div>
+          <div class="week-block"><div class="wk">Week 2</div><div class="wkv">Push</div></div>
+          <div class="week-block"><div class="wk">Week 3</div><div class="wkv">Peak</div></div>
+          <div class="week-block"><div class="wk">Week 4</div><div class="wkv">Deload</div></div>
+        </div>
+        <div class="form-grid" style="margin-top:10px">
+          <div class="field"><label>Current week</label>
+            <select id="phaseWeek"><option value="1">Week 1</option><option value="2">Week 2</option><option value="3">Week 3</option><option value="4">Week 4 (Deload)</option></select>
+          </div>
+          <div class="field"><label>Goal</label>
+            <select id="phaseGoal"><option value="cut">Cut</option><option value="maintain">Maintain</option><option value="build">Build</option></select>
+          </div>
+          <div class="field"><label>Recovery state</label>
+            <select id="phaseRecovery"><option value="good">Good</option><option value="normal" selected>Normal</option><option value="poor">Poor</option></select>
+          </div>
+          <div class="field"><label>Joint status</label>
+            <select id="phaseJointFlag"><option value="quiet" selected>Quiet</option><option value="stiff">Stiff</option><option value="angry">Angry</option></select>
+          </div>
+          <div class="field"><label>Compliance %</label><input id="phaseCompliance" type="number" min="0" max="100" step="1" value="90"/></div>
+          <div class="field"><label>Strength trend</label>
+            <select id="phaseStrengthTrend"><option value="up">Up</option><option value="flat" selected>Flat</option><option value="down">Down</option></select>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn" onclick="runPhaseWave()">Run wave</button>
+          <button class="btn secondary" onclick="resetPhaseWave()">Reset</button>
+        </div>
+        <div class="banner blue mt" id="phaseBanner">Select wave inputs and hit Run.</div>
+        <div class="stat-grid" style="margin-top:10px">
+          <div class="stat"><div class="label">Emphasis</div><div class="hevy-val" id="phaseEmphasisOut" style="font-size:.88rem">—</div></div>
+          <div class="stat"><div class="label">Compounds</div><div class="hevy-val" id="phaseCompoundOut" style="font-size:.88rem">—</div></div>
+          <div class="stat"><div class="label">RPE target</div><div class="hevy-val" id="phaseRpeOut">—</div></div>
+          <div class="stat"><div class="label">Nutrition</div><div class="hevy-val" id="phaseNutritionOut" style="font-size:.88rem">—</div></div>
+        </div>
+        <div class="small mt" id="phaseCoachText"></div>
+      </div>
+    </div>
+
+    <!-- HEVY COACH -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Hevy Session Coach</div><div class="card-sub">Log in Hevy → interpret here</div></div>
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field"><label>Movement class</label>
+            <select id="liftClass"><option value="primary">Primary compound</option><option value="secondary">Secondary compound</option><option value="isolation">Isolation</option><option value="rehab">Rehab / stability</option></select>
+          </div>
+          <div class="field"><label>Rep target</label>
+            <select id="repTarget"><option value="5-8">5–8</option><option value="8-10" selected>8–10</option><option value="10-15">10–15</option><option value="12-20">12–20 / rehab</option></select>
+          </div>
+          <div class="field"><label>Top set weight</label><input id="topSetWeight" type="number" min="0" step="2.5" value="40"/></div>
+          <div class="field"><label>Top set reps</label><input id="topSetReps" type="number" min="0" step="1" value="10"/></div>
+          <div class="field"><label>Top set RPE</label><input id="topSetRpe" type="number" min="1" max="10" step="0.5" value="8"/></div>
+          <div class="field"><label>Movement quality /10</label><input id="qualityScore" type="number" min="1" max="10" step="1" value="8"/></div>
+          <div class="field"><label>Asymmetry /10</label><input id="asymmetryScore" type="number" min="0" max="10" step="1" value="2"/></div>
+          <div class="field"><label>Joint pain /10</label><input id="jointSignal" type="number" min="0" max="10" step="1" value="2"/></div>
+          <div class="field"><label>Back-off sets done</label><input id="backoffDone" type="number" min="0" max="6" step="1" value="2"/></div>
+        </div>
+        <div style="margin-top:12px"><button class="btn" onclick="runHevyCoach()">Coach next session →</button></div>
+        <div class="banner blue mt" id="hevyBanner">Fill in the session above and hit Coach.</div>
+        <div class="stat-grid" style="margin-top:10px">
+          <div class="stat"><div class="label">Next move</div><div class="hevy-val" id="nextMoveOut">—</div></div>
+          <div class="stat"><div class="label">Top set rule</div><div class="hevy-val" id="topSetRuleOut" style="font-size:.85rem">—</div></div>
+          <div class="stat"><div class="label">Back-off rule</div><div class="hevy-val" id="backoffRuleOut" style="font-size:.85rem">—</div></div>
+          <div class="stat"><div class="label">Focus</div><div class="hevy-val" id="focusRuleOut">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MILESTONE TRACKER -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Strength Milestones</div><div class="card-sub">Update from Hevy weekly</div></div>
+      <div class="card-body">
+        <div id="milestone-list"></div>
+        <div style="margin-top:10px"><button class="btn ghost" onclick="updateMilestones()">Refresh bars</button></div>
+      </div>
+    </div>
+
+    <!-- RPE LADDER -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">RPE Ladder</div></div>
+      <div class="card-body">
+        <div class="rpe-grid">
+          <div class="rpe-block"><div class="rpe-head">RPE 7</div><div class="rpe-main">3 RIR</div><div class="rpe-note">Deload weeks, post-deload, stiff joints</div></div>
+          <div class="rpe-block"><div class="rpe-head">RPE 8</div><div class="rpe-main">2 RIR</div><div class="rpe-note">Default target for all compounds</div></div>
+          <div class="rpe-block"><div class="rpe-head">RPE 9</div><div class="rpe-main">1 RIR</div><div class="rpe-note">Top sets only, pain low, form clean</div></div>
+          <div class="rpe-block"><div class="rpe-head">RPE 5–6</div><div class="rpe-main">Rehab</div><div class="rpe-note">Control and tendon tolerance only</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE: REHAB -->
+<div class="page" id="page-rehab">
+  <div class="page-header compact">
+    <div class="section-kicker">Joint care</div>
+    <div class="page-title-wrap"><div><div class="page-title">Rehab & Warm-Up</div><div class="page-sub">Right ankle · Right knee · Left shoulder</div></div><div class="header-badge">3</div></div>
+  </div>
+  <div class="page-body">
+
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="hero-title">Joint-first prep</div><p class="hero-sub">Choose the fast full-body block or the deeper single-site rotation based on time and tissue status.</p></div>
+      <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Ankle</span><span class="metric-pill"><span class="metric-dot"></span> Knee</span><span class="metric-pill"><span class="metric-dot"></span> Shoulder</span></div>
+    </div>
+
+    <div class="danger-box"><strong>Non-negotiable:</strong> This runs before every lifting session. Choose Format A (15-min full-body) or Format B (single-site rotation, recommended default).</div>
+
+    <!-- FORMAT TOGGLE -->
+    <div class="segmented">
+      <button class="segment-btn active" id="fmtA-btn" onclick="showFormat('A')">Format A — 15 min full-body</button>
+      <button class="segment-btn" id="fmtB-btn" onclick="showFormat('B')">Format B — Single site</button>
+    </div>
+
+    <!-- FORMAT A -->
+    <div id="fmtA">
+      <div class="info">Use on busy days, travel, deloads, or poor-sleep days. Covers all 3 sites in one compact block.</div>
+      <div class="card">
+        <div id="fmtA-content"></div>
+      </div>
+    </div>
+
+    <!-- FORMAT B -->
+    <div id="fmtB" style="display:none">
+      <div class="info">Recommended default. One injury area per session gets deeper focused volume — better for long-term tendon remodeling and tissue strength.</div>
+      <div class="day-scroll">
+        <button class="day-btn active" onclick="showSite('ankle',this)">Ankle</button>
+        <button class="day-btn" onclick="showSite('knee',this)">Knee</button>
+        <button class="day-btn" onclick="showSite('shoulder',this)">Shoulder</button>
+      </div>
+      <div id="site-ankle"></div>
+      <div id="site-knee" style="display:none"></div>
+      <div id="site-shoulder" style="display:none"></div>
+      <div class="card" style="margin-top:4px">
+        <div class="card-header"><div class="card-title">Weekly Rotation</div></div>
+        <div class="card-body" style="font-size:.84rem">
+          <div class="ex-row"><span class="key">Monday Push</span><span class="v">Shoulder Day</span></div>
+          <div class="ex-row"><span class="key">Tuesday Pull</span><span class="v">Ankle Day</span></div>
+          <div class="ex-row"><span class="key">Thursday Legs</span><span class="v">Knee Day</span></div>
+          <div class="ex-row"><span class="key">Friday Upper</span><span class="v">Shoulder or 15-min Full-Body</span></div>
+          <div class="ex-row"><span class="key">Saturday Hike</span><span class="v">Ankle + 1 set clamshells</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEURAL PRIMER PROTOCOL -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Neural Primer Protocol</div><div class="card-sub">Mandatory before every compound lift</div></div>
+      <div class="card-body">
+        <div class="warn-box" style="margin-bottom:10px"><strong>Compounds only</strong> — bench, RDL, pull-ups, DB shoulder press. Never run primers on isolation work.</div>
+        <div class="ex-row"><span class="key">Primer 1</span><span class="v">40% load · 5 reps explosive · 3-sec eccentric · 60 sec rest</span></div>
+        <div class="ex-row"><span class="key">Primer 2</span><span class="v">60% load · 3–4 reps controlled · 90 sec rest</span></div>
+        <div class="ex-row"><span class="key">Work Set 1</span><span class="v">100% working weight — nervous system fully primed</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE: NUTRITION -->
+<div class="page" id="page-nutrition">
+  <div class="page-header compact">
+    <div class="section-kicker">Fueling</div>
+    <div class="page-title-wrap"><div><div class="page-title">Nutrition</div><div class="page-sub">Macros · Meal timing · Supplements</div></div><div class="header-badge">Plan</div></div>
+  </div>
+  <div class="page-body">
+
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="hero-title">Fuel for performance and the cut</div><p class="hero-sub">Keep protein high, carbs targeted, and recovery meals simple enough to repeat.</p></div>
+      <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Protein</span><span class="metric-pill"><span class="metric-dot"></span> Timing</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
+    </div>
+
+    <div class="app-strip">
+      <div class="app-tile"><div class="eyebrow">Protein</div><div class="big">160–175g</div><div class="tiny">Hold every day</div></div>
+      <div class="app-tile"><div class="eyebrow">Lift days</div><div class="big">2,000 kcal</div><div class="tiny">Carbs around training</div></div>
+      <div class="app-tile"><div class="eyebrow">Rest days</div><div class="big">1,750 kcal</div><div class="tiny">Lower carbs only</div></div>
+    </div>
+
+    <!-- MACRO TARGETS -->
+    <div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="stat orange"><div class="label">Lift days</div><div class="val">2,000</div><div class="note">kcal · ~500 deficit</div></div>
+      <div class="stat blue"><div class="label">Rest days</div><div class="val">1,750</div><div class="note">kcal · same protein</div></div>
+      <div class="stat green"><div class="label">Hike day</div><div class="val">2,300</div><div class="note">kcal · extra carbs</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-title">Daily Macro Targets</div></div>
+      <div class="card-body" style="font-size:.85rem">
+        <div class="ex-row"><span class="key">Protein</span><span class="v">160–175g (0.9–1.0g/lb)</span></div>
+        <div class="ex-row"><span class="key">Carbs (lift day)</span><span class="v">175–200g</span></div>
+        <div class="ex-row"><span class="key">Fat</span><span class="v">55–65g</span></div>
+        <div class="ex-row"><span class="key">Leucine per meal</span><span class="v">≥ 2.5g (trigger MPS)</span></div>
+      </div>
+    </div>
+
+    <!-- MEAL TIMELINE -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Meal Schedule (Lift Day)</div></div>
+      <div class="card-body">
+        <div class="tl">
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--yellow-d);border-color:var(--yellow-b)">⚡</div><div class="tl-line"></div><div class="tl-time">6:30</div></div>
+            <div class="tl-content"><div class="tl-title">Hydration Prime</div><ul class="tl-list"><li>16–20 oz water + black coffee</li><li>L-Carnitine 1g + Green Tea 400mg</li></ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--orange-d);border-color:var(--orange-b)">🥣</div><div class="tl-line"></div><div class="tl-time">8:00</div></div>
+            <div class="tl-content"><div class="tl-title">Breakfast — Anabolic Prime (~65g protein)</div><ul class="tl-list"><li>Whey isolate 1.5 scoops (~38g protein)</li><li>Greek yogurt/skyr 250g (~21g protein)</li><li>Oats 60g dry · Chia 1 tbsp · Spinach</li><li>Creatine 5g · D3+K2 · Biotin · B12</li></ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--blue-d);border-color:var(--blue-b)">🫙</div><div class="tl-line"></div><div class="tl-time">12:30</div></div>
+            <div class="tl-content"><div class="tl-title">Lunch — Solid Protein Anchor (~50g protein)</div><ul class="tl-list"><li>Paneer 200g <em>or</em> Tofu 300g + ½ scoop whey</li><li>Dal 1 cup cooked · 1 roti or ½ cup rice</li><li>Large salad + 1 tsp olive oil · Turmeric 500mg</li></ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--green-d);border-color:var(--green-b)">⚡</div><div class="tl-line"></div><div class="tl-time">4:00</div></div>
+            <div class="tl-content"><div class="tl-title">Pre-Workout (~28g protein)</div><ul class="tl-list"><li>Whey 1 scoop + banana or 40g oats</li><li>Beta-Alanine 3–4g · Taurine 1.5g</li><li>L-Theanine 100mg (if using caffeine)</li></ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--green-d);border-color:var(--green-b)">💪</div><div class="tl-line"></div><div class="tl-time">6:00</div></div>
+            <div class="tl-content"><div class="tl-title">Post-Workout (within 30 min)</div><ul class="tl-list"><li>Whey 1 scoop + optional fast carb</li><li>L-Glutamine 5g</li></ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--purple-d);border-color:var(--purple-b)">🍛</div><div class="tl-line"></div><div class="tl-time">8:00</div></div>
+            <div class="tl-content"><div class="tl-title">Dinner — Satiety Fortress (~36g protein)</div><ul class="tl-list"><li>Paneer 200g or Tofu 250g</li><li>Veggies 2–3 cups · ½ avocado or 12 almonds</li><li>Carb only on leg/hike days: 1 roti or ½ cup rice</li><li>KSM-66 300mg · Zinc 25mg</li></ul></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot" style="background:var(--purple-d);border-color:var(--purple-b)">🌙</div><div class="tl-time">9:30</div></div>
+            <div class="tl-content"><div class="tl-title">Pre-Bed (if protein short)</div><ul class="tl-list"><li>Skyr 200g or casein shake</li><li>Magnesium Glycinate 400mg · L-Theanine 200mg</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEUCINE TABLE -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Leucine Threshold Guide</div><div class="card-sub">Every meal must clear 2.5g leucine to trigger MPS</div></div>
+      <div class="card-body" style="font-size:.83rem">
+        <div class="ex-row"><span class="key">Whey Isolate 1 scoop</span><span class="v">~2.7g ✅</span></div>
+        <div class="ex-row"><span class="key">Paneer 200g</span><span class="v">~2.8g ✅</span></div>
+        <div class="ex-row"><span class="key">Tofu 300g</span><span class="v">~1.8g ⚠️ pair with ½ scoop whey</span></div>
+        <div class="ex-row"><span class="key">Dal 1 cup cooked</span><span class="v">~1.2g ⚠️ pair with paneer or whey</span></div>
+        <div class="ex-row"><span class="key">Greek Yogurt 250g</span><span class="v">~1.9g ⚠️ pair with whey</span></div>
+      </div>
+    </div>
+
+    <!-- CRAVING BUFFER -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Craving Interrupt Protocol</div><div class="card-sub">Pre-approved buffer foods — pick one</div></div>
+      <div class="card-body">
+        <div class="pill-row">
+          <span class="pill green">Roasted chana 50g</span>
+          <span class="pill green">Skyr 200g</span>
+          <span class="pill green">Makhana 30g</span>
+          <span class="pill green">Whey shake</span>
+          <span class="pill green">Cucumber + salt + lemon</span>
+          <span class="pill green">Buttermilk (chaas)</span>
+        </div>
+        <div class="small mt"><strong>Protocol:</strong> Craving hits → 500ml water → wait 12 min → if still there, pick one buffer food above. Never decide in the moment from an open fridge.</div>
+      </div>
+    </div>
+
+    <!-- SUPPLEMENTS TIMELINE -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Supplement Schedule</div><div class="card-sub">Full daily timing — tap any slot to expand</div></div>
+      <div id="supp-accordion"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE: PSYCH -->
+<div class="page" id="page-psych">
+  <div class="page-header compact">
+    <div class="section-kicker">Consistency</div>
+    <div class="page-title-wrap"><div><div class="page-title">Mindset</div><div class="page-sub">Fail-safes · Identity anchors · Yo-yo prevention</div></div><div class="header-badge">Core</div></div>
+  </div>
+  <div class="page-body">
+
+    <div class="hero-panel">
+      <div class="hero-copy"><div class="hero-title">Consistency engine</div><p class="hero-sub">This page exists to prevent drift. Use it when motivation is low and structure needs to take over.</p></div>
+      <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Identity</span><span class="metric-pill"><span class="metric-dot"></span> Defaults</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
+    </div>
+
+    <div class="app-strip">
+      <div class="app-tile"><div class="eyebrow">Rule</div><div class="big">Never miss 2</div><div class="tiny">Scale, don't disappear</div></div>
+      <div class="app-tile"><div class="eyebrow">Morning</div><div class="big">5 min</div><div class="tiny">Sets the day</div></div>
+      <div class="app-tile"><div class="eyebrow">Identity</div><div class="big">Athlete</div><div class="tiny">Not a dieter</div></div>
+    </div>
+
+    <div class="danger-box"><strong>Root cause:</strong> Your 6–7 year yo-yo cycle was a systems problem, not a discipline problem. Every failure happened when motivation faded. This page replaces motivation with identity and pre-written behavioral algorithms.</div>
+
+    <!-- IDENTITY ANCHORS -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Identity Anchors</div></div>
+      <div class="card-body" style="font-size:.86rem">
+        <div class="good-box" style="margin-bottom:10px"><strong>Statement 1:</strong> "I am an athlete maintaining my body — not a dieter fighting cravings."</div>
+        <div class="good-box"><strong>Statement 2:</strong> "I follow the protocol — I don't decide whether to follow the protocol."</div>
+      </div>
+    </div>
+
+    <!-- IF-THEN FAIL-SAFES -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">If-Then Fail-Safe System</div><div class="card-sub">Pre-written responses to every relapse trigger</div></div>
+      <div id="fail-safe-accordion"></div>
+    </div>
+
+    <!-- 5-MINUTE MORNING PROTOCOL -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">5-Minute Morning Protocol</div><div class="card-sub">Non-negotiable daily keystone</div></div>
+      <div class="card-body" style="font-size:.85rem">
+        <ul class="check-list" id="morning-checklist">
+          <li><div class="ck" onclick="toggleCheck(this)"></div><span>16 oz water before anything else</span></li>
+          <li><div class="ck" onclick="toggleCheck(this)"></div><span>Check protocol — what day is it, what's scheduled</span></li>
+          <li><div class="ck" onclick="toggleCheck(this)"></div><span>State one identity sentence out loud</span></li>
+          <li><div class="ck" onclick="toggleCheck(this)"></div><span>Pre-commit today's meals — write or log before eating</span></li>
+          <li><div class="ck" onclick="toggleCheck(this)"></div><span>Move for 5 minutes minimum — even just walking to get protein</span></li>
+        </ul>
+        <div class="small mt">Missing this sequence drops daily compliance by ~35%. It's not motivational — it's structural.</div>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Tracking Metrics</div></div>
+      <div class="card-body" style="font-size:.84rem">
+        <h3 style="margin-top:0">Every 2 Weeks (Physical)</h3>
+        <ul style="margin:0;padding-left:16px">
+          <li>Bodyweight: daily 7-day rolling average (not single-day panic)</li>
+          <li>Waist circumference at navel</li>
+          <li>Right and left calf circumference</li>
+          <li>Progress photo: front, side, back — same lighting, same time</li>
+        </ul>
+        <h3>Every 4 Weeks (Performance)</h3>
+        <ul style="margin:0;padding-left:16px">
+          <li>Bench press working weight × reps</li>
+          <li>RDL working weight × reps</li>
+          <li>Pull-ups unassisted max clean reps</li>
+          <li>DB curl working weight × reps</li>
+          <li>Saturday hike: elevation gain, pace, perceived effort</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">Phase 3 at 170 lb</div><div class="card-sub">What changes when you hit goal weight</div></div>
+      <div class="card-body" style="font-size:.85rem">
+        <div class="warn-box">Hitting 170 lb is the most dangerous moment of the yo-yo cycle. The protocol does not end — it evolves.</div>
+        <ul style="margin:6px 0 0;padding-left:16px">
+          <li>Keep exact exercise structure — same movements, same days</li>
+          <li>Raise calories by +150–200 kcal/day each week until maintenance</li>
+          <li>Raise protein to 175–190g/day for muscle-building phase</li>
+          <li>Add 1 extra set to biceps, triceps, lateral raises on Day 2 and Day 5</li>
+          <li>Keep Zone 2 at 1–2 sessions/week — do not eliminate cardio base</li>
+          <li>Continue all right-side asymmetry work — indefinitely</li>
+          <li>Continue full injury warm-up sequence — permanently</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <button class="bnav__btn active" onclick="showPage('today',this)"><span class="bnav__icon">◴</span><span class="bnav__label">Today</span></button>
+  <button class="bnav__btn" onclick="showPage('train',this)"><span class="bnav__icon">△</span><span class="bnav__label">Train</span></button>
+  <button class="bnav__btn" onclick="showPage('rehab',this)"><span class="bnav__icon">✣</span><span class="bnav__label">Rehab</span></button>
+  <button class="bnav__btn" onclick="showPage('nutrition',this)"><span class="bnav__icon">◇</span><span class="bnav__label">Nutrition</span></button>
+  <button class="bnav__btn" onclick="showPage('psych',this)"><span class="bnav__icon">◍</span><span class="bnav__label">Mindset</span></button>
+</nav>
+
+<script>
+/* ─── NAV ─── */
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.bnav__btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  btn.classList.add('active');
+  pulse([btn, document.getElementById('page-'+id).querySelector('.page-header')]);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showDay(id,btn){
+  ['d1','d2','d3','d4','d5','d6','d7'].forEach(d=>{
+    const panel=document.getElementById(d);
+    if(panel) panel.style.display=d===id?'block':'none';
+  });
+  document.querySelectorAll('#page-train .day-scroll .day-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  pulse([btn, document.getElementById(id)]);
+}
+
+function showFormat(f){
+  document.getElementById('fmtA').style.display=f==='A'?'block':'none';
+  document.getElementById('fmtB').style.display=f==='B'?'block':'none';
+  document.getElementById('fmtA-btn').className='segment-btn'+(f==='A'?' active':'');
+  document.getElementById('fmtB-btn').className='segment-btn'+(f==='B'?' active':'');
+  pulse(['fmtA-btn','fmtB-btn', f==='A'?'fmtA':'fmtB']);
+}
+
+function showSite(id,btn){
+  ['ankle','knee','shoulder'].forEach(s=>{
+    document.getElementById('site-'+s).style.display=s===id?'block':'none';
+  });
+  document.querySelectorAll('#page-rehab .day-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  pulse([btn, 'site-'+id]);
+}
+
+function toggleCheck(el){
+  el.classList.toggle('done');
+}
+
+function el(id){return document.getElementById(id)}
+function pulse(ids){
+  ids.forEach(id=>{
+    const node=typeof id==='string'?el(id):id;
+    if(!node) return;
+    node.classList.remove('is-updated');
+    void node.offsetWidth;
+    node.classList.add('is-updated');
+  });
+}
+
+/* ─── READINESS ENGINE ─── */
+function setBanner(color,text,sub){
+  const b=el('decisionBanner');
+  b.className='banner '+color;
+  b.innerHTML=text+(sub?'<div class="sub">'+sub+'</div>':'');
+}
+
+function runReadiness(){
+  const sleep=+el('sleepHours').value;
+  const recovery=+el('recoveryScore').value;
+  const energy=+el('energyLevel').value;
+  const pain=+el('jointPain').value;
+  const motivation=+el('motivationLevel').value;
+  const session=el('sessionType').value;
+  let score=Math.min(sleep,8)*7+recovery*0.45+energy*4+motivation*2-pain*10;
+  let mode,load,warmup;
+  if(pain>=5||score<55){
+    mode='Protect';load='-15%';warmup='15-min Full Body';
+    setBanner('red','🔴 Red light: protect tissue. Reduce load today.','Drop heavy loading, use tempo control, keep pain ≤ 3/10.');
+  } else if(pain>=3||score<70||sleep<6){
+    mode='Build';load='-5–10%';warmup='15-min Full Body';
+    setBanner('yellow','🟡 Yellow light: quality-first session.','Progress reps or execution instead of chasing load.');
+  } else if(score>=85&&recovery>=75&&pain<=2){
+    mode='Push';load='+0–2.5%';warmup='Rotation';
+    setBanner('green','🟢 Green light: push the planned session as written.','Compounds can earn the next load jump if they hit the top of the range cleanly.');
+  } else {
+    mode='Build';load='0%';warmup=session==='recovery'?'15-min Full Body':'Rotation';
+    setBanner('orange','🟠 Orange light: productive, controlled day.','Own the prescribed reps and leave 1–2 reps in reserve on compounds.');
+  }
+  if(session==='hike'&&pain>=3){load='Reduce descent impact';warmup='Ankle/Knee Rotation';}
+  el('modeOut').textContent=mode;
+  el('loadOut').textContent=load;
+  el('warmupOut').textContent=warmup;
+  pulse(['decisionBanner','modeOut','loadOut','warmupOut']);
+}
+
+/* ─── WEEKLY ENGINE ─── */
+function runWeekly(){
+  const now=+el('avgWeightNow').value;
+  const prev=+el('avgWeightPrev').value;
+  const cal=+el('currentCalories').value;
+  const trend=el('strengthTrend').value;
+  const hunger=+el('hungerLevel').value;
+  const comp=+el('complianceLevel').value;
+  const delta=+(prev-now).toFixed(1);
+  let newCal=cal,notes=[];
+  if(comp<85){notes.push('Compliance is below 85%: do not cut calories yet. Tighten execution and late-night food control first.');}
+  else if(delta>1.2){newCal+=150;notes.push('Loss is faster than target: add ~150 kcal around training to protect muscle and performance.');}
+  else if(delta<0.3){newCal-=150;notes.push('Loss is slower than target: reduce by ~150 kcal or add one 15-min Zone 2 walk daily.');}
+  else {notes.push('Rate of loss is on target: keep calories steady and win with consistency.');}
+  if(trend==='down') notes.push('Strength is slipping: add 25–40g carbs around lifting, protect sleep, do not stack extra fatigue.');
+  else if(trend==='up') notes.push('Strength is positive: compounds are responding — hold the structure and keep progression conservative.');
+  if(hunger>=8) notes.push('Hunger is high: increase veggie volume, keep dinner protein dense, use a planned protein top-up.');
+  notes.push('Updated calorie anchor: ~'+Math.max(1600,newCal)+' kcal on standard training days.');
+  const list=el('weeklyList');
+  list.innerHTML='';
+  notes.forEach(n=>{const li=document.createElement('li');li.textContent=n;list.appendChild(li);});
+  pulse(['weeklyList']);
+}
+
+/* ─── ATHLETE REVIEW ─── */
+function runAthleteReview(){
+  const comp=+el('weeklyCompletion').value;
+  const sleep=+el('weeklySleep').value;
+  const energy=+el('weeklyEnergy').value;
+  const pain=+el('weeklyPain').value;
+  const loss=+el('weeklyLoss').value;
+  const strength=el('weeklyStrength').value;
+  const p=[];
+  if(comp<85) p.push('Compliance is the bottleneck: simplify the week and execute the minimum effective day instead of adding complexity.');
+  if(sleep<7) p.push('Sleep is below the athletic threshold: tighten bedtime, cap caffeine early, and do not add intensity until sleep improves.');
+  if(pain>3) p.push('Average pain is too high: shift one heavy day into quality-focused work and keep the deeper rehab rotation as default.');
+  if(loss>1.0) p.push('Fat loss is fast: protect performance by adding carbohydrate around training instead of pushing harder.');
+  else if(loss<0.3) p.push('Fat loss is slow: tighten food execution or add one low-intensity conditioning block before cutting calories further.');
+  else p.push('Rate of loss is in the productive range: keep the deficit steady and let training quality stay high.');
+  if(strength==='down') p.push('Strength trend is slipping: reduce fluff volume, keep top sets honest, and bias recovery this week.');
+  else if(strength==='up') p.push('Strength trend is positive: you have room to push one top set harder on key compounds this week.');
+  if(energy<=6) p.push('Energy is not fully recovered: use one extra 30-minute mobility-walk-rehab day instead of adding more work.');
+  if(!p.length) p.push('All systems stable: stay on the current wave and win by repetition, not novelty.');
+  const list=el('athletePriorityList');
+  list.innerHTML='';
+  p.forEach(t=>{const li=document.createElement('li');li.textContent=t;list.appendChild(li);});
+  pulse(['athletePriorityList']);
+}
+
+/* ─── HEVY COACH ─── */
+function maxForRep(t){return t==='5-8'?8:t==='8-10'?10:t==='10-15'?15:20;}
+function runHevyCoach(){
+  const lc=el('liftClass').value;
+  const rt=el('repTarget').value;
+  const w=+el('topSetWeight').value;
+  const reps=+el('topSetReps').value;
+  const rpe=+el('topSetRpe').value;
+  const q=+el('qualityScore').value;
+  const asym=+el('asymmetryScore').value;
+  const joint=+el('jointSignal').value;
+  const backoff=+el('backoffDone').value;
+  const rmax=maxForRep(rt);
+  let next,top,bk,focus,banner;
+  if(joint>3||q<7){
+    next='Protect and rebuild';top='Reduce 5–10% or slow the eccentric';bk='2 controlled back-off sets only';focus='Joint protection';
+    banner='Tissue signal is elevated: this was not a day to chase heavier loading.';
+  } else if(lc==='rehab'){
+    next='Add control first';top='Add 2 reps, slower tempo, or longer hold';bk='No extra back-off fatigue';focus='Tendon remodeling';
+    banner='Rehab work progresses through cleaner control and tissue tolerance, not ego load.';
+  } else if(lc==='isolation'){
+    if(reps>=rmax&&rpe<=8.5&&q>=8){next='Micro-load';top='Add smallest jump above '+w;}
+    else{next='Add reps';top='Keep weight, add 1–2 reps next session';}
+    bk='Back-off only if pump quality was high';focus='Hypertrophy';
+    banner='Isolation lifts earn reps first, then tiny load jumps once the top of the range is owned.';
+  } else if(lc==='secondary'){
+    if(reps>=rmax&&rpe<=8.5&&q>=8&&asym<=3){next='Add 2.5–5 lb';top='Increase load slightly next session';}
+    else{next='Add 1 rep';top='Keep load fixed and climb within the range';}
+    bk=backoff>=2?'-8% to -10% from top set':'Earn full back-off volume before loading up';
+    focus='Strength + size';
+    banner='Secondary compounds still progress aggressively, but only after symmetry and control stay clean.';
+  } else {
+    if(reps>=rmax&&rpe<=8.5&&q>=8&&asym<=2){next='Add 5 lb';top='Advance the top set next session';}
+    else if(rpe>=9.5){next='Hold and own it';top='Repeat the same load and improve rep quality';}
+    else{next='Add 1 rep';top='Stay at the same load until the top of the range is clean';}
+    bk=backoff>=2?'-10% to -15% from top set':'Complete full back-off volume before chasing heavier loading';
+    focus='Performance';
+    banner='Primary compounds progress only when the top set proves you are actually stronger, not just more fired up.';
+  }
+  el('hevyBanner').className='banner blue';
+  el('hevyBanner').textContent=banner;
+  el('nextMoveOut').textContent=next;
+  el('topSetRuleOut').textContent=top;
+  el('backoffRuleOut').textContent=bk;
+  el('focusRuleOut').textContent=focus;
+  pulse(['hevyBanner','nextMoveOut','topSetRuleOut','backoffRuleOut','focusRuleOut']);
+}
+
+/* ─── PHASE WAVE ─── */
+function runPhaseWave(){
+  const week=el('phaseWeek').value;
+  const goal=el('phaseGoal').value;
+  const recovery=el('phaseRecovery').value;
+  const joints=el('phaseJointFlag').value;
+  const comp=+el('phaseCompliance').value;
+  const strength=el('phaseStrengthTrend').value;
+  let emphasis,compound,rpe,nutrition,coach,banner;
+  if(week==='1'){emphasis='Volume foundation';compound='Normal sets, reps first';rpe='8.0';nutrition='Hold current calories';banner='Build the base this week. Keep compounds clean and let quality drive the next jump.';coach='Accumulation phase — enough work to build, not enough chaos to irritate old injury sites.';}
+  else if(week==='2'){emphasis='Progressive build';compound='Push 1 rep or small load jumps';rpe='8.0–8.5';nutrition=goal==='cut'?'Hold deficit unless strength slips':'Add carbs around training if needed';banner='Push week: same movements, slightly more output, still no sloppy reps.';coach='Quietly stack wins. Compounds can climb only if quality and symmetry stayed intact.';}
+  else if(week==='3'){emphasis='Strength expression';compound='Top sets matter most, trim fluff';rpe='8.5–9.0';nutrition=goal==='cut'?'Bias carbs around training':'Support performance first';banner='Highest-output week: earn heavier top sets, then get out before fatigue dilutes quality.';coach='Not for hero volume. Sharp top sets, disciplined back-off work, joints quiet while strength peaks.';}
+  else{emphasis='Deload + resensitize';compound='Cut sets by 35–50%, hold technique';rpe='6.0–7.0';nutrition=goal==='cut'?'Hold or raise by 100–150 kcal if beat up':'Eat at maintenance quality';banner='Unload on purpose. Leave this week fresher, not guilty.';coach='The deload is where connective tissue catches up and your next performance wave becomes possible.';}
+  if(recovery==='poor'||joints==='angry'){emphasis='Protect + rebuild';compound='Downshift 5–10%, own execution';rpe='7.0 max';nutrition=goal==='cut'?'Do not cut harder this week':'Hold intake and recover';banner='Override: recovery and tissue status say protect the system this week.';coach='When recovery or joints are red-flagging, the right call is preserving momentum by reducing stress before pain steals weeks.';}
+  if(strength==='down'&&week!=='4') nutrition=goal==='cut'?'Add 25–40g carbs around training before cutting harder':'Do not add more volume until strength returns';
+  if(comp<85) coach+=' Compliance is the bottleneck: simplify and win with the minimum effective day.';
+  el('phaseBanner').className='banner blue';
+  el('phaseBanner').textContent=banner;
+  el('phaseEmphasisOut').textContent=emphasis;
+  el('phaseCompoundOut').textContent=compound;
+  el('phaseRpeOut').textContent=rpe;
+  el('phaseNutritionOut').textContent=nutrition;
+  el('phaseCoachText').textContent=coach;
+  document.querySelectorAll('.week-block').forEach((b,i)=>{b.classList.toggle('active',String(i+1)===week);});
+  pulse(['phaseBanner','phaseEmphasisOut','phaseCompoundOut','phaseRpeOut','phaseNutritionOut','phaseCoachText']);
+}
+function resetPhaseWave(){
+  el('phaseWeek').value='1';el('phaseGoal').value='cut';el('phaseRecovery').value='normal';
+  el('phaseJointFlag').value='quiet';el('phaseCompliance').value=90;el('phaseStrengthTrend').value='flat';
+  runPhaseWave();
+}
+
+/* ─── MILESTONES ─── */
+const milestones=[
+  {name:'DB Press (per hand)',curId:'mPC',tarId:'mPT',barId:'mPB',textId:'mPTx',cur:40,tar:60,note:'Earn load only when shoulder stays quiet and reps stay symmetrical.'},
+  {name:'RDL',curId:'mRC',tarId:'mRT',barId:'mRB',textId:'mRTx',cur:115,tar:185,note:'Tempo and spinal position matter more than ego load.'},
+  {name:'Pull-Up (total reps)',curId:'mUC',tarId:'mUT',barId:'mUB',textId:'mUTx',cur:6,tar:12,note:'Lats and scapular control drive the V-taper.'},
+  {name:'DB Curl (per hand)',curId:'mCC',tarId:'mCT',barId:'mCB',textId:'mCTx',cur:22.5,tar:30,note:'Elbow path and supination must stay clean for load to climb.'}
+];
+function buildMilestones(){
+  const c=el('milestone-list');
+  c.innerHTML='';
+  milestones.forEach(m=>{
+    const pct=m.tar>0?Math.max(0,Math.min(100,Math.round(m.cur/m.tar*100))):0;
+    c.innerHTML+=`<div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+        <span style="font-size:.85rem;font-weight:600;color:#fff">${m.name}</span>
+        <span style="font-size:.78rem;color:var(--muted)" id="${m.textId}">${pct}%</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px">
+        <div class="field"><label>Current</label><input id="${m.curId}" type="number" min="0" step="2.5" value="${m.cur}" oninput="updateMilestones()"/></div>
+        <div class="field"><label>Target</label><input id="${m.tarId}" type="number" min="0" step="2.5" value="${m.tar}" oninput="updateMilestones()"/></div>
+      </div>
+      <div class="bar-shell"><div class="bar-fill" id="${m.barId}" style="width:${pct}%"></div></div>
+      <div class="small" style="margin-top:4px">${m.note}</div>
+    </div>`;
+  });
+}
+function updateMilestones(){
+  milestones.forEach(m=>{
+    const cur=+el(m.curId).value;
+    const tar=+el(m.tarId).value;
+    const pct=tar>0?Math.max(0,Math.min(100,Math.round(cur/tar*100))):0;
+    el(m.barId).style.width=pct+'%';
+    el(m.textId).textContent=pct+'%';
+    m.cur=cur;m.tar=tar;
+  });
+}
+
+/* ─── EXERCISE DATA ─── */
+function mkEx(name,muscle,muscleCls,muscleLbl,equip,sets,load,loadCls,loadReason,prog,progReason,rest,videoUrl){
+  return {name,muscle,muscleCls,muscleLbl,equip,sets,load,loadCls,loadReason,prog,progReason,rest,videoUrl};
+}
+const days={
+  d1:[
+    mkEx('Barbell Bench Press','CH','chest','Chest','Barbell','4 × 5–8','Heavy','load-heavy','Primary strength anchor. Drive muscle memory and chest-triceps force production.','Add Weight When Earned','Add weight only after all 4 sets hit 8 clean reps at ≤RPE 8 for two weeks.','2.5–3 min','https://www.youtube.com/watch?v=gRVjAtPip0Y'),
+    mkEx('High-Incline Neutral-Grip DB Press','SH','shoulders','Shoulders','Dumbbells','3 × 6–8','Moderate','load-moderate','Safer pressing path for left shoulder dislocation history while building upper chest.','Add Reps First','Move from 6→8 reps first. Add 5 lb only when all sets reach 8 with zero shoulder instability.','2 min','https://www.youtube.com/watch?v=GFblCmuEE18'),
+    mkEx('Low-Incline DB Press','CH','chest','Upper Chest','Dumbbells + bench','3 × 8–10','Moderate','load-moderate','Upper-chest volume builder. Controlled tension matters more than max loading.','Add Reps First','Add reps first. When all sets reach 10 clean reps with 2-sec lower, add smallest jump.','90 sec','https://www.youtube.com/watch?v=IP4oeKh1Sd4'),
+    mkEx('Low-Incline DB Squeeze Press','CH','chest','Chest','Dumbbells + bench','2–3 × 10–12','Light','load-light','Chest hypertrophy with reduced shoulder strain. Squeeze and control beat chasing load.','Add Weight When Earned','Keep same weight until all sets reach 12 with strong squeeze and no shoulder shift.','75 sec','https://www.youtube.com/watch?v=0l9m-pYnlQ8'),
+    mkEx('DB Rolling Triceps Extension','AR','arms','Triceps','Dumbbells','3 × 8–10','Moderate','load-moderate','Main triceps size driver. Enough load to grow, not so much that elbows dominate.','Add Weight When Earned','Add reps to 10 first. Add weight only when every rep stays smooth and elbow path pain-free.','75 sec','https://www.youtube.com/watch?v=6IrhvGp8kRg'),
+    mkEx('Seated Overhead DB Extension','AR','arms','Triceps Long Head','Dumbbell','2 × 10–12','Moderate','load-moderate','Long-head triceps builder — the 2/3 of arm size that matters most for visible mass.','Add Weight When Earned','Progress reps before weight. Add smallest jump when all sets reach 12 with no shoulder discomfort.','60 sec','https://www.youtube.com/watch?v=fYqswDVbJDg'),
+    mkEx('Push-Up Plus','CH','chest','Serratus','Bodyweight','2 × 12–15','Rehab','load-rehab','Serratus and scap control for left shoulder centering after dislocation history.','Add Control Only','Do not chase load. Add 1–2 reps or 1-sec pause only when shoulder stays perfectly controlled.','60 sec','https://www.youtube.com/watch?v=_l3ySVKYVJ8'),
+    mkEx('Front-Foot Elevated Split Squat','LG','legs','Quads/Glutes','Dumbbells','2 × 8–10/side','Light','load-light','Support work for knee resilience. Stays light — this is not your main leg stimulus.','Add Weight When Earned','Increase range control first, then reps. Add load only when both sides stable and right knee quiet next day.','90 sec','https://www.youtube.com/watch?v=2C-uNgKwPLE'),
+    mkEx('RKC Plank','CO','core','Core','Bodyweight','2 × 25–35s','Rehab','load-rehab','Trunk stiffness for low-back protection. Quality bracing is the entire point.','Add Time Only','Add 5–10 seconds per set before any external load variation.','60 sec','https://www.youtube.com/watch?v=0c1np4dV7ec')
+  ],
+  d2:[
+    mkEx('Pull-Ups (Assisted if needed)','BK','back','Lats','Rack / Pull-up bar','4 × 5–8','Heavy','load-heavy','Primary back-width strength movement and neural driver for your V-taper.','Add Reps First','Add weight only once all 4 sets hit 8 clean reps from a dead hang.','2.5 min','https://www.youtube.com/watch?v=gx0RWT7WbmA'),
+    mkEx('Chest-Supported Incline Row','BK','back','Mid-Back','Dumbbells + bench','3–4 × 6–8','Heavy','load-heavy','Safe heavy rowing without lumbar cost. Main mid-back thickness builder.','Add Weight When Earned','Push reps to top of range first. Add load when all sets reach 8 with chest glued to bench.','2 min','https://www.youtube.com/watch?v=vmX58YYK3-8'),
+    mkEx('Single-Arm Lat Row','BK','back','Lats','Dumbbell + bench','3 × 8–10/side','Moderate','load-moderate','Lat-focused hypertrophy. Moderate load keeps line of pull clean toward the hip.','Add Reps First','Add reps first. Add weight once all sets hit 10 and lats are felt more than biceps.','90 sec','https://www.youtube.com/watch?v=dFzUjzfih7k'),
+    mkEx('Standing DB Curl','AR','arms','Biceps','Dumbbells','3 × 8–10','Moderate','load-moderate','Main biceps builder that should actually move some load — this is strength work.','Add Weight When Earned','Add reps to top of range, then increase by 2.5–5 lb total only if there is zero swing.','75 sec','https://www.youtube.com/watch?v=6DeLZ6cbgWQ'),
+    mkEx('Spider Curl','AR','arms','Biceps Peak','Dumbbells + incline bench','3 × 10–12','Light','load-light','Strict curl — zero momentum. Builds the peak without any swing compensation.','Add Reps First','Progress reps before weight. Load only after all sets hit 12 with perfect elbow path.','60 sec','https://www.youtube.com/watch?v=jmXXRM755MM'),
+    mkEx('Hammer Curl','AR','arms','Brachialis','Dumbbells','2 × 10–12','Light','load-light','Arm thickness between biceps and triceps. Elbow-friendly and brachialis-dominant.','Add Reps First','Add reps before weight. No swinging — strict alternating or simultaneous.','60 sec','https://www.youtube.com/watch?v=BRVDS6HVR9Q'),
+    mkEx('Incline Reverse Fly','SH','shoulders','Rear Delts','Dumbbells + bench','3 × 12–15','Light','load-light','Posture correction and shoulder joint balance. Finisher — controlled, not heavy.','Add Reps First','Progress reps and squeeze quality long before adding any load.','60 sec','https://www.youtube.com/watch?v=vpWuYp2p5rE'),
+    mkEx('Farmer Carry','GR','grip','Grip/Core','Dumbbells','3 × 35–45 sec','Moderate','load-moderate','Loaded carry — most underrated fat-loss and core stability exercise in this program.','Add Load Gradually','Add 2.5–5 lb per hand once you can complete full holds without grip failure.','75 sec','https://www.youtube.com/watch?v=NH7Xv-7NQNQ')
+  ],
+  d4:[
+    mkEx('Dumbbell Step-Ups','LG','legs','Unilateral','Dumbbells','3–4 × 6–8/side','Moderate','load-moderate','Unilateral leg strength — right side first every time. Box at knee-height max.','Add Weight When Earned','Increase range control first, then reps. Add load only when both sides stable and right knee quiet.','90 sec','https://www.youtube.com/watch?v=dQqApCGd5Ss'),
+    mkEx('Romanian Deadlift','LG','legs','Posterior Chain','Barbell','4 × 6–8','Heavy','load-heavy','Primary posterior-chain strength movement. 3-sec lowering phase, no bouncing.','Add Weight When Earned','Add load only when bar stays close, back stays flat, and all 4 sets hit 8 clean reps.','2.5 min','https://www.youtube.com/watch?v=3VXmecChYYM'),
+    mkEx('Heels-Elevated Goblet Squat','LG','legs','Quads','Dumbbell / KB','3 × 8–10','Moderate','load-moderate','Quad bias with minimal spinal loading. Plate or wedge under heels.','Add Reps First','Add reps to 10 first. Add weight once all sets clean with heels elevated throughout.','90 sec','https://www.youtube.com/watch?v=CMH5QYN4saE'),
+    mkEx('Paused Hip Thrust','LG','legs','Glutes','Dumbbell / Barbell + bench','3 × 8–10','Moderate','load-moderate','Glute builder. 2-sec pause and squeeze at top. Do not hyperextend lower back at lockout.','Add Weight When Earned','Add weight after all sets reach 10 with full squeeze and no low-back compensation.','90 sec','https://www.youtube.com/watch?v=29OfN4ztW_g'),
+    mkEx('Hamstring Slide Curl','LG','legs','Hamstrings','Bodyweight + sliders','3 × 8–12','Light','load-light','Posterior chain without extra lumbar fatigue. Slow eccentric is where the adaptation lives.','Add Reps First','Progress reps before adding any external load. Slow eccentric is the load.','75 sec','https://www.youtube.com/watch?v=Orxowest56U'),
+    mkEx('Reverse Nordic','LG','legs','Knee Tendon','Bodyweight','2 × 6–8','Rehab','load-rehab','Patellar tendon capacity builder for hiking descents. Small range ONLY to start.','Add Range Gradually','Start with 6-inch range only. Add range over weeks as tendon tolerance builds.','90 sec','https://www.youtube.com/watch?v=PvJDjcfZe1c'),
+    mkEx('Single-Leg Calf Raise','LG','legs','Calf','Bodyweight / DB','L: 3 × 12–15, R: 4 × 12–15','Moderate','load-moderate','Right calf rebuild — right gets the extra set always. Deficit on step for full ROM.','Add Weight When Earned','Add reps across all sets first. Add load (dumbbell) only when full ROM is owned with a 1-sec pause at top.','60 sec','https://www.youtube.com/watch?v=KcTEGIfMTDY'),
+    mkEx('Tibialis Raise','LG','legs','Shin','Wall / bodyweight','3 × 15–20','Rehab','load-rehab','Shin strength and downhill control — prevents shin splints on hikes.','Add Reps Only','Progress reps only. Add a weight vest only once 20 reps feel easy with a 1-sec pause.','45 sec','https://www.youtube.com/watch?v=VzIcGAgBiaM'),
+    mkEx('Dead Bug','CO','core','Core','Bodyweight','2 × 8/side','Rehab','load-rehab','Anti-extension core control for low-back protection.','Add Pause Duration','Add 1–2 sec hold at extension before any load variation.','60 sec','https://www.youtube.com/watch?v=o4GKiEoYClI')
+  ],
+  d5:[
+    mkEx('Neutral-Grip Pull-Ups','BK','back','Lats','Rack','3 × 6–8','Moderate','load-moderate','Second pull stimulus for width and scapular control. Neutral grip is shoulder-friendlier.','Add Reps First','Add weight once all 3 sets hit 8 clean dead-hang reps.','2 min','https://www.youtube.com/watch?v=cd_38C6LuvY'),
+    mkEx('Flat DB Press','CH','chest','Chest','Dumbbells','3 × 8–10','Moderate','load-moderate','Hypertrophy press. Not the strength anchor — quality contractions over load.','Add Reps First','Add reps first. Add weight once all 3 sets hit 10 with a controlled touch at chest.','90 sec','https://www.youtube.com/watch?v=O7ECGhZj_Hc'),
+    mkEx('Straight-Arm DB Pullover','BK','back','Lats','Dumbbell','3 × 10–12','Light','load-light','Full lat stretch. Left shoulder monitored for instability throughout.','Add Reps First','Progress reps. Add weight only when full range feels completely pain-free.','75 sec','https://www.youtube.com/watch?v=QZ_UC5SjvK4'),
+    mkEx('Half-Kneeling Landmine Press','SH','shoulders','Shoulders','Barbell (corner)','3 × 8–10/side','Moderate','load-moderate','Most shoulder-friendly pressing path — natural arc, no impingement risk.','Add Reps First','Add reps first. Add weight once all sets hit 10 with no shoulder instability.','75 sec','https://www.youtube.com/watch?v=LN1zCeoIfbE'),
+    mkEx('Standing DB Fly','CH','chest','Chest','Dumbbells','2–3 × 10–12','Light','load-light','Pump and chest stretch — not a load-chasing exercise. Control beats weight here.','Add Reps Only','Progress reps and quality of contraction only. Load increase is not the goal.','60 sec','https://www.youtube.com/watch?v=XSdcma4EIWs'),
+    mkEx('Lean-Away DB Lateral Raise','SH','shoulders','Shoulder Cap','Dumbbell','3 × 12–15','Light','load-light','Most important exercise for a wider, more athletic silhouette. Light and precise.','Add Reps First','Add reps and squeeze quality. Add tiny load only when all 3 sets hit 15 with zero momentum.','60 sec','https://www.youtube.com/watch?v=S7Bjyw2ccg0'),
+    mkEx('Incline Rear Delt Raise','SH','shoulders','Rear Delts','Dumbbells + bench','3 × 12–15','Light','load-light','Rear delt and posture work. Keep it feather-light — this builds shape not strength.','Add Reps First','Progress reps and squeeze before any load change.','60 sec','https://www.youtube.com/watch?v=vpWuYp2p5rE'),
+    mkEx('Step-Ups (light)','LG','legs','Right-Side Support','Bodyweight or light DB','2 × 8/side','Light','load-light','Maintains right-leg neural drive before Saturday hike. Intentionally easy.','Keep Light','This movement stays light on Friday. Its job is priming, not loading.','75 sec','https://www.youtube.com/watch?v=dQqApCGd5Ss')
+  ],
+  d6:[
+    mkEx('Spider Curl','AR','arms','Biceps','Dumbbells','3 × 10–12','Light','load-light','Post-hike arm work — light and focused. Pump quality, not load.','Add Reps First','Progress reps. Arm work after hike stays conservative by design.','60 sec','https://www.youtube.com/watch?v=jmXXRM755MM'),
+    mkEx('Hammer Curl','AR','arms','Brachialis','Dumbbells','3 × 10–12','Light','load-light','Arm thickness work. Keep strict, no swinging after a long hike.','Add Reps First','Add reps before weight. Fatigue from hike means load is not the priority.','60 sec','https://www.youtube.com/watch?v=BRVDS6HVR9Q'),
+    mkEx('Overhead DB Extension','AR','arms','Triceps Long Head','Dumbbell','3 × 10–12','Light','load-light','Long-head triceps for arm mass. Both arms, controlled range.','Add Reps First','Progress reps before load. This is recovery-compatible arm work.','60 sec','https://www.youtube.com/watch?v=fYqswDVbJDg'),
+    mkEx('Close-Grip Push-Up','AR','arms','Triceps','Bodyweight','2 sets to near-failure','Rehab','load-rehab','Finisher. Stop 2 reps before form breaks — never grind these out.','Add Reps Only','Add reps only when near-failure is consistently above 15 clean reps.','60 sec','https://www.youtube.com/watch?v=0LZF3OY87uU')
+  ]
+};
+
+function renderExercises(){
+  Object.keys(days).forEach(day=>{
+    const container=el(day+'-exercises');
+    if(!container) return;
+    container.innerHTML='';
+    days[day].forEach((ex,i)=>{
+      const id='ex-'+day+'-'+i;
+      const mTag=`<span class="muscle muscle--${ex.muscleCls}"><span class="mi">${ex.muscle}</span>${ex.muscleLbl}</span>`;
+      container.innerHTML+=`<div class="ex-card">
+        <div class="ex-header" onclick="toggleEx('${id}')">
+          <div>
+            <div style="margin-bottom:4px">${mTag}</div>
+            <div class="ex-name">${ex.name}</div>
+            <div style="margin-top:5px;display:flex;gap:6px;flex-wrap:wrap"><span class="load-badge ${ex.loadCls}">${ex.load}</span><span class="pill" style="font-size:.72rem">${ex.sets}</span></div>
+          </div>
+          <button class="ex-toggle" onclick="event.stopPropagation();toggleEx('${id}')">▾</button>
+        </div>
+        <div class="ex-body" id="${id}">
+          <div class="ex-row"><span class="key">Equipment</span><span class="v">${ex.equip}</span></div>
+          <div class="ex-row"><span class="key">Rest</span><span class="v">${ex.rest}</span></div>
+          <div class="ex-row"><span class="key">Load rationale</span><span class="v">${ex.loadReason}</span></div>
+          <div class="ex-row"><span class="key">Progression</span><span class="v">${ex.prog}</span></div>
+          <div class="ex-row"><span class="key">When to progress</span><span class="v">${ex.progReason}</span></div>
+          <a class="video-btn" href="${ex.videoUrl}" target="_blank">▶ Watch form</a>
+        </div>
+      </div>`;
+    });
+  });
+}
+function toggleEx(id){
+  const b=el(id);
+  const toggle=b.previousElementSibling?.querySelector('.ex-toggle');
+  b.classList.toggle('open');
+  if(toggle) toggle.classList.toggle('open', b.classList.contains('open'));
+}
+
+/* ─── REHAB DATA ─── */
+function buildRehab(){
+  const fmtA=[
+    {block:'1. General Heat',dose:'4 min incline walk or easy row',why:'Raise temperature and reduce stiffness without creating fatigue before the actual work.'},
+    {block:'2. Core Lock-In',dose:'Bird-Dog 1×5/side (3-sec hold) + Dead Bug 1×6/side',why:'Quiet the low back before pressing, rowing, hinging, or split-stance work.'},
+    {block:'3. Right Ankle',dose:'Banded ankle rock 1×10/side + Tibialis raise 1×15 + Single-leg balance 1×30s/side',why:'Restores dorsiflexion, foot control, and ankle stiffness for hiking, step-ups, and squatting.'},
+    {block:'4. Right Knee',dose:'Spanish squat hold 1×30s + Slow step-down 1×6/side + Terminal knee extension 1×12/side',why:'Builds quad support and tracking control without creating soreness before training.'},
+    {block:'5. Left Shoulder',dose:'Band pull-apart 1×15 + Face pull 1×12 + 90/90 rotation 1×8/side',why:'Centers the shoulder and switches on scapular stabilizers before upper-body work.'}
+  ];
+  const fmtAHtml=fmtA.map(b=>`<div class="acc-item">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <span class="acc-title">${b.block}</span><span class="acc-arrow">▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="ex-row"><span class="key">Dose</span><span class="v">${b.dose}</span></div>
+      <div class="ex-row"><span class="key">Why</span><span class="v">${b.why}</span></div>
+    </div>
+  </div>`).join('');
+  el('fmtA-content').innerHTML=fmtAHtml;
+
+  const sites={
+    ankle:[
+      {n:'Ankle Alphabet Circles',d:'2×A–Z per foot (right first)',r:'Full ROM mobilization. Draw each letter slowly and deliberately.',v:'https://youtu.be/rnCrYAd81aM'},
+      {n:'Banded Ankle Rocks',d:'2×10 rocks/direction, right side',r:'Restores dorsiflexion lost from 2012 injury. Rock forward so knee tracks over pinky toe.',v:'https://www.youtube.com/watch?v=ETRAWzq4Y2Y'},
+      {n:'Tibialis Raises (Wall)',d:'2–3×20 reps',r:'Shin + anterior compartment activation. Pause 1 sec at top. Critical for descent control on hikes.',v:'https://www.youtube.com/watch?v=VzIcGAgBiaM'},
+      {n:'Single-Leg Balance (Eyes Closed)',d:'2×30 sec/side (right first)',r:'Rebuilds proprioception lost from 2012 sprain. Eyes closed forces true neuromuscular adaptation.',v:'https://www.youtube.com/shorts/T2WwK2JT2d0'},
+      {n:'Single-Leg Calf Raise (Deficit)',d:'L: 3×12-15 · R: 4×12–15 + 10-sec hold',r:'Right calf rebuild tool. Deficit ensures full Achilles ROM.',v:'https://www.youtube.com/watch?v=gUEffJQ2IdU'}
+    ],
+    knee:[
+      {n:'Clamshells',d:'2–3×15/side (right first)',r:'Glute medius activation — prevents valgus collapse at right knee. Keep pelvis completely still.',v:'https://youtu.be/LKtEwJ4s93o'},
+      {n:'Spanish Squat Isometric Hold',d:'3×35–45 sec',r:'Patellar tendon loading without pain. If pain > 3/10 shorten hold time, do not push through.',v:'https://www.youtube.com/watch?v=qGI0mvJk2SQ'},
+      {n:'Slow Eccentric Step-Down',d:'2–3×6–8/side (right first), 4-sec lower',r:'VMO strength + patellar tracking control. Control is the point, not speed.',v:'https://www.youtube.com/watch?v=ViqzPCa9Ris'},
+      {n:'Terminal Knee Extension (Banded)',d:'2×15/leg (right emphasis)',r:'VMO isolation + knee stabilizer activation. Band behind knee, straighten fully to activate VMO.',v:'https://www.youtube.com/watch?v=rV3FLFIF_Ag'}
+    ],
+    shoulder:[
+      {n:'Band Pull-Aparts',d:'3×15–20 reps',r:'Posterior rotator cuff + rear delt activation before any pressing. Most important daily shoulder exercise.',v:'https://www.youtube.com/watch?v=C3AvL5QyPwk'},
+      {n:'Face Pulls (Band or Cable)',d:'3×15 reps',r:'External rotation strength — single most important post-dislocation exercise. Elbows high and wide.',v:'https://www.youtube.com/watch?v=iB7odzgWo8E'},
+      {n:'90/90 Shoulder Rotations',d:'2×10 each direction (left emphasis)',r:'Internal/external rotation mobility. Full range, no pain. Stop if pain > 2/10.',v:'https://www.youtube.com/watch?v=PKXJ3W6ZTDs'},
+      {n:'Scapular Wall Slides',d:'2×10 slow reps',r:'Serratus anterior + lower trap activation — stabilizes the shoulder capsule post-dislocation.',v:'https://www.youtube.com/watch?v=JN9MNZVfFg8'}
+    ]
+  };
+  ['ankle','knee','shoulder'].forEach(site=>{
+    const c=el('site-'+site);
+    const color=site==='ankle'?'orange':site==='knee'?'yellow':'blue';
+    c.innerHTML=sites[site].map(ex=>`<div class="ex-card" style="margin-bottom:10px">
+      <div class="ex-header" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div class="ex-name">${ex.n}</div>
+        <button class="ex-toggle">▾</button>
+      </div>
+      <div class="ex-body">
+        <div class="ex-row"><span class="key">Dose</span><span class="v">${ex.d}</span></div>
+        <div class="ex-row"><span class="key">Rationale</span><span class="v">${ex.r}</span></div>
+        <a class="video-btn" href="${ex.v}" target="_blank">▶ Watch form</a>
+      </div>
+    </div>`).join('');
+  });
+}
+
+/* ─── SUPPLEMENT ACCORDION ─── */
+function buildSupplements(){
+  const slots=[
+    {time:'6:30 AM',title:'Fasted / Hydration Prime',color:'yellow',items:['L-Carnitine 1g (fasted or with light meal)','Green Tea Extract 400mg (with food if stomach-sensitive)','L-Theanine 100mg (only if also taking coffee)','Ginkgo Biloba 120mg (morning only — can disrupt sleep if taken late)']},
+    {time:'8:00 AM',title:'Breakfast — Core Stack',color:'orange',items:['Whey Isolate (per meal plan)','Creatine Monohydrate 5g (with shake or meal)','D3 + K2 (with fat-containing food)','Biotin (any time, morning easiest)','Vitamin B12 (morning, with or without food)','L-Leucine 2–3g only if this meal is unexpectedly low in protein']},
+    {time:'12:30 PM',title:'Lunch — Joint Support',color:'blue',items:['Turmeric / Curcumin 500mg (with fat-containing meal)','Omega-3 / Fish Oil 1–2g EPA+DHA (with fat for absorption)','L-Proline 500–1,000mg (optional split dose)']},
+    {time:'4:00 PM',title:'Pre-Workout',color:'green',items:['Beta-Alanine 1.6–2.4g (with food — split dose if tingling is strong)','Taurine 1–1.5g (empty stomach or light pre-workout meal)','L-Glutamine 5g (empty stomach or around training)','L-Theanine 100mg (only if pre-workout caffeine causes jitteriness)','Whey 1 scoop + carb source']},
+    {time:'6:00 PM',title:'Post-Workout',color:'green',items:['Whey 1 scoop (within 30 min)','Creatine 5g (only if missed at breakfast — do not double dose)','L-Leucine only if protein dose was clearly low']},
+    {time:'8:00 PM',title:'Dinner — Repair & Downshift',color:'purple',items:['KSM-66 Ashwagandha 300mg (best slot for cortisol reduction and sleep prep)','Zinc 25–30mg (always with food)','Turmeric / Curcumin 500mg (second daily dose)','L-Proline 500–1,000mg (second dose if using)']},
+    {time:'9:30 PM',title:'Pre-Bed Sleep Stack',color:'purple',items:['Magnesium Glycinate 400mg (after final meal)','L-Theanine 100–200mg (for sleep onset — does not cause grogginess)','Optional: casein or skyr if protein target is short']}
+  ];
+  const c=el('supp-accordion');
+  c.innerHTML='';
+  slots.forEach(s=>{
+    c.innerHTML+=`<div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-title"><strong style="color:var(--${s.color})">${s.time}</strong> — ${s.title}</span>
+        <span class="acc-arrow">▾</span>
+      </div>
+      <div class="acc-body">
+        <ul class="tl-list" style="margin:0;padding-left:14px">${s.items.map(i=>`<li style="margin:6px 0">${i}</li>`).join('')}</ul>
+      </div>
+    </div>`;
+  });
+}
+
+/* ─── FAIL-SAFE ACCORDION ─── */
+function buildFailSafes(){
+  const safes=[
+    {trigger:'I ate off-plan for one meal',response:'The next meal is exactly on-plan. One meal is not a relapse. A relapse is three consecutive off-plan days. Reset with the very next eating opportunity.'},
+    {trigger:'I missed a training session',response:'Note why it was missed. Do not make up the missed session with extra volume — continue to the next scheduled day. Missing one session never justified missing two.'},
+    {trigger:'I feel a strong craving',response:'Drink 500ml water immediately. Wait 12 minutes. If craving persists, choose from the pre-approved craving buffer list. Never decide from an open fridge.'},
+    {trigger:'Life disrupts routine 3+ days (travel, illness, stress)',response:'Activate Minimum Viable Protocol: 20-min walk + protein targets only. No training expectations. Full protocol resumes Day 1 of restored routine. The MVP keeps identity intact through chaos.'},
+    {trigger:'Weight plateaus for 2+ weeks',response:'Do not panic-restrict. Spend 3 days tracking food precisely to find where calories are drifting. Add one 15-min Zone 2 walk per day for 2 weeks. Give the protocol time before modifying it.'},
+    {trigger:'I feel like it is not working',response:'Look at where you started (209 lb) and where you are. Re-read the protocol. Feelings are not data. Progress photos and measurements every 4 weeks replace subjective feelings with objective evidence.'},
+    {trigger:'I hit 170 lb and feel done',response:'Immediately activate Phase 3 (lean muscle gain protocol) with no gap. The done feeling is the most dangerous moment of the yo-yo cycle. The protocol never ends — it evolves.'}
+  ];
+  const c=el('fail-safe-accordion');
+  c.innerHTML='';
+  safes.forEach(s=>{
+    c.innerHTML+=`<div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-title" style="font-size:.85rem">IF: ${s.trigger}</span>
+        <span class="acc-arrow">▾</span>
+      </div>
+      <div class="acc-body">
+        <div class="good-box"><strong>THEN:</strong> ${s.response}</div>
+      </div>
+    </div>`;
+  });
+}
+
+function toggleAcc(header){
+  const body=header.nextElementSibling;
+  const arrow=header.querySelector('.acc-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+  pulse([header]);
+}
+
+/* ─── INIT ─── */
+renderExercises();
+buildMilestones();
+buildRehab();
+buildSupplements();
+buildFailSafes();
+runReadiness();
+runWeekly();
+runAthleteReview();
+runPhaseWave();
+</script>
+</body>
+</html>
