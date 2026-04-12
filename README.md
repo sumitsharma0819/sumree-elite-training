@@ -1,4 +1,4 @@
-# Sumo v2.0 — GitHub Pages Build
+# Sumo Training Plan — GitHub Pages Build
 
 This version is refactored for simple static hosting.
 
