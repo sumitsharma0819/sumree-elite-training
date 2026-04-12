@@ -2,19 +2,19 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
     </linearGradient>
     <radialGradient id="glowA" cx="0.18" cy="0.22" r="0.5">
       <stop offset="0%" stop-color="rgba(255,255,255,0.32)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
     <radialGradient id="glowB" cx="0.82" cy="0.18" r="0.42">
-      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.32"/>
-      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="accentStroke" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.92"/>
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.92"/>
     </linearGradient>
   </defs>
   <rect width="1600" height="900" fill="url(#bg)"/>
@@ -33,17 +33,16 @@
     <path d="M0 780 C220 700 470 830 720 770 S1220 650 1600 810" fill="none" stroke="#fff" stroke-width="2"/>
   </g>
   
-  <g transform="translate(220,140)">
-    <rect x="0" y="0" width="1160" height="600" rx="42" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="84" width="992" height="84" rx="24" fill="rgba(255,255,255,0.14)"/>
-    <rect x="84" y="210" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="298" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="386" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="474" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <path d="M208 120 L278 120 L320 80" fill="none" stroke="url(#accentStroke)" stroke-width="16" stroke-linecap="round"/>
-    <circle cx="860" cy="120" r="22" fill="#22c55e" opacity="0.82"/>
-    <circle cx="930" cy="120" r="22" fill="#60a5fa" opacity="0.82"/>
-    <circle cx="1000" cy="120" r="22" fill="#f59e0b" opacity="0.82"/>
+  <g transform="translate(250,150)">
+    <path d="M220 520 C320 320 480 220 680 226 C880 234 1038 348 1126 560" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M310 500 C370 380 474 320 600 322 C726 324 826 382 904 498" fill="none" stroke="url(#accentStroke)" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="730" cy="220" r="70" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="730" cy="220" r="36" fill="#fff" opacity="0.90"/>
+    <circle cx="530" cy="450" r="18" fill="#fff" opacity="0.82"/>
+    <circle cx="650" cy="390" r="12" fill="#fff" opacity="0.72"/>
+    <circle cx="780" cy="384" r="14" fill="#fff" opacity="0.72"/>
+    <circle cx="900" cy="438" r="18" fill="#fff" opacity="0.82"/>
+    <path d="M530 450 L650 390 L780 384 L900 438" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="6"/>
   </g>
 
 </svg>

@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-hidden="true">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0f766e"/>
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#4338ca"/>
     </linearGradient>
     <radialGradient id="glowA" cx="0.18" cy="0.22" r="0.5">
       <stop offset="0%" stop-color="rgba(255,255,255,0.32)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
     <radialGradient id="glowB" cx="0.82" cy="0.18" r="0.42">
-      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.32"/>
-      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="accentStroke" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.92"/>
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.92"/>
     </linearGradient>
   </defs>
   <rect width="1600" height="900" fill="url(#bg)"/>
@@ -33,17 +33,17 @@
     <path d="M0 780 C220 700 470 830 720 770 S1220 650 1600 810" fill="none" stroke="#fff" stroke-width="2"/>
   </g>
   
-  <g transform="translate(220,140)">
-    <rect x="0" y="0" width="1160" height="600" rx="42" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="84" width="992" height="84" rx="24" fill="rgba(255,255,255,0.14)"/>
-    <rect x="84" y="210" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="298" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="386" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="474" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <path d="M208 120 L278 120 L320 80" fill="none" stroke="url(#accentStroke)" stroke-width="16" stroke-linecap="round"/>
-    <circle cx="860" cy="120" r="22" fill="#22c55e" opacity="0.82"/>
-    <circle cx="930" cy="120" r="22" fill="#60a5fa" opacity="0.82"/>
-    <circle cx="1000" cy="120" r="22" fill="#f59e0b" opacity="0.82"/>
+  <rect y="720" width="1600" height="180" fill="#0f172a" opacity="0.32"/>
+  <ellipse cx="800" cy="760" rx="360" ry="82" fill="#0f172a" opacity="0.28"/>
+  <rect x="530" y="585" width="540" height="70" rx="35" fill="url(#accentStroke)" opacity="0.66"/>
+  <circle cx="780" cy="430" r="44" fill="#f8fafc" opacity="0.88"/>
+  <path d="M812 470 Q848 545 940 572" fill="none" stroke="#e2e8f0" stroke-width="28" stroke-linecap="round"/>
+  <path d="M770 470 Q708 560 600 600" fill="none" stroke="#e2e8f0" stroke-width="28" stroke-linecap="round"/>
+  <path d="M790 506 Q760 594 700 650" fill="none" stroke="#e2e8f0" stroke-width="26" stroke-linecap="round"/>
+  <path d="M838 534 Q896 614 980 648" fill="none" stroke="#e2e8f0" stroke-width="24" stroke-linecap="round"/>
+  <g opacity="0.16">
+    <circle cx="260" cy="230" r="82" fill="#fff"/>
+    <circle cx="1340" cy="240" r="108" fill="#fff"/>
   </g>
 
 </svg>

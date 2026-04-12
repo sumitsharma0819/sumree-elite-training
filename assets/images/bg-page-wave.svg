@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-hidden="true">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0f766e"/>
+      <stop offset="0%" stop-color="#082f49"/>
+      <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
     <radialGradient id="glowA" cx="0.18" cy="0.22" r="0.5">
       <stop offset="0%" stop-color="rgba(255,255,255,0.32)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
     <radialGradient id="glowB" cx="0.82" cy="0.18" r="0.42">
-      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.32"/>
-      <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="accentStroke" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.92"/>
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0.92"/>
     </linearGradient>
   </defs>
   <rect width="1600" height="900" fill="url(#bg)"/>
@@ -33,17 +33,12 @@
     <path d="M0 780 C220 700 470 830 720 770 S1220 650 1600 810" fill="none" stroke="#fff" stroke-width="2"/>
   </g>
   
-  <g transform="translate(220,140)">
-    <rect x="0" y="0" width="1160" height="600" rx="42" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="84" width="992" height="84" rx="24" fill="rgba(255,255,255,0.14)"/>
-    <rect x="84" y="210" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="298" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="386" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <rect x="84" y="474" width="992" height="52" rx="18" fill="rgba(255,255,255,0.12)"/>
-    <path d="M208 120 L278 120 L320 80" fill="none" stroke="url(#accentStroke)" stroke-width="16" stroke-linecap="round"/>
-    <circle cx="860" cy="120" r="22" fill="#22c55e" opacity="0.82"/>
-    <circle cx="930" cy="120" r="22" fill="#60a5fa" opacity="0.82"/>
-    <circle cx="1000" cy="120" r="22" fill="#f59e0b" opacity="0.82"/>
+  <g transform="translate(180,160)">
+    <rect x="0" y="0" width="1240" height="560" rx="36" fill="rgba(255,255,255,0.08)"/>
+    <path d="M70 520 C200 420 250 420 380 520 S560 620 710 400 S930 200 1170 520" fill="none" stroke="url(#accentStroke)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M70 560 C200 460 250 460 380 560 S560 660 710 440 S930 240 1170 560" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="710" cy="400" r="24" fill="#fff" opacity="0.92"/>
+    <circle cx="1170" cy="520" r="24" fill="#fff" opacity="0.92"/>
   </g>
 
 </svg>
