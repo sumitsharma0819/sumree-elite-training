@@ -349,6 +349,33 @@ strong{color:var(--text-2)}
   .compact-stats{grid-template-columns:1fr}
 }
 
+
+/* ── ELITE COMMAND PANELS ── */
+.command-card{background:rgba(255,255,255,0.68);border:1px solid rgba(60,60,67,0.08);border-radius:24px;box-shadow:0 10px 30px rgba(15,23,42,0.06);overflow:hidden;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.command-card + .command-card{margin-top:10px}
+.command-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer}
+.command-summary::-webkit-details-marker{display:none}
+.command-summary-main{display:flex;align-items:center;gap:12px;min-width:0}
+.command-icon{width:34px;height:34px;border-radius:12px;background:rgba(10,132,255,0.10);color:#0A84FF;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;flex-shrink:0}
+.command-text{min-width:0}
+.command-kicker{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted-2)}
+.command-title{font-size:1rem;font-weight:780;letter-spacing:-.02em;color:var(--text-2);margin-top:2px}
+.command-state{font-size:.82rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.command-chevron{font-size:.9rem;color:var(--muted);transition:transform .22s ease}
+.command-card[open] .command-chevron{transform:rotate(180deg)}
+.command-body{padding:0 16px 16px}
+.command-list{display:flex;flex-direction:column;gap:10px}
+.command-item{display:flex;gap:12px;align-items:flex-start;padding:12px 12px;border-radius:18px;background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.06);transition:all .2s ease}
+.command-item .item-icon{width:28px;height:28px;border-radius:10px;background:#EEF5FF;color:#0A84FF;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.command-item .item-copy{min-width:0}
+.command-item .item-title{font-size:.9rem;font-weight:700;color:var(--text-2)}
+.command-item .item-note{font-size:.8rem;color:var(--muted);margin-top:2px;line-height:1.35}
+.command-item.priority{background:linear-gradient(180deg, rgba(10,132,255,0.14), rgba(10,132,255,0.07));border-color:rgba(10,132,255,0.22);box-shadow:0 10px 24px rgba(10,132,255,0.10)}
+.command-item.priority .item-icon{background:#0A84FF;color:#fff}
+.command-item.priority .item-title{color:#073b77}
+.command-strip{display:flex;flex-direction:column;gap:10px}
+@media (min-width:721px){.command-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.command-grid.single{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -366,11 +393,19 @@ strong{color:var(--text-2)}
       <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Readiness</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span><span class="metric-pill"><span class="metric-dot"></span> Execution</span></div>
     </div>
 
-    <div class="app-strip">
-      <div class="app-tile"><div class="eyebrow">Start here</div><div class="big">Readiness</div><div class="tiny">Run before training</div></div>
-      <div class="app-tile"><div class="eyebrow">Weekly</div><div class="big">Calories</div><div class="tiny">Adjust only on trend</div></div>
-      <div class="app-tile"><div class="eyebrow">Athlete</div><div class="big">Review</div><div class="tiny">Protect recovery first</div></div>
-    </div>
+<details class="command-card" open>
+      <summary class="command-summary">
+        <div class="command-summary-main">
+          <div class="command-icon">⌘</div>
+          <div class="command-text">
+            <div class="command-kicker">Elite flow</div>
+            <div class="command-title">Today — Command Panel</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="command-state">Run top to bottom</div><div class="command-chevron">⌄</div></div>
+      </summary>
+      <div class="command-body"><div class="command-list"><div class="command-item" id="cmd-today-1"><div class="item-icon">◔</div><div class="item-copy"><div class="item-title">Run readiness first</div><div class="item-note">Before training, always. Low readiness means Protect mode and quality reps only.</div></div></div><div class="command-item" id="cmd-today-2"><div class="item-icon">↑</div><div class="item-copy"><div class="item-title">Execute the session you earned</div><div class="item-note">Use the readiness result to decide push, build, or protect — never guess.</div></div></div><div class="command-item" id="cmd-today-3"><div class="item-icon">◎</div><div class="item-copy"><div class="item-title">Log the session in Hevy</div><div class="item-note">Track sets, reps, RPE, and a short note on form or joint response.</div></div></div><div class="command-item" id="cmd-today-4"><div class="item-icon">◌</div><div class="item-copy"><div class="item-title">Use weekly trend for calorie moves</div><div class="item-note">Adjust food only from 7-day trend, not from one heavy or light day.</div></div></div><div class="command-item" id="cmd-today-5"><div class="item-icon">✦</div><div class="item-copy"><div class="item-title">Protect recovery first</div><div class="item-note">If joints flare or sleep is low, keep the streak alive with the minimum effective day.</div></div></div></div></div>
+    </details>
 
     <!-- READINESS INPUTS -->
     <div class="card">
@@ -474,11 +509,19 @@ strong{color:var(--text-2)}
       <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Day flow</span><span class="metric-pill"><span class="metric-dot"></span> RPE</span><span class="metric-pill"><span class="metric-dot"></span> Hevy</span></div>
     </div>
 
-    <div class="app-strip">
-      <div class="app-tile"><div class="eyebrow">Today</div><div class="big">Select day</div><div class="tiny">Follow the weekly wave</div></div>
-      <div class="app-tile"><div class="eyebrow">Session</div><div class="big">Log quality</div><div class="tiny">Top set earns change</div></div>
-      <div class="app-tile"><div class="eyebrow">Progress</div><div class="big">Hevy coach</div><div class="tiny">Reps first, then load</div></div>
-    </div>
+<details class="command-card">
+      <summary class="command-summary">
+        <div class="command-summary-main">
+          <div class="command-icon">⌘</div>
+          <div class="command-text">
+            <div class="command-kicker">Elite flow</div>
+            <div class="command-title">Training — Execution Panel</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="command-state">Own the quality first</div><div class="command-chevron">⌄</div></div>
+      </summary>
+      <div class="command-body"><div class="command-list"><div class="command-item" id="cmd-train-1"><div class="item-icon">↗</div><div class="item-copy"><div class="item-title">Follow the phase wave</div><div class="item-note">Week dictates the ceiling: build, push, peak, or deload.</div></div></div><div class="command-item" id="cmd-train-2"><div class="item-icon">◉</div><div class="item-copy"><div class="item-title">Top set earns the change</div><div class="item-note">Push compounds to the target RPE, then let clean reps decide the next jump.</div></div></div><div class="command-item" id="cmd-train-3"><div class="item-icon">≈</div><div class="item-copy"><div class="item-title">Back-off sets build the muscle</div><div class="item-note">Drop 10–15% and chase tempo, tension, and stable positions.</div></div></div><div class="command-item" id="cmd-train-4"><div class="item-icon">⊕</div><div class="item-copy"><div class="item-title">Right side gets priority</div><div class="item-note">Start unilateral work on the right and add a little more control or volume there.</div></div></div><div class="command-item" id="cmd-train-5"><div class="item-icon">◇</div><div class="item-copy"><div class="item-title">If form breaks, it does not count</div><div class="item-note">Never buy progression with ugly reps, joint drift, or rushed eccentrics.</div></div></div></div></div>
+    </details>
 
     <!-- DAY SELECTOR -->
     <div class="day-scroll" id="dayScroll">
@@ -639,7 +682,21 @@ strong{color:var(--text-2)}
       <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Ankle</span><span class="metric-pill"><span class="metric-dot"></span> Knee</span><span class="metric-pill"><span class="metric-dot"></span> Shoulder</span></div>
     </div>
 
-    <div class="danger-box"><strong>Non-negotiable:</strong> This runs before every lifting session. Choose Format A (15-min full-body) or Format B (single-site rotation, recommended default).</div>
+<details class="command-card">
+      <summary class="command-summary">
+        <div class="command-summary-main">
+          <div class="command-icon">⌘</div>
+          <div class="command-text">
+            <div class="command-kicker">Elite flow</div>
+            <div class="command-title">Rehab — Structural Panel</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="command-state">Choose the right depth</div><div class="command-chevron">⌄</div></div>
+      </summary>
+      <div class="command-body"><div class="command-list"><div class="command-item" id="cmd-rehab-1"><div class="item-icon">△</div><div class="item-copy"><div class="item-title">Use rotation as the default</div><div class="item-note">Single-site work is the main route for long-term ankle, knee, and shoulder resilience.</div></div></div><div class="command-item" id="cmd-rehab-2"><div class="item-icon">□</div><div class="item-copy"><div class="item-title">Use full-body only when time is tight</div><div class="item-note">Travel, poor sleep, or deload weeks get the 15-minute maintenance block.</div></div></div><div class="command-item" id="cmd-rehab-3"><div class="item-icon">∿</div><div class="item-copy"><div class="item-title">Tempo before load</div><div class="item-note">Slow eccentrics and holds beat heavier weight for tendon remodeling.</div></div></div><div class="command-item" id="cmd-rehab-4"><div class="item-icon">!</div><div class="item-copy"><div class="item-title">Pain above 3 changes the plan</div><div class="item-note">Modify range, drop load, or switch format the moment tissue quality drops.</div></div></div><div class="command-item" id="cmd-rehab-5"><div class="item-icon">○</div><div class="item-copy"><div class="item-title">Build bulletproof tissue, not quick relief</div><div class="item-note">This page exists to make the next 12 months stronger, not just today easier.</div></div></div></div></div>
+    </details>
+
+        <div class="danger-box"><strong>Non-negotiable:</strong> This runs before every lifting session. Choose Format A (15-min full-body) or Format B (single-site rotation, recommended default).</div>
 
     <!-- FORMAT TOGGLE -->
     <div class="segmented">
@@ -705,11 +762,19 @@ strong{color:var(--text-2)}
       <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Protein</span><span class="metric-pill"><span class="metric-dot"></span> Timing</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
     </div>
 
-    <div class="app-strip">
-      <div class="app-tile"><div class="eyebrow">Protein</div><div class="big">160–175g</div><div class="tiny">Hold every day</div></div>
-      <div class="app-tile"><div class="eyebrow">Lift days</div><div class="big">2,000 kcal</div><div class="tiny">Carbs around training</div></div>
-      <div class="app-tile"><div class="eyebrow">Rest days</div><div class="big">1,750 kcal</div><div class="tiny">Lower carbs only</div></div>
-    </div>
+<details class="command-card">
+      <summary class="command-summary">
+        <div class="command-summary-main">
+          <div class="command-icon">⌘</div>
+          <div class="command-text">
+            <div class="command-kicker">Elite flow</div>
+            <div class="command-title">Nutrition — Fuel Panel</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="command-state">Repeat the basics</div><div class="command-chevron">⌄</div></div>
+      </summary>
+      <div class="command-body"><div class="command-list"><div class="command-item" id="cmd-nutrition-1"><div class="item-icon">◍</div><div class="item-copy"><div class="item-title">Protein is the anchor</div><div class="item-note">Hit 160–175g every day before you think about cutting anything else.</div></div></div><div class="command-item" id="cmd-nutrition-2"><div class="item-icon">↔</div><div class="item-copy"><div class="item-title">Adjust calories only on trend</div><div class="item-note">Use the weekly average, never one noisy weigh-in.</div></div></div><div class="command-item" id="cmd-nutrition-3"><div class="item-icon">⚡</div><div class="item-copy"><div class="item-title">Protect performance with carbs</div><div class="item-note">If strength or recovery slips, place carbs around training before cutting harder.</div></div></div><div class="command-item" id="cmd-nutrition-4"><div class="item-icon">⋯</div><div class="item-copy"><div class="item-title">Keep meals boring enough to repeat</div><div class="item-note">Simple repeatable meals beat perfect meals you cannot sustain.</div></div></div><div class="command-item" id="cmd-nutrition-5"><div class="item-icon">✓</div><div class="item-copy"><div class="item-title">Adherence wins the phase</div><div class="item-note">A consistent 90% week beats a perfect 2-day sprint every time.</div></div></div></div></div>
+    </details>
 
     <!-- MACRO TARGETS -->
     <div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr">
@@ -815,11 +880,19 @@ strong{color:var(--text-2)}
       <div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Identity</span><span class="metric-pill"><span class="metric-dot"></span> Defaults</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
     </div>
 
-    <div class="app-strip">
-      <div class="app-tile"><div class="eyebrow">Rule</div><div class="big">Never miss 2</div><div class="tiny">Scale, don't disappear</div></div>
-      <div class="app-tile"><div class="eyebrow">Morning</div><div class="big">5 min</div><div class="tiny">Sets the day</div></div>
-      <div class="app-tile"><div class="eyebrow">Identity</div><div class="big">Athlete</div><div class="tiny">Not a dieter</div></div>
-    </div>
+<details class="command-card">
+      <summary class="command-summary">
+        <div class="command-summary-main">
+          <div class="command-icon">⌘</div>
+          <div class="command-text">
+            <div class="command-kicker">Elite flow</div>
+            <div class="command-title">Mindset — Identity Panel</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="command-state">Use when motivation drops</div><div class="command-chevron">⌄</div></div>
+      </summary>
+      <div class="command-body"><div class="command-list"><div class="command-item" id="cmd-psych-1"><div class="item-icon">∞</div><div class="item-copy"><div class="item-title">You execute systems, not moods</div><div class="item-note">Follow the next action, not whatever your mind negotiates in the moment.</div></div></div><div class="command-item" id="cmd-psych-2"><div class="item-icon">↺</div><div class="item-copy"><div class="item-title">Never miss two in a row</div><div class="item-note">Low-energy days scale down, they do not disappear.</div></div></div><div class="command-item" id="cmd-psych-3"><div class="item-icon">⋂</div><div class="item-copy"><div class="item-title">Use the 5-minute morning protocol</div><div class="item-note">Start the day with water, identity, and a pre-committed food plan.</div></div></div><div class="command-item" id="cmd-psych-4"><div class="item-icon">✳</div><div class="item-copy"><div class="item-title">Minimum effective day beats skipping</div><div class="item-note">One compound, one accessory, rehab, then leave. Keep the chain alive.</div></div></div><div class="command-item" id="cmd-psych-5"><div class="item-icon">☉</div><div class="item-copy"><div class="item-title">Protect recovery before intensity</div><div class="item-note">The fastest way forward is usually cleaner sleep and fewer bad decisions.</div></div></div></div></div>
+    </details>
 
     <div class="danger-box"><strong>Root cause:</strong> Your 6–7 year yo-yo cycle was a systems problem, not a discipline problem. Every failure happened when motivation faded. This page replaces motivation with identity and pre-written behavioral algorithms.</div>
 
@@ -1374,6 +1447,64 @@ buildMilestones();
 buildRehab();
 buildSupplements();
 buildFailSafes();
+
+function clearCommandPriority(prefix){
+  document.querySelectorAll('[id^="'+prefix+'"]').forEach(el=>el.classList.remove('priority'));
+}
+function setPriority(id){ const node=document.getElementById(id); if(node) node.classList.add('priority'); }
+function updateCommandPanels(){
+  clearCommandPriority('cmd-today-');
+  clearCommandPriority('cmd-train-');
+  clearCommandPriority('cmd-rehab-');
+  clearCommandPriority('cmd-nutrition-');
+  clearCommandPriority('cmd-psych-');
+
+  const mode=(document.getElementById('modeOut')?.textContent||'Build').trim();
+  const warmup=(document.getElementById('warmupOut')?.textContent||'Rotation').trim();
+  const phaseWeek=document.getElementById('phaseWeek')?.value||'1';
+  const phaseRecovery=document.getElementById('phaseRecovery')?.value||'normal';
+  const phaseJoint=document.getElementById('phaseJointFlag')?.value||'quiet';
+  const phaseGoal=document.getElementById('phaseGoal')?.value||'cut';
+  const strengthTrend=document.getElementById('strengthTrend')?.value||'flat';
+  const weeklyStrength=document.getElementById('weeklyStrength')?.value||'flat';
+
+  if(mode==='Protect'){
+    setPriority('cmd-today-5');
+    setPriority('cmd-psych-5');
+  } else if(mode==='Push'){
+    setPriority('cmd-today-2');
+    setPriority('cmd-psych-1');
+  } else {
+    setPriority('cmd-today-1');
+    setPriority('cmd-psych-4');
+  }
+  setPriority('cmd-today-3');
+
+  if(phaseJoint==='angry' || phaseRecovery==='poor'){
+    setPriority('cmd-train-5');
+    setPriority('cmd-rehab-4');
+  } else if(phaseWeek==='4'){
+    setPriority('cmd-train-1');
+    setPriority('cmd-rehab-2');
+  } else if(phaseWeek==='3'){
+    setPriority('cmd-train-2');
+    setPriority('cmd-rehab-1');
+  } else {
+    setPriority('cmd-train-3');
+    setPriority('cmd-rehab-1');
+  }
+  if(warmup.includes('Full')) setPriority('cmd-rehab-2'); else setPriority('cmd-rehab-1');
+
+  if((strengthTrend==='down' || weeklyStrength==='down') && phaseGoal!=='build'){
+    setPriority('cmd-nutrition-3');
+  } else if(phaseGoal==='cut'){
+    setPriority('cmd-nutrition-2');
+  } else {
+    setPriority('cmd-nutrition-1');
+  }
+  setPriority('cmd-nutrition-5');
+}
+
 runReadiness();
 runWeekly();
 runAthleteReview();
