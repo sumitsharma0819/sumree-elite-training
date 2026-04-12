@@ -302,6 +302,20 @@ strong{color:var(--text-2)}
 .priority-list{margin:0;padding:0 0 0 18px}
 .priority-list li{margin:8px 0;font-size:.86rem;line-height:1.48}
 
+
+.primer-card{background:linear-gradient(180deg,rgba(10,132,255,0.06),rgba(255,255,255,0.55));border:1px solid rgba(10,132,255,0.14);border-radius:22px;box-shadow:var(--shadow-sm);overflow:hidden;margin:10px 0 12px}
+.primer-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:14px 16px 12px;border-bottom:1px solid rgba(60,60,67,0.08)}
+.primer-title{font-size:.9rem;font-weight:800;color:var(--text-2)}
+.primer-sub{font-size:.78rem;color:var(--muted);margin-top:2px}
+.primer-grid{display:grid;grid-template-columns:1fr;gap:0}
+.primer-step{padding:12px 16px;border-bottom:1px solid rgba(60,60,67,0.08)}
+.primer-step:last-child{border-bottom:none}
+.primer-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-2);margin-bottom:4px}
+.primer-dose{font-size:.88rem;font-weight:700;color:var(--text-2);margin-bottom:4px}
+.primer-why{font-size:.8rem;color:var(--muted);line-height:1.45}
+.primer-foot{padding:12px 16px;background:rgba(255,255,255,0.54);font-size:.79rem;color:var(--muted)}
+.primer-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,0.74);border:1px solid rgba(60,60,67,0.1);font-size:.74rem;font-weight:700;color:var(--text-2)}
+
 /* ── HEVY OS ── */
 .hevy-result{background:#FBFBFD;border:none;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
 .hevy-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2);margin-bottom:5px}
@@ -376,9 +390,223 @@ strong{color:var(--text-2)}
 .command-strip{display:flex;flex-direction:column;gap:10px}
 @media (min-width:721px){.command-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.command-grid.single{grid-template-columns:1fr}}
 
+
+/* ── SUMO ELITE GLOBAL HEADER ── */
+:root{
+  --header-h:86px;
+}
+.sumo-header{
+  position:fixed;top:0;left:0;right:0;z-index:140;
+  padding:calc(10px + env(safe-area-inset-top)) 14px 10px;
+  pointer-events:none;
+}
+.sumo-header__shell{
+  pointer-events:auto;
+  max-width:920px;margin:0 auto;
+  background:linear-gradient(180deg, rgba(255,255,255,0.76), rgba(245,245,248,0.68));
+  border:1px solid rgba(255,255,255,0.62);
+  box-shadow:0 18px 46px rgba(15,23,42,0.10), inset 0 1px 0 rgba(255,255,255,0.55);
+  border-radius:28px;
+  backdrop-filter:saturate(180%) blur(28px);
+  -webkit-backdrop-filter:saturate(180%) blur(28px);
+  overflow:hidden;
+}
+.sumo-header__top{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
+  padding:14px 16px 14px 16px;
+}
+.sumo-avatar{
+  width:50px;height:50px;border-radius:18px;
+  background:linear-gradient(135deg, rgba(10,132,255,0.15), rgba(191,90,242,0.15) 50%, rgba(255,106,0,0.16));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.58), 0 10px 20px rgba(15,23,42,0.08);
+  display:flex;align-items:center;justify-content:center;
+}
+.sumo-avatar__ring{
+  width:34px;height:34px;border-radius:50%;
+  border:1.5px solid rgba(10,132,255,0.22);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--blue);font-weight:800;font-size:.78rem;letter-spacing:.08em;
+}
+.sumo-identity{min-width:0}
+.sumo-kicker{
+  font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);
+}
+.sumo-name-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sumo-name{
+  font-size:1.24rem;font-weight:800;letter-spacing:-.04em;color:var(--text-2);margin-top:1px;
+}
+.sumo-sub{
+  font-size:.8rem;color:var(--muted);margin-top:2px;
+}
+.sumo-chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.sumo-chip{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
+  background:rgba(255,255,255,0.68);color:var(--text-2);font-size:.72rem;font-weight:700;
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);
+}
+.sumo-chip__dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.sumo-status{
+  display:flex;align-items:center;gap:10px;
+}
+.sumo-progress{
+  position:relative;width:54px;height:54px;flex-shrink:0;
+}
+.sumo-progress svg{width:54px;height:54px;transform:rotate(-90deg)}
+.sumo-progress .bg{fill:none;stroke:rgba(60,60,67,0.10);stroke-width:8}
+.sumo-progress .fg{fill:none;stroke:url(#sumoGradient);stroke-width:8;stroke-linecap:round;stroke-dasharray:138.23;stroke-dashoffset:34;transition:stroke-dashoffset .35s ease}
+.sumo-progress__label{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:.62rem;font-weight:800;color:var(--text-2);letter-spacing:.04em;text-transform:uppercase;
+}
+.sumo-progress__label strong{font-size:.96rem;line-height:.95;color:var(--text-2)}
+.sumo-toggle{
+  width:36px;height:36px;border:none;border-radius:14px;
+  background:rgba(255,255,255,0.7);box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);
+  color:var(--muted);font-size:1rem;font-weight:800;
+}
+.sumo-handle{
+  height:14px;display:flex;justify-content:center;align-items:center;margin-top:-4px;margin-bottom:4px;
+}
+.sumo-handle::before{
+  content:'';width:56px;height:5px;border-radius:999px;background:rgba(60,60,67,0.16);
+}
+.sumo-header__expand{
+  max-height:0;overflow:hidden;transition:max-height .32s ease,padding .28s ease,opacity .22s ease;
+  opacity:0;padding:0 16px;
+}
+.sumo-header.expanded .sumo-header__expand{
+  max-height:320px;opacity:1;padding:4px 16px 16px;
+}
+.sumo-command-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:12px;
+}
+.sumo-panel{
+  background:rgba(255,255,255,0.62);
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);
+  border-radius:22px;padding:14px 14px 13px;
+}
+.sumo-panel__title{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:10px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);
+}
+.sumo-panel__list{display:flex;flex-direction:column;gap:9px}
+.sumo-mini-item{
+  display:flex;gap:10px;align-items:flex-start;padding:10px 10px;border-radius:16px;
+  background:rgba(255,255,255,0.74);box-shadow:inset 0 0 0 1px rgba(60,60,67,0.05);
+}
+.sumo-mini-item.active{
+  background:linear-gradient(180deg, rgba(10,132,255,0.15), rgba(10,132,255,0.08));
+  box-shadow:inset 0 0 0 1px rgba(10,132,255,0.16), 0 10px 18px rgba(10,132,255,0.08);
+}
+.sumo-mini-icon{
+  width:26px;height:26px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:#EEF5FF;color:var(--blue);font-size:.82rem;font-weight:800;flex-shrink:0;
+}
+.sumo-mini-item.active .sumo-mini-icon{background:var(--blue);color:#fff}
+.sumo-mini-title{font-size:.84rem;font-weight:700;color:var(--text-2)}
+.sumo-mini-note{font-size:.76rem;color:var(--muted);line-height:1.35;margin-top:2px}
+.sumo-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sumo-metric{
+  padding:12px;border-radius:18px;background:rgba(255,255,255,0.74);
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.06);
+}
+.sumo-metric__k{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
+.sumo-metric__v{font-size:1.05rem;font-weight:800;color:var(--text-2);letter-spacing:-.03em;margin-top:5px}
+.sumo-metric__s{font-size:.74rem;color:var(--muted);margin-top:3px}
+.sumo-header .sumo-action{
+  margin-top:10px;padding:11px 13px;border-radius:18px;background:rgba(255,255,255,0.78);
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.06);
+  font-size:.82rem;color:var(--text-2);
+}
+.page{padding-top:calc(var(--header-h) + env(safe-area-inset-top))}
+body.header-expanded .page{padding-top:calc(var(--header-h) + 210px + env(safe-area-inset-top))}
+body.header-expanded .sumo-toggle{transform:rotate(180deg)}
+@media (max-width:720px){
+  .sumo-header{padding-left:10px;padding-right:10px}
+  .sumo-header__top{grid-template-columns:auto 1fr auto;gap:10px;padding:12px 12px 12px}
+  .sumo-status{gap:8px}
+  .sumo-progress,.sumo-progress svg{width:48px;height:48px}
+  .sumo-progress .bg,.sumo-progress .fg{stroke-width:7}
+  .sumo-command-grid{grid-template-columns:1fr}
+  .sumo-panel{padding:13px 12px}
+  .sumo-name{font-size:1.1rem}
+  body.header-expanded .page{padding-top:calc(var(--header-h) + 300px + env(safe-area-inset-top))}
+}
+
 </style>
 </head>
 <body>
+
+<div class="sumo-header" id="sumoHeader">
+  <div class="sumo-header__shell" id="sumoHeaderShell">
+    <div class="sumo-header__top" id="sumoHeaderTop">
+      <div class="sumo-avatar">
+        <div class="sumo-avatar__ring">SU</div>
+      </div>
+      <div class="sumo-identity">
+        <div class="sumo-kicker">Elite performance system</div>
+        <div class="sumo-name-row">
+          <div class="sumo-name">Sumo</div>
+        </div>
+        <div class="sumo-sub" id="sumoSubline">Readiness-led training • phase-aware progression</div>
+        <div class="sumo-chip-row">
+          <div class="sumo-chip"><span class="sumo-chip__dot" id="sumoModeDot"></span><span id="sumoModeChip">Build mode</span></div>
+          <div class="sumo-chip"><span class="sumo-chip__dot" style="background:var(--purple)"></span><span id="sumoWaveChip">Week 1 • Build</span></div>
+        </div>
+      </div>
+      <div class="sumo-status">
+        <div class="sumo-progress" aria-label="System progress">
+          <svg viewBox="0 0 54 54" aria-hidden="true">
+            <defs>
+              <linearGradient id="sumoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0A84FF"></stop>
+                <stop offset="55%" stop-color="#BF5AF2"></stop>
+                <stop offset="100%" stop-color="#FF6A00"></stop>
+              </linearGradient>
+            </defs>
+            <circle class="bg" cx="27" cy="27" r="22"></circle>
+            <circle class="fg" id="sumoProgressRing" cx="27" cy="27" r="22"></circle>
+          </svg>
+          <div class="sumo-progress__label"><strong id="sumoProgressValue">74</strong><span>score</span></div>
+        </div>
+        <button class="sumo-toggle" id="sumoHeaderToggle" aria-expanded="false" aria-controls="sumoHeaderExpand">⌄</button>
+      </div>
+    </div>
+    <div class="sumo-handle" id="sumoSwipeHandle" aria-hidden="true"></div>
+    <div class="sumo-header__expand" id="sumoHeaderExpand">
+      <div class="sumo-command-grid">
+        <div class="sumo-panel">
+          <div class="sumo-panel__title"><span>Mini command center</span><span id="sumoPriorityBadge">Today</span></div>
+          <div class="sumo-panel__list">
+            <div class="sumo-mini-item active" id="sumoCmd1">
+              <div class="sumo-mini-icon">◔</div>
+              <div><div class="sumo-mini-title" id="sumoCmd1Title">Run readiness first</div><div class="sumo-mini-note" id="sumoCmd1Note">Check the body before you decide the day.</div></div>
+            </div>
+            <div class="sumo-mini-item" id="sumoCmd2">
+              <div class="sumo-mini-icon">△</div>
+              <div><div class="sumo-mini-title" id="sumoCmd2Title">Use the wave to set the ceiling</div><div class="sumo-mini-note" id="sumoCmd2Note">Build, push, peak, or deload should shape the session.</div></div>
+            </div>
+            <div class="sumo-mini-item" id="sumoCmd3">
+              <div class="sumo-mini-icon">◎</div>
+              <div><div class="sumo-mini-title" id="sumoCmd3Title">Log the outcome in Hevy</div><div class="sumo-mini-note" id="sumoCmd3Note">Use clean reps, pain, and RPE to earn the next move.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="sumo-panel">
+          <div class="sumo-panel__title"><span>Live system view</span><span id="sumoPageName">Today</span></div>
+          <div class="sumo-metrics">
+            <div class="sumo-metric"><div class="sumo-metric__k">Priority</div><div class="sumo-metric__v" id="sumoPriority">Readiness</div><div class="sumo-metric__s" id="sumoPriorityNote">Run before training</div></div>
+            <div class="sumo-metric"><div class="sumo-metric__k">Current wave</div><div class="sumo-metric__v" id="sumoWaveWeek">Week 1</div><div class="sumo-metric__s" id="sumoWaveNote">Build week</div></div>
+            <div class="sumo-metric"><div class="sumo-metric__k">Mode</div><div class="sumo-metric__v" id="sumoMode">Build</div><div class="sumo-metric__s" id="sumoModeNote">Quality before load</div></div>
+            <div class="sumo-metric"><div class="sumo-metric__k">Warm-up</div><div class="sumo-metric__v" id="sumoWarmup">Rotation</div><div class="sumo-metric__s">Protect old injuries first</div></div>
+          </div>
+          <div class="sumo-action" id="sumoActionText"><strong>Today’s lens:</strong> earn the next step with clean execution, not force.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- PAGE: TODAY -->
 <div class="page active" id="page-today">
@@ -546,10 +774,12 @@ strong{color:var(--text-2)}
     <!-- DAY PANELS -->
     <div id="d1">
       <div class="info"><strong>Monday Push</strong> — Neural primer sets on bench + shoulder press. Left shoulder monitored every set. Post-session: 12–15 min Zone 2.</div>
+      <div id="d1-primer"></div>
       <div id="d1-exercises"></div>
     </div>
     <div id="d2" style="display:none">
       <div class="info"><strong>Tuesday Pull</strong> — Neural primers on pull-ups + rows. Lumbar-protective positions throughout. Aggressive arm volume for muscle memory.</div>
+      <div id="d2-primer"></div>
       <div id="d2-exercises"></div>
     </div>
     <div id="d3" style="display:none">
@@ -557,14 +787,17 @@ strong{color:var(--text-2)}
     </div>
     <div id="d4" style="display:none">
       <div class="info"><strong>Thursday Legs</strong> — Neural primers on RDL. Right side starts every unilateral movement. Right calf gets 1 extra set when pain ≤ 3/10.</div>
+      <div id="d4-primer"></div>
       <div id="d4-exercises"></div>
     </div>
     <div id="d5" style="display:none">
       <div class="info"><strong>Friday Upper Hypertrophy</strong> — Shape day, not strength day. Higher reps, quality contractions, arm and shoulder aesthetics. Post-session: Zone 2 + full meal before Saturday hike.</div>
+      <div id="d5-primer"></div>
       <div id="d5-exercises"></div>
     </div>
     <div id="d6" style="display:none">
       <div class="info" style="background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.24)">🥾 <strong>Saturday Hike + Arms</strong> — Hike is the primary stimulus. Arm work follows 1–2 hrs after the hike. Pre-hike: 8 min ankle warm-up. Fuel: +300–400 kcal extra today.</div>
+      <div id="d6-primer"></div>
       <div id="d6-exercises"></div>
     </div>
     <div id="d7" style="display:none">
@@ -739,10 +972,11 @@ strong{color:var(--text-2)}
     <div class="card">
       <div class="card-header"><div class="card-title">Neural Primer Protocol</div><div class="card-sub">Mandatory before every compound lift</div></div>
       <div class="card-body">
-        <div class="warn-box" style="margin-bottom:10px"><strong>Compounds only</strong> — bench, RDL, pull-ups, DB shoulder press. Never run primers on isolation work.</div>
-        <div class="ex-row"><span class="key">Primer 1</span><span class="v">40% load · 5 reps explosive · 3-sec eccentric · 60 sec rest</span></div>
-        <div class="ex-row"><span class="key">Primer 2</span><span class="v">60% load · 3–4 reps controlled · 90 sec rest</span></div>
-        <div class="ex-row"><span class="key">Work Set 1</span><span class="v">100% working weight — nervous system fully primed</span></div>
+        <div class="warn-box" style="margin-bottom:10px"><strong>Compounds only</strong> — primers belong before bench, pull-ups, rows, RDLs, presses, and hike-day arm work when you are already fatigued. Never turn the primer into conditioning.</div>
+        <div class="ex-row"><span class="key">Primer intent</span><span class="v">Wake up force production, center the joint, and expose instability before the first work set.</span></div>
+        <div class="ex-row"><span class="key">Default structure</span><span class="v">Round 1 = light patterning · Round 2 = moderate neural wake-up · Work Set 1 = full training load</span></div>
+        <div class="ex-row"><span class="key">Your custom rule</span><span class="v">Each training day now has its own primer based on your injuries and physique goal: shoulder-safe push days, lat-width pull days, knee/ankle-protected leg days, and arm-pump primers after hiking.</span></div>
+        <div class="ex-row"><span class="key">Abort rule</span><span class="v">If the primer feels unstable or pain rises above 3/10, immediately downgrade that session to Build or Protect mode.</span></div>
       </div>
     </div>
 
@@ -980,11 +1214,13 @@ strong{color:var(--text-2)}
 <script>
 /* ─── NAV ─── */
 function showPage(id,btn){
+  sumoState.page=id;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.bnav__btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   btn.classList.add('active');
   pulse([btn, document.getElementById('page-'+id).querySelector('.page-header')]);
+  refreshSumoHeader();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -1063,7 +1299,13 @@ function runReadiness(){
   el('modeOut').textContent=mode;
   el('loadOut').textContent=load;
   el('warmupOut').textContent=warmup;
-  pulse(['decisionBanner','modeOut','loadOut','warmupOut']);
+  sumoState.mode=mode;
+  sumoState.warmup=warmup;
+  sumoState.score=Math.max(28, Math.min(98, Math.round(score)));
+  sumoState.priority='Readiness';
+  sumoState.priorityNote=mode==='Protect'?'Protect mode takes priority now':mode==='Push'?'Green light—earn the next jump':'Build mode—quality comes first';
+  refreshSumoHeader();
+  pulse(['decisionBanner','modeOut','loadOut','warmupOut','sumoHeaderShell']);
 }
 
 /* ─── WEEKLY ENGINE ─── */
@@ -1186,8 +1428,15 @@ function runPhaseWave(){
   el('phaseRpeOut').textContent=rpe;
   el('phaseNutritionOut').textContent=nutrition;
   el('phaseCoachText').textContent=coach;
+  sumoState.waveWeek='Week '+week;
+  sumoState.waveName=week==='1'?'Build':week==='2'?'Push':week==='3'?'Peak':'Deload';
+  if(recovery==='poor'||joints==='angry') sumoState.priority='Recovery override';
+  else sumoState.priority='Phase wave';
+  sumoState.priorityNote=week==='4'?'Deload and resensitize':banner;
+  sumoState.score = week==='4' ? 68 : week==='3' ? 88 : week==='2' ? 82 : 76;
+  refreshSumoHeader();
   document.querySelectorAll('.week-block').forEach((b,i)=>{b.classList.toggle('active',String(i+1)===week);});
-  pulse(['phaseBanner','phaseEmphasisOut','phaseCompoundOut','phaseRpeOut','phaseNutritionOut','phaseCoachText']);
+  pulse(['phaseBanner','phaseEmphasisOut','phaseCompoundOut','phaseRpeOut','phaseNutritionOut','phaseCoachText','sumoHeaderShell']);
 }
 function resetPhaseWave(){
   el('phaseWeek').value='1';el('phaseGoal').value='cut';el('phaseRecovery').value='normal';
@@ -1321,6 +1570,54 @@ function toggleEx(id){
   const toggle=b.previousElementSibling?.querySelector('.ex-toggle');
   b.classList.toggle('open');
   if(toggle) toggle.classList.toggle('open', b.classList.contains('open'));
+}
+
+const primerDays={
+  d1:{icon:'⚡',title:'Push-Day Neural Primer',sub:'Shoulder-safe force production for chest, upper chest, and triceps',chip:'Shoulder centering first',footer:'If the left shoulder feels unstable during Round 2, drop pressing load 5–10% and keep every press neutral-grip or pain-free only.',steps:[
+    {label:'Round 1 — Pattern',dose:'Push-Up Plus × 8 + Bench Press @ ~35–40% × 5',why:'Switches on serratus and scap control so the shoulder stays centered before heavy pressing.'},
+    {label:'Round 2 — Neural Wake-Up',dose:'Bench Press @ ~55–60% × 3 explosive reps + High-Incline Neutral-Grip DB Press × 4 light reps',why:'Primes chest-triceps output while rehearsing the safer shoulder path you need for upper-chest growth.'},
+    {label:'Go/No-Go Check',dose:'1 breath, rate shoulder stability 0–10',why:'Only push load if the shoulder feels quiet, stacked, and faster than the empty-bar set.'}
+  ]},
+  d2:{icon:'🪽',title:'Pull-Day Neural Primer',sub:'Lat-width activation plus elbow-friendly biceps recruitment for your V-taper',chip:'Lat drive > arm takeover',footer:'If you feel biceps or forearms more than lats during the primer, keep your first pull-up and row sets lighter and drive elbows toward hips.',steps:[
+    {label:'Round 1 — Scap Lock-In',dose:'Scap Pull-Ups × 5 + Chest-Supported Rear Delt Raise × 8 light reps',why:'Sets the shoulder blades so pull-ups load the back instead of irritating the shoulder or neck.'},
+    {label:'Round 2 — Width Primer',dose:'Pull-Ups or band-assisted pull-ups × 3 + Chest-Supported Row @ ~50–60% × 5',why:'Wakes up lats and mid-back together so the session builds width first and arm detail second.'},
+    {label:'Arm Bias Check',dose:'Standing DB Curl × 6 very light, strict',why:'Gives the elbows a clean groove so heavy curls later build biceps without swing or tendon irritation.'}
+  ]},
+  d4:{icon:'🦿',title:'Leg-Day Neural Primer',sub:'Right ankle and right knee protection before force output from the hinge and squat patterns',chip:'Right side owns the session',footer:'If the right knee tracks inward or the right ankle feels stiff, shorten range on the first working set and stay in Build mode.',steps:[
+    {label:'Round 1 — Joint Prep',dose:'Banded ankle rock × 8/side + Spanish squat hold × 20 sec + bodyweight step-up × 5/side',why:'Restores dorsiflexion, wakes up quad support, and checks single-leg control before loaded work.'},
+    {label:'Round 2 — Hinge Wake-Up',dose:'RDL @ ~40% × 5 with 3-sec lower + Goblet squat × 5 light reps',why:'Turns on posterior chain while testing whether the knee and ankle tolerate loaded knee travel today.'},
+    {label:'Round 3 — Force Signal',dose:'RDL @ ~60% × 3 crisp reps',why:'Primes the nervous system for your main strength lift without draining output for the work sets.'}
+  ]},
+  d5:{icon:'🏛️',title:'Upper Shape-Day Primer',sub:'Delts, lats, and arms first so Friday sharpens the V-shape without beating up joints',chip:'Shape before load',footer:'Friday is not a grind day. If the primer feels flat, keep the whole session in moderate loads and chase cleaner contractions.',steps:[
+    {label:'Round 1 — Shoulder Cap',dose:'Lean-away lateral raise × 10 light reps + band pull-apart × 12',why:'Lights up medial and rear delts so the silhouette work lands where you want it.'},
+    {label:'Round 2 — Lat Stretch + Lock',dose:'DB pullover × 6 light reps + neutral-grip pull-up hang × 10 sec',why:'Opens the lat line and teaches the ribcage/shoulder position needed for a wider upper body look.'},
+    {label:'Round 3 — Arm Pump Trigger',dose:'Incline DB curl × 6 + overhead DB extension × 6 very light',why:'Sends blood to biceps and triceps early so later hypertrophy work hits faster with less joint load.'}
+  ]},
+  d6:{icon:'🥾',title:'Post-Hike Arm Primer',sub:'Low-fatigue neural reset so arms still grow after the hike without elbow or shoulder irritation',chip:'Pump without grind',footer:'If the hike beat up the knee or ankle, keep the arm session seated or supported and stop 2 reps before any form drift.',steps:[
+    {label:'Round 1 — Reset',dose:'Box breathing × 3 breaths + shoulder circles × 6 each + wrist circles × 10 each',why:'Drops hiking tension out of traps, forearms, and upper body before arm work starts.'},
+    {label:'Round 2 — Biceps Prime',dose:'Spider curl × 8 very light with 2-sec lower',why:'Creates elbow-friendly tension without swing so the biceps get the stimulus, not the joints.'},
+    {label:'Round 3 — Triceps Prime',dose:'Overhead DB extension × 8 very light + close-grip push-up hold × 10 sec top position',why:'Warms the long head and locks in shoulder position so triceps work stays smooth after fatigue.'}
+  ]}
+};
+
+function renderPrimers(){
+  Object.entries(primerDays).forEach(([day,data])=>{
+    const c=el(day+'-primer');
+    if(!c) return;
+    c.innerHTML=`<div class="primer-card">
+      <div class="primer-head">
+        <div>
+          <div class="primer-title">${data.icon} ${data.title}</div>
+          <div class="primer-sub">${data.sub}</div>
+        </div>
+        <span class="primer-chip">${data.chip}</span>
+      </div>
+      <div class="primer-grid">
+        ${data.steps.map(step=>`<div class="primer-step"><div class="primer-label">${step.label}</div><div class="primer-dose">${step.dose}</div><div class="primer-why">${step.why}</div></div>`).join('')}
+      </div>
+      <div class="primer-foot">${data.footer}</div>
+    </div>`;
+  });
 }
 
 /* ─── REHAB DATA ─── */
@@ -1509,6 +1806,119 @@ runReadiness();
 runWeekly();
 runAthleteReview();
 runPhaseWave();
+
+/* ─── SUMO GLOBAL HEADER ─── */
+let sumoHeaderExpanded=false;
+let sumoState={page:'today',mode:'Build',waveWeek:'Week 1',waveName:'Build',warmup:'Rotation',score:74,priority:'Readiness',priorityNote:'Run before training'};
+function setRingScore(score){
+  const s=Math.max(0,Math.min(100,score));
+  const c=2*Math.PI*22;
+  const offset=c-(c*(s/100));
+  const ring=el('sumoProgressRing');
+  if(ring) ring.style.strokeDashoffset=offset.toFixed(2);
+  if(el('sumoProgressValue')) el('sumoProgressValue').textContent=Math.round(s);
+}
+function refreshSumoHeader(){
+  const pageLabel={today:'Today',train:'Training',rehab:'Rehab',nutrition:'Nutrition',psych:'Mindset'}[sumoState.page]||'Today';
+  const modeColor={Push:'var(--green)',Build:'var(--blue)',Protect:'var(--red)'}[sumoState.mode]||'var(--blue)';
+  if(el('sumoModeChip')) el('sumoModeChip').textContent=`${sumoState.mode} mode`;
+  if(el('sumoModeDot')) el('sumoModeDot').style.background=modeColor;
+  if(el('sumoWaveChip')) el('sumoWaveChip').textContent=`${sumoState.waveWeek} • ${sumoState.waveName}`;
+  if(el('sumoPageName')) el('sumoPageName').textContent=pageLabel;
+  if(el('sumoPriorityBadge')) el('sumoPriorityBadge').textContent=pageLabel;
+  if(el('sumoPriority')) el('sumoPriority').textContent=sumoState.priority;
+  if(el('sumoPriorityNote')) el('sumoPriorityNote').textContent=sumoState.priorityNote;
+  if(el('sumoWaveWeek')) el('sumoWaveWeek').textContent=sumoState.waveWeek;
+  if(el('sumoWaveNote')) el('sumoWaveNote').textContent=`${sumoState.waveName} week`;
+  if(el('sumoMode')) el('sumoMode').textContent=sumoState.mode;
+  if(el('sumoModeNote')) el('sumoModeNote').textContent=sumoState.mode==='Protect'?'Tissue-first override':sumoState.mode==='Push'?'Exploit the green light':'Quality before load';
+  if(el('sumoWarmup')) el('sumoWarmup').textContent=sumoState.warmup;
+  if(el('sumoSubline')) el('sumoSubline').textContent = pageLabel==='Today'
+    ? 'Readiness-led training • phase-aware progression'
+    : pageLabel==='Training'
+    ? 'Top sets earn change • clean reps rule progression'
+    : pageLabel==='Rehab'
+    ? 'Tendon-first structure • long-term joint armor'
+    : pageLabel==='Nutrition'
+    ? 'Trend-based fueling • protein protects muscle'
+    : 'Identity-based execution • systems over mood';
+  setRingScore(sumoState.score);
+  updateSumoCommands();
+}
+function updateSumoCommands(){
+  const configs={
+    today:[
+      ['Run readiness first','Check the body before you decide the day.'],
+      ['Use the wave to set the ceiling','Build, push, peak, or deload should shape the session.'],
+      ['Log the outcome in Hevy','Use clean reps, pain, and RPE to earn the next move.']
+    ],
+    train:[
+      ['Follow the current wave','Let week type control volume, RPE ceiling, and aggression.'],
+      ['Top set earns progression','Heavier loading only comes after clean work at target reps.'],
+      ['Back-off sets build the physique','Use tension, tempo, and asymmetry control to grow.']
+    ],
+    rehab:[
+      ['Choose the right rehab format','Rotation is default. Full-body is your time-tight fallback.'],
+      ['Tempo beats ego load','Slow eccentrics build tissue tolerance and cleaner mechanics.'],
+      ['Pain decides the modification','At 4 or above, scale the movement immediately.']
+    ],
+    nutrition:[
+      ['Adjust calories only on trend','One day never earns a macro change.'],
+      ['Protein protects the cut','Every day keeps lean mass, recovery, and arm growth alive.'],
+      ['Carbs support performance','When strength slips, fuel training before cutting harder.']
+    ],
+    psych:[
+      ['Act before mood shows up','Follow the system, then let motivation catch up.'],
+      ['Never miss twice','Use the minimum effective day to protect momentum.'],
+      ['Protect identity under stress','One rough day is data, not a reason to spiral.']
+    ]
+  };
+  const items=configs[sumoState.page]||configs.today;
+  [['sumoCmd1Title','sumoCmd1Note'],['sumoCmd2Title','sumoCmd2Note'],['sumoCmd3Title','sumoCmd3Note']].forEach((ids,i)=>{
+    if(el(ids[0])) el(ids[0]).textContent=items[i][0];
+    if(el(ids[1])) el(ids[1]).textContent=items[i][1];
+  });
+  ['sumoCmd1','sumoCmd2','sumoCmd3'].forEach(id=>el(id)&&el(id).classList.remove('active'));
+  const priorityIndex = sumoState.page==='today' ? 0 : sumoState.page==='train' ? 1 : 0;
+  if(el(['sumoCmd1','sumoCmd2','sumoCmd3'][priorityIndex])) el(['sumoCmd1','sumoCmd2','sumoCmd3'][priorityIndex]).classList.add('active');
+  if(el('sumoActionText')){
+    el('sumoActionText').innerHTML = sumoState.page==='today'
+      ? `<strong>Today’s lens:</strong> ${sumoState.mode==='Protect'?'Strip the session to quality reps, primer work, and recovery momentum.':sumoState.mode==='Push'?'You have permission to push the top set if technique stays clean.':'Build through stable reps and controlled progression.'}`
+      : sumoState.page==='train'
+      ? '<strong>Training lens:</strong> own the top set, then let back-off quality drive hypertrophy and joint safety.'
+      : sumoState.page==='rehab'
+      ? '<strong>Rehab lens:</strong> tissue capacity grows when you stay patient enough to repeat perfect reps.'
+      : sumoState.page==='nutrition'
+      ? '<strong>Fuel lens:</strong> trend-based calorie changes beat emotional corrections every time.'
+      : '<strong>Mindset lens:</strong> the real win is acting on the system before your mood gets a vote.';
+  }
+}
+function toggleSumoHeader(force){
+  sumoHeaderExpanded = typeof force==='boolean' ? force : !sumoHeaderExpanded;
+  const root=el('sumoHeader');
+  if(root) root.classList.toggle('expanded',sumoHeaderExpanded);
+  document.body.classList.toggle('header-expanded',sumoHeaderExpanded);
+  if(el('sumoHeaderToggle')) el('sumoHeaderToggle').setAttribute('aria-expanded', String(sumoHeaderExpanded));
+}
+function initSumoHeader(){
+  refreshSumoHeader();
+  const toggle=el('sumoHeaderToggle');
+  if(toggle) toggle.addEventListener('click',()=>toggleSumoHeader());
+  const shell=el('sumoHeaderShell');
+  if(shell){
+    let startY=null;
+    shell.addEventListener('pointerdown',e=>{ startY=e.clientY; });
+    shell.addEventListener('pointerup',e=>{
+      if(startY===null) return;
+      const delta=e.clientY-startY;
+      if(delta>32) toggleSumoHeader(true);
+      else if(delta<-24) toggleSumoHeader(false);
+      startY=null;
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded', initSumoHeader);
+
 </script>
 </body>
 </html>
