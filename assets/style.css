@@ -535,7 +535,6 @@ html, body {
 }
 body.sumo-app {
   position: relative;
-  isolation: isolate;
   min-height: 100vh;
   --page-bg-image: linear-gradient(135deg, #0f172a, #1e293b);
 }
@@ -543,24 +542,29 @@ body.sumo-app::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   background-image: var(--page-bg-image);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   transform: scale(1.03);
   transform-origin: center;
+  pointer-events: none;
 }
 body.sumo-app::after {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   background:
     radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 32%),
     radial-gradient(circle at bottom left, rgba(10,132,255,0.12), transparent 30%),
     linear-gradient(180deg, rgba(5,10,18,0.70), rgba(8,12,20,0.52) 22%, rgba(8,12,20,0.42) 52%, rgba(8,12,20,0.64) 100%);
   pointer-events: none;
+}
+body.sumo-app > * {
+  position: relative;
+  z-index: 2;
 }
 .page, .page-body {
   position: relative;
