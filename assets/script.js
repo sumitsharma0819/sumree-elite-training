@@ -1216,6 +1216,8 @@ function getActivePageId(){
 function getActiveTrainDayId(){
   const activeBtn = document.querySelector('#page-train .day-scroll .day-btn.active');
   if (!activeBtn) return 'd1';
+  const dataDay = activeBtn.getAttribute('data-day');
+  if (dataDay) return dataDay;
   const onclick = activeBtn.getAttribute('onclick') || '';
   const match = onclick.match(/showDay\('([^']+)'/);
   return match ? match[1] : 'd1';
@@ -1228,9 +1230,10 @@ function applyVisualTheme(){
     ? trainDayBackgrounds[trainDayId]
     : (pageBackgrounds[pageId] || pageBackgrounds.today);
 
+  const resolvedPath = new URL(imagePath, document.baseURI).href;
   document.body.dataset.page = pageId;
   document.body.dataset.trainDay = trainDayId;
-  document.body.style.setProperty('--page-bg-image', `url("${imagePath}")`);
+  document.body.style.setProperty('--page-bg-image', `url("${resolvedPath}")`);
 }
 
 const __sumoShowPage = showPage;
