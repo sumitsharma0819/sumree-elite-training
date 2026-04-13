@@ -1187,9 +1187,9 @@ updatePhaseProgress();
 /* ─── VISUAL THEMING FOR GITHUB PAGES ─── */
 const pageBackgrounds = {
   today: 'assets/images/bg-page-today.svg',
-  train: 'assets/images/bg-page-train.svg',
+  train: 'assets/images/bg-page-train.jpg',
   rehab: 'assets/images/bg-page-rehab.svg',
-  nutrition: 'assets/images/bg-page-nutrition.svg',
+  nutrition: 'assets/images/bg-page-nutrition.jpg',
   psych: 'assets/images/bg-page-psych.svg',
   wave: 'assets/images/bg-page-wave.svg',
   hevy: 'assets/images/bg-page-hevy.svg',
@@ -1199,12 +1199,12 @@ const pageBackgrounds = {
 };
 
 const trainDayBackgrounds = {
-  d1: 'assets/images/bg-train-monday.svg',
+  d1: 'assets/images/bg-train-monday.jpg',
   d2: 'assets/images/bg-train-tuesday.svg',
   d3: 'assets/images/bg-train-wednesday.svg',
   d4: 'assets/images/bg-train-thursday.svg',
   d5: 'assets/images/bg-train-friday.svg',
-  d6: 'assets/images/bg-train-saturday.svg',
+  d6: 'assets/images/bg-train-saturday.jpg',
   d7: 'assets/images/bg-train-sunday.svg'
 };
 
