@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="#DADAE1" name="theme-color"/>
+<title>Sumo — Elite Performance System</title>
+
+<link href="assets/style.css" rel="stylesheet"/></head>
+<body class="sumo-app">
+<div class="global-sumo-header">
+<a class="home-chip" href="index.html" aria-label="Back to home">← Home</a>
+<div class="global-sumo-shell">
+<div class="global-sumo-brand">
+<div class="global-sumo-name">Sumo</div>
+<div class="global-sumo-sub">Elite Performance System · v2.0</div>
+</div>
+<div class="global-sumo-pills">
+<span class="global-sumo-pill"><span class="global-sumo-dot" id="globalModeDot"></span><span id="globalModeText">Build</span></span>
+<span class="global-sumo-pill"><span class="global-sumo-dot green"></span><span id="globalWaveText">Week 1 · Build</span></span>
+</div>
+</div>
+</div>
+<!-- PAGE: TODAY -->
+<div class="page active" id="page-today">
+<div class="page-header compact">
+<div class="section-kicker">Performance dashboard</div>
+<div class="page-title-wrap"><div><div class="page-title">Today</div><div class="page-sub">Daily readiness · Coaching decisions</div></div><div class="header-badge">Now</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Coach view</div><p class="hero-sub">Use this screen first every day. It sets your load, warm-up depth, and weekly correction rules.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Readiness</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span><span class="metric-pill"><span class="metric-dot"></span> Execution</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main">
+<div class="command-icon">⌘</div>
+<div class="command-text">
+<div class="command-kicker">Elite flow</div>
+<div class="command-title">Today — Command Panel</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Run top to bottom</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item" id="cmd-today-1"><div class="item-icon">◔</div><div class="item-copy"><div class="item-title">Run readiness first</div><div class="item-note">Before training, always. Low readiness means Protect mode and quality reps only.</div></div></div>
+<div class="command-item" id="cmd-today-2"><div class="item-icon">↑</div><div class="item-copy"><div class="item-title">Execute the session you earned</div><div class="item-note">Use the readiness result to decide push, build, or protect — never guess.</div></div></div>
+<div class="command-item" id="cmd-today-3"><div class="item-icon">◎</div><div class="item-copy"><div class="item-title">Log the session in Hevy</div><div class="item-note">Track sets, reps, RPE, and a short note on form or joint response.</div></div></div>
+<div class="command-item" id="cmd-today-4"><div class="item-icon">◌</div><div class="item-copy"><div class="item-title">Use weekly trend for calorie moves</div><div class="item-note">Adjust food only from 7-day trend, not from one heavy or light day.</div></div></div>
+<div class="command-item" id="cmd-today-5"><div class="item-icon">✦</div><div class="item-copy"><div class="item-title">Protect recovery first</div><div class="item-note">If joints flare or sleep is low, keep the streak alive with the minimum effective day.</div></div></div>
+</div></div>
+</details>
+<!-- READINESS INPUTS -->
+<div class="card">
+<div class="card-header"><div class="card-title">Daily Readiness Check-In</div><div class="card-sub">Takes 20 seconds — drives every decision below</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Sleep (hrs)</label><input id="sleepHours" max="12" min="0" step="0.5" type="number" value="7.0"/></div>
+<div class="field"><label>Recovery /100</label><input id="recoveryScore" max="100" min="0" step="1" type="number" value="72"/></div>
+<div class="field"><label>Energy /10</label><input id="energyLevel" max="10" min="1" step="1" type="number" value="7"/></div>
+<div class="field"><label>Joint Pain /10</label><input id="jointPain" max="10" min="0" step="1" type="number" value="2"/></div>
+<div class="field"><label>Today's Session</label>
+<select id="sessionType">
+<option value="lift">Lift day</option>
+<option value="hike">Hike day</option>
+<option value="recovery">Recovery day</option>
+</select>
+</div>
+<div class="field"><label>Motivation /10</label><input id="motivationLevel" max="10" min="1" step="1" type="number" value="7"/></div>
+</div>
+<div style="margin-top:12px">
+<button class="btn" id="runReadiness" onclick="runReadiness()">Get today's coaching call →</button>
+</div>
+</div>
+</div>
+<!-- RESULT BANNER -->
+<div class="banner green" id="decisionBanner">Green light: push the planned session as written.</div>
+<p class="small" id="decisionText" style="margin:-6px 0 0">Run the check-in above to get your personalised coaching call.</p>
+<!-- STAT CARDS -->
+<div class="stat-grid" style="grid-template-columns:repeat(4,1fr)">
+<div class="stat"><div class="label">Mode</div><div class="val" id="modeOut">Build</div></div>
+<div class="stat"><div class="label">Load adj.</div><div class="val" id="loadOut">0%</div></div>
+<div class="stat"><div class="label">Warm-up</div><div class="val" id="warmupOut" style="font-size:.85rem;padding-top:3px">Rotation</div></div>
+<div class="stat"><div class="label">Tissue state</div><div class="val" id="tissueFatigueOut" style="font-size:.82rem;padding-top:3px">—</div></div>
+</div>
+<!-- COACHING STACK SUMMARY -->
+<div class="card" style="background:linear-gradient(160deg,rgba(10,132,255,0.06),rgba(255,255,255,0.98))">
+<div class="card-header" style="background:transparent"><div class="card-title">Today's Coaching Stack</div><div class="card-sub">Your 3 non-negotiables, right now</div></div>
+<div class="card-body" style="font-size:.85rem">
+<div id="coachingStack">
+<div class="tl">
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--blue-d);border-color:var(--blue-b);font-size:.9rem">1</div></div>
+<div class="tl-content"><div class="tl-title" id="stack1">Run readiness check-in above first.</div></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--orange-d);border-color:var(--orange-b);font-size:.9rem">2</div></div>
+<div class="tl-content"><div class="tl-title" id="stack2">Complete today's rehab warm-up before touching a barbell.</div></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--green-d);border-color:var(--green-b);font-size:.9rem">3</div></div>
+<div class="tl-content"><div class="tl-title" id="stack3">Log every set in Hevy. Use the Hevy tab after to decide next session.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- COACHING NOTES -->
+<div class="card">
+<div class="card-header"><div class="card-title">Session Override Rules</div></div>
+<div class="card-body" style="font-size:.85rem">
+<p><strong>Pain &gt; 3/10</strong> → drop one load tier, keep movement quality high, skip grinders.</p>
+<p><strong>Sleep &lt; 6 hrs</strong> → hold load, add reps instead, shorten session if needed.</p>
+<p><strong>Recovery &lt; 60</strong> → minimum effective day: one compound + rehab only.</p>
+<p><strong>Joint unstable</strong> → stop the set immediately, reassess next session.</p>
+</div>
+</div>
+<!-- HIKE TRACKER -->
+<div class="card">
+<div class="card-header"><div class="card-title">Saturday Hike Log</div><div class="card-sub">Track elevation · Pace · Ankle/knee response</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Distance (miles)</label><input id="hikeDist" max="30" min="0" step="0.1" type="number" value="0"/></div>
+<div class="field"><label>Elevation gain (ft)</label><input id="hikeEle" max="5000" min="0" step="10" type="number" value="0"/></div>
+<div class="field"><label>Duration (min)</label><input id="hikeDur" max="480" min="0" step="5" type="number" value="0"/></div>
+<div class="field"><label>Right ankle /10</label><input id="hikeAnkle" max="10" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Right knee /10</label><input id="hikeKnee" max="10" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Perceived effort /10</label><input id="hikeEffort" max="10" min="1" step="1" type="number" value="5"/></div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="logHike()">Log this hike →</button></div>
+<div id="hikeResult" style="margin-top:10px"></div>
+<div id="hikeHistory" style="margin-top:10px"></div>
+</div>
+</div>
+<!-- PHASE PROGRESS -->
+<div class="hero-panel" style="flex-direction:column;align-items:stretch;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<div>
+<div class="hero-eyebrow">Transformation Arc</div>
+<div class="hero-title">Phase Progress</div>
+<div class="hero-sub">Track where you are in the 12-week arc</div>
+</div>
+<div class="train-badge" id="phaseProgressBadge">Week —</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:6px">
+<span>Start (209 lb)</span><span>Midpoint (~190 lb)</span><span>Goal (170 lb)</span>
+</div>
+<div class="bar-shell" style="height:14px">
+<div class="bar-fill" id="transformBarFill" style="width:0%;background:linear-gradient(90deg,var(--orange),var(--green))"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:4px">
+<span>0%</span><span id="transformPct">—</span><span>100%</span>
+</div>
+</div>
+<div class="form-grid" style="grid-template-columns:1fr 1fr 1fr;gap:10px">
+<div class="field"><label>Current weight (lb)</label><input id="progressWeight" max="250" min="150" oninput="updatePhaseProgress()" step="0.5" type="number" value="184"/></div>
+<div class="field"><label>Start weight (lb)</label><input id="progressStart" max="250" min="150" oninput="updatePhaseProgress()" step="0.5" type="number" value="209"/></div>
+<div class="field"><label>Goal weight (lb)</label><input id="progressGoal" max="220" min="130" oninput="updatePhaseProgress()" step="0.5" type="number" value="170"/></div>
+</div>
+<div class="stat-grid g3">
+<div class="stat orange"><div class="label">Lost</div><div class="val" id="progressLost">—</div><div class="note">lb so far</div></div>
+<div class="stat blue"><div class="label">Remaining</div><div class="val" id="progressRemaining">—</div><div class="note">lb to goal</div></div>
+<div class="stat green"><div class="label">Weeks left</div><div class="val" id="progressWeeks">—</div><div class="note">at 0.75 lb/wk</div></div>
+</div>
+</div>
+<!-- WEEKLY CHECK-IN -->
+<div class="card">
+<div class="card-header"><div class="card-title">Weekly Calorie &amp; Weight Adjuster</div><div class="card-sub">Update once per week, Sunday check-in</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Avg weight now</label><input id="avgWeightNow" max="250" min="150" step="0.1" type="number" value="184.0"/></div>
+<div class="field"><label>Avg weight last wk</label><input id="avgWeightPrev" max="250" min="150" step="0.1" type="number" value="184.8"/></div>
+<div class="field"><label>Current kcal/day</label><input id="currentCalories" max="3500" min="1200" step="25" type="number" value="2000"/></div>
+<div class="field"><label>Strength trend</label>
+<select id="strengthTrend"><option value="up">Up</option><option selected="" value="flat">Flat</option><option value="down">Down</option></select>
+</div>
+<div class="field"><label>Hunger /10</label><input id="hungerLevel" max="10" min="1" step="1" type="number" value="5"/></div>
+<div class="field"><label>Compliance %</label><input id="complianceLevel" max="100" min="0" step="1" type="number" value="88"/></div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="runWeekly()">Update weekly targets</button></div>
+<ul class="priority-list mt" id="weeklyList">
+<li>Stay near 2,000 kcal on lift days and hold protein at 160–175g.</li>
+</ul>
+</div>
+</div>
+<!-- WEEKLY ATHLETE REVIEW -->
+<div class="card">
+<div class="card-header"><div class="card-title">Weekly Athlete Review</div><div class="card-sub">Full system scan — run every Sunday</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Workout completion %</label><input id="weeklyCompletion" max="100" min="0" step="1" type="number" value="90"/></div>
+<div class="field"><label>Avg sleep (hrs)</label><input id="weeklySleep" max="12" min="0" step="0.1" type="number" value="7.2"/></div>
+<div class="field"><label>Avg energy /10</label><input id="weeklyEnergy" max="10" min="1" step="1" type="number" value="7"/></div>
+<div class="field"><label>Avg joint pain /10</label><input id="weeklyPain" max="10" min="0" step="1" type="number" value="2"/></div>
+<div class="field"><label>Weekly wt loss (lb)</label><input id="weeklyLoss" max="5" min="-5" step="0.1" type="number" value="0.7"/></div>
+<div class="field"><label>Strength direction</label>
+<select id="weeklyStrength"><option value="up">Up</option><option selected="" value="flat">Flat</option><option value="down">Down</option></select>
+</div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="runAthleteReview()">Update athlete priorities</button></div>
+<ul class="priority-list mt" id="athletePriorityList"><li>Run the weekly review above.</li></ul>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: TRAIN -->
+<div class="page" id="page-train">
+<div class="page-header compact">
+<div class="section-kicker">Training system</div>
+<div class="page-title-wrap"><div><div class="page-title">Training</div><div class="page-sub">7-day schedule · Load strategy · Progression</div></div><div class="header-badge">7D</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Plan like a high-performance app</div><p class="hero-sub">Open the day, see the key lift cues instantly, then use Hevy only after the session to decide the next progression move.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Day flow</span><span class="metric-pill"><span class="metric-dot"></span> Primer</span><span class="metric-pill"><span class="metric-dot"></span> Hevy</span></div>
+</div>
+<div class="train-cockpit">
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Lift view</div>
+<h3 class="train-focus-title" id="trainSelectedDay">Monday Push</h3>
+<p class="train-focus-note" id="trainSelectedNote">Shoulder-safe pressing with upper chest and triceps priority. Start here, then open the exercise cards below.</p>
+</div>
+<div class="train-badge" id="trainSelectedBadge">~65 min · Main lift first</div>
+</div>
+<div class="train-snapshot">
+<div class="snap"><div class="snap-label">Primary focus</div><div class="snap-value" id="trainFocusOut">Upper chest + triceps</div></div>
+<div class="snap"><div class="snap-label">Progression rule</div><div class="snap-value" id="trainProgressOut">Top set earns the next change</div></div>
+<div class="snap"><div class="snap-label">Warm-up / primer</div><div class="snap-value" id="trainPrimerOut">Shoulder day + push primer</div></div>
+<div class="snap"><div class="snap-label">Special watchout</div><div class="snap-value" id="trainWatchOut">Left shoulder quiet, clean lockout</div></div>
+</div>
+</div>
+<div class="train-quick-actions">
+<div class="quick-action-grid">
+<button class="quick-action" onclick="goTrainTool('primer')" type="button"><span class="quick-ic">⚑</span><span class="quick-copy"><strong>Primer</strong><span>Open the exact switch-on sequence before lifting.</span></span></button>
+<button class="quick-action" onclick="goTrainTool('wave')" type="button"><span class="quick-ic">↺</span><span class="quick-copy"><strong>Wave</strong><span>Check whether this week is build, push, peak, or deload.</span></span></button>
+<button class="quick-action" onclick="goTrainTool('hevy')" type="button"><span class="quick-ic">◎</span><span class="quick-copy"><strong>Hevy</strong><span>Use after the workout to decide reps vs load next time.</span></span></button>
+<button class="quick-action" onclick="goTrainTool('rpe')" type="button"><span class="quick-ic">◔</span><span class="quick-copy"><strong>RPE</strong><span>Quick reminder of the effort ceiling for the day.</span></span></button>
+</div>
+<div class="info"><strong>Best flow:</strong> choose the day → review the 4 cues above → lift → log in Hevy → use the Hevy tab only after the session.</div>
+</div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main">
+<div class="command-icon">▣</div>
+<div class="command-text">
+<div class="command-kicker">Execution rules</div>
+<div class="command-title">Training — Command Panel</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Wave + Hevy decide progression</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item" id="cmd-train-1"><div class="item-icon">↗</div><div class="item-copy"><div class="item-title">Follow the phase wave</div><div class="item-note">Week dictates the ceiling: build, push, peak, or deload.</div></div></div>
+<div class="command-item" id="cmd-train-2"><div class="item-icon">◉</div><div class="item-copy"><div class="item-title">Top set earns the change</div><div class="item-note">Push compounds to the target RPE, then let clean reps decide the next jump.</div></div></div>
+<div class="command-item" id="cmd-train-3"><div class="item-icon">≈</div><div class="item-copy"><div class="item-title">Back-off sets build the muscle</div><div class="item-note">Drop 10–15% and chase tempo, tension, and stable positions.</div></div></div>
+<div class="command-item" id="cmd-train-4"><div class="item-icon">⊕</div><div class="item-copy"><div class="item-title">Right side gets priority</div><div class="item-note">Start unilateral work on the right and add a little more control or volume there.</div></div></div>
+<div class="command-item" id="cmd-train-5"><div class="item-icon">◇</div><div class="item-copy"><div class="item-title">If form breaks, it does not count</div><div class="item-note">Never buy progression with ugly reps, joint drift, or rushed eccentrics.</div></div></div>
+</div></div>
+</details>
+<!-- DAY SELECTOR -->
+<div class="card">
+<div class="card-body day-scroll-wrap">
+<div class="day-scroll-head">
+<div>
+<div class="day-scroll-title">Choose today’s session</div>
+<div class="day-scroll-sub">Open one day at a time so the page only shows the session you need right now.</div>
+</div>
+<div class="day-scroll-meta">
+<span class="day-scroll-chip" id="trainDayCount">7-day split</span>
+<span class="day-scroll-chip">Tap a day to switch</span>
+</div>
+</div>
+<div class="day-scroll" id="dayScroll">
+<button class="day-btn active" onclick="showDay('d1',this)">Mon Push</button>
+<button class="day-btn" onclick="showDay('d2',this)">Tue Pull</button>
+<button class="day-btn" onclick="showDay('d3',this)">Wed Recovery</button>
+<button class="day-btn" onclick="showDay('d4',this)">Thu Legs</button>
+<button class="day-btn" onclick="showDay('d5',this)">Fri Upper</button>
+<button class="day-btn" onclick="showDay('d6',this)">Sat Hike</button>
+<button class="day-btn" onclick="showDay('d7',this)">Sun Rest</button>
+</div>
+</div>
+</div>
+<!-- LOAD KEY -->
+<div class="pill-row">
+<span class="load-badge load-heavy">Heavy</span>
+<span class="load-badge load-moderate">Moderate</span>
+<span class="load-badge load-light">Light</span>
+<span class="load-badge load-rehab">Rehab</span>
+<span class="small" style="align-self:center">— tap any exercise to expand</span>
+</div>
+<!-- DAY PANELS -->
+<div id="d1">
+<div class="info"><strong>Monday Push</strong> — Neural primer sets on bench + shoulder press. Left shoulder monitored every set. Post-session: 12–15 min Zone 2.</div>
+<div id="d1-exercises"></div>
+</div>
+<div id="d2" style="display:none">
+<div class="info"><strong>Tuesday Pull</strong> — Neural primers on pull-ups + rows. Lumbar-protective positions throughout. Aggressive arm volume for muscle memory.</div>
+<div id="d2-exercises"></div>
+</div>
+<div id="d3" style="display:none">
+<div class="good-box"><strong>Wednesday Active Recovery</strong><br/>10–20 min Zone 2 walk/row below 120 bpm. Recovery flow: ankle alphabets → clamshells → slow step-downs → single-leg balance → band pull-aparts → calf stretch → hamstring stretch. Finish with hip flexor + piriformis stretch. This day is not optional — it enables Thursday's leg session.</div>
+<div id="d3-exercises"></div>
+</div>
+<div id="d4" style="display:none">
+<div class="info"><strong>Thursday Legs</strong> — Neural primers on RDL. Right side starts every unilateral movement. Right calf gets 1 extra set when pain ≤ 3/10.</div>
+<div id="d4-exercises"></div>
+</div>
+<div id="d5" style="display:none">
+<div class="info"><strong>Friday Upper Hypertrophy</strong> — Shape day, not strength day. Higher reps, quality contractions, arm and shoulder aesthetics. Post-session: Zone 2 + full meal before Saturday hike.</div>
+<div id="d5-exercises"></div>
+</div>
+<div id="d6" style="display:none">
+<div class="info" style="background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.24)">🥾 <strong>Saturday Hike + Arms</strong> — Hike is the primary stimulus. Arm work follows 1–2 hrs after the hike. Pre-hike: 8 min ankle warm-up. Fuel: +300–400 kcal extra today.</div>
+<div id="d6-exercises"></div>
+</div>
+<div id="d7" style="display:none">
+<div class="good-box"><strong>Sunday Full Rest</strong><br/>Complete rest or 15–25 min gentle walk if fatigue is low. Assess right ankle stiffness, right calf soreness, knee state, and low back heading into Monday. Sleep target: 7.5–9 hrs. Recovery protein maintained — reduced carbs only.</div>
+</div>
+</div>
+</div>
+<!-- PAGE: REHAB -->
+<!-- PAGE: REHAB -->
+<div class="page" id="page-rehab">
+<div class="page-header compact">
+<div class="section-kicker">Joint care</div>
+<div class="page-title-wrap"><div><div class="page-title">Rehab &amp; Warm-Up</div><div class="page-sub">Right ankle · Right knee · Left shoulder</div></div><div class="header-badge">3</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Joint-first prep</div><p class="hero-sub">Choose the fast full-body block or the deeper single-site rotation based on time and tissue status.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Ankle</span><span class="metric-pill"><span class="metric-dot"></span> Knee</span><span class="metric-pill"><span class="metric-dot"></span> Shoulder</span></div>
+</div>
+<!-- ASYMMETRY MONITOR -->
+<div class="card" style="border-left:3px solid var(--orange)">
+<div class="card-header"><div class="card-title">Right-Side Asymmetry Monitor<span class="card-new-badge">New</span></div><div class="card-sub">Track bilaterally — catch regression before it becomes injury</div></div>
+<div class="card-body">
+<div class="info" style="margin-bottom:12px;font-size:.84rem"><strong>Rule:</strong> Any bilateral difference &gt;15% on strength, &gt;10% on ROM, or a pain differential of &gt;2 points triggers a load reduction on the right side until parity is restored.</div>
+<div class="form-grid">
+<div class="field"><label>Right calf raise reps</label><input id="asymRCalfR" max="50" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Left calf raise reps</label><input id="asymLCalfR" max="50" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Right single-leg balance (sec)</label><input id="asymRBalance" max="120" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Left single-leg balance (sec)</label><input id="asymLBalance" max="120" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Right step-up reps</label><input id="asymRStepUp" max="30" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Left step-up reps</label><input id="asymLStepUp" max="30" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Right ankle pain /10</label><input id="asymRAnkle" max="10" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>Left ankle pain /10</label><input id="asymLAnkle" max="10" min="0" step="1" type="number" value="0"/></div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="runAsymmetry()">Analyze asymmetry →</button></div>
+<div id="asymmetryResult" style="margin-top:10px"></div>
+</div>
+</div>
+<div class="danger-box"><strong>Non-negotiable:</strong> This runs before every lifting session. Choose Format A (15-min full-body) or Format B (single-site rotation, recommended default).</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main">
+<div class="command-icon">△</div>
+<div class="command-text">
+<div class="command-kicker">Structural rules</div>
+<div class="command-title">Rehab — Command Panel</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Rotation usually wins</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item" id="cmd-rehab-1"><div class="item-icon">△</div><div class="item-copy"><div class="item-title">Use rotation as the default</div><div class="item-note">Single-site work is the main route for long-term ankle, knee, and shoulder resilience.</div></div></div>
+<div class="command-item" id="cmd-rehab-2"><div class="item-icon">□</div><div class="item-copy"><div class="item-title">Use full-body only when time is tight</div><div class="item-note">Travel, poor sleep, or deload weeks get the 15-minute maintenance block.</div></div></div>
+<div class="command-item" id="cmd-rehab-3"><div class="item-icon">∿</div><div class="item-copy"><div class="item-title">Tempo before load</div><div class="item-note">Slow eccentrics and holds beat heavier weight for tendon remodeling.</div></div></div>
+<div class="command-item" id="cmd-rehab-4"><div class="item-icon">!</div><div class="item-copy"><div class="item-title">Pain above 3 changes the plan</div><div class="item-note">Modify range, drop load, or switch format the moment tissue quality drops.</div></div></div>
+<div class="command-item" id="cmd-rehab-5"><div class="item-icon">○</div><div class="item-copy"><div class="item-title">Build bulletproof tissue, not quick relief</div><div class="item-note">This page exists to make the next 12 months stronger, not just today easier.</div></div></div>
+</div></div>
+</details>
+<!-- FORMAT TOGGLE -->
+<div class="segmented">
+<button class="segment-btn active" id="fmtA-btn" onclick="showFormat('A')">Format A — 15 min full-body</button>
+<button class="segment-btn" id="fmtB-btn" onclick="showFormat('B')">Format B — Single site</button>
+</div>
+<!-- FORMAT A -->
+<div id="fmtA">
+<div class="info">Use on busy days, travel, deloads, or poor-sleep days. Covers all 3 sites in one compact block.</div>
+<div class="card">
+<div id="fmtA-content"></div>
+</div>
+</div>
+<!-- FORMAT B -->
+<div id="fmtB" style="display:none">
+<div class="info">Recommended default. One injury area per session gets deeper focused volume — better for long-term tendon remodeling and tissue strength.</div>
+<div class="day-scroll">
+<button class="day-btn active" onclick="showSite('ankle',this)">Ankle</button>
+<button class="day-btn" onclick="showSite('knee',this)">Knee</button>
+<button class="day-btn" onclick="showSite('shoulder',this)">Shoulder</button>
+</div>
+<div id="site-ankle"></div>
+<div id="site-knee" style="display:none"></div>
+<div id="site-shoulder" style="display:none"></div>
+<div class="card" style="margin-top:4px">
+<div class="card-header"><div class="card-title">Weekly Rotation</div></div>
+<div class="card-body" style="font-size:.84rem">
+<div class="ex-row"><span class="key">Monday Push</span><span class="v">Shoulder Day</span></div>
+<div class="ex-row"><span class="key">Tuesday Pull</span><span class="v">Ankle Day</span></div>
+<div class="ex-row"><span class="key">Thursday Legs</span><span class="v">Knee Day</span></div>
+<div class="ex-row"><span class="key">Friday Upper</span><span class="v">Shoulder or 15-min Full-Body</span></div>
+<div class="ex-row"><span class="key">Saturday Hike</span><span class="v">Ankle + 1 set clamshells</span></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><div class="card-title">Primer moved out</div><div class="card-sub">Rehab page now stays focused on tissue prep and warm-up format</div></div>
+<div class="card-body" style="font-size:.84rem">
+<div class="pill-row"><span class="pill purple">Primer</span></div>
+<p>The Neural Primer Protocol now lives in its own tab so this page can stay centered on ankle, knee, and shoulder prep only.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: NUTRITION -->
+<!-- PAGE: NUTRITION -->
+<div class="page" id="page-nutrition">
+<div class="page-header compact">
+<div class="section-kicker">Fueling</div>
+<div class="page-title-wrap"><div><div class="page-title">Nutrition</div><div class="page-sub">Macros · Meal timing · Supplements</div></div><div class="header-badge">Plan</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Fuel for performance and the cut</div><p class="hero-sub">Keep protein high, carbs targeted, and recovery meals simple enough to repeat.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Protein</span><span class="metric-pill"><span class="metric-dot"></span> Timing</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main">
+<div class="command-icon">◍</div>
+<div class="command-text">
+<div class="command-kicker">Fuel rules</div>
+<div class="command-title">Nutrition — Command Panel</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Trend, protein, adherence</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item" id="cmd-nutrition-1"><div class="item-icon">◍</div><div class="item-copy"><div class="item-title">Protein is the anchor</div><div class="item-note">Hit 160–175g every day before you think about cutting anything else.</div></div></div>
+<div class="command-item" id="cmd-nutrition-2"><div class="item-icon">↔</div><div class="item-copy"><div class="item-title">Adjust calories only on trend</div><div class="item-note">Use the weekly average, never one noisy weigh-in.</div></div></div>
+<div class="command-item" id="cmd-nutrition-3"><div class="item-icon">⚡</div><div class="item-copy"><div class="item-title">Protect performance with carbs</div><div class="item-note">If strength or recovery slips, place carbs around training before cutting harder.</div></div></div>
+<div class="command-item" id="cmd-nutrition-4"><div class="item-icon">⋯</div><div class="item-copy"><div class="item-title">Keep meals boring enough to repeat</div><div class="item-note">Simple repeatable meals beat perfect meals you cannot sustain.</div></div></div>
+<div class="command-item" id="cmd-nutrition-5"><div class="item-icon">✓</div><div class="item-copy"><div class="item-title">Adherence wins the phase</div><div class="item-note">A consistent 90% week beats a perfect 2-day sprint every time.</div></div></div>
+</div></div>
+</details>
+<!-- MACRO TARGETS -->
+<div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr">
+<div class="stat orange"><div class="label">Lift days</div><div class="val">2,000</div><div class="note">kcal · ~500 deficit</div></div>
+<div class="stat blue"><div class="label">Rest days</div><div class="val">1,750</div><div class="note">kcal · same protein</div></div>
+<div class="stat green"><div class="label">Hike day</div><div class="val">2,300</div><div class="note">kcal · extra carbs</div></div>
+</div>
+<div class="card">
+<div class="card-header"><div class="card-title">Daily Macro Targets</div></div>
+<div class="card-body" style="font-size:.85rem">
+<div class="ex-row"><span class="key">Protein</span><span class="v">160–175g (0.9–1.0g/lb)</span></div>
+<div class="ex-row"><span class="key">Carbs (lift day)</span><span class="v">175–200g</span></div>
+<div class="ex-row"><span class="key">Fat</span><span class="v">55–65g</span></div>
+<div class="ex-row"><span class="key">Leucine per meal</span><span class="v">≥ 2.5g (trigger MPS)</span></div>
+</div>
+</div>
+<!-- TDEE CALCULATOR -->
+<div class="card">
+<div class="card-header"><div class="card-title">Body Composition Calculator<span class="card-new-badge">New</span></div><div class="card-sub">Personalized TDEE · Macro targets · Deficit depth</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Current Weight (lb)</label><input id="tdeeWeight" max="400" min="100" step="0.5" type="number" value="184"/></div>
+<div class="field"><label>Height (in)</label><input id="tdeeHeight" max="84" min="60" step="0.5" type="number" value="69"/></div>
+<div class="field"><label>Age</label><input id="tdeeAge" max="80" min="18" step="1" type="number" value="35"/></div>
+<div class="field"><label>Activity Level</label>
+<select id="tdeeActivity">
+<option value="1.375">Lightly Active (1–2 days/wk)</option>
+<option selected="" value="1.55">Moderately Active (3–5 days/wk)</option>
+<option value="1.725">Very Active (6–7 days/wk)</option>
+</select>
+</div>
+<div class="field"><label>Goal Phase</label>
+<select id="tdeeGoal">
+<option selected="" value="cut">Cut (500 kcal deficit)</option>
+<option value="maintain">Maintain</option>
+<option value="build">Lean Build (+200 kcal)</option>
+</select>
+</div>
+<div class="field"><label>Body Fat % (estimate)</label><input id="tdeeBF" max="50" min="5" step="0.5" type="number" value="22"/></div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="calcTDEE()">Calculate my targets →</button></div>
+<div class="stat-grid" style="margin-top:10px;grid-template-columns:repeat(3,1fr)">
+<div class="stat blue"><div class="label">TDEE</div><div class="val" id="tdeeOut">—</div><div class="note">kcal maintenance</div></div>
+<div class="stat orange"><div class="label">Target kcal</div><div class="val" id="tdeeTarget">—</div><div class="note">per training day</div></div>
+<div class="stat green"><div class="label">Lean Mass</div><div class="val" id="tdeeLBM">—</div><div class="note">lb to protect</div></div>
+</div>
+<div class="stat-grid" style="margin-top:10px">
+<div class="stat"><div class="label">Protein floor</div><div class="val" id="tdeeProtein">—</div><div class="note">g/day (non-negotiable)</div></div>
+<div class="stat"><div class="label">Fat floor</div><div class="val" id="tdeeFat">—</div><div class="note">g/day for hormones</div></div>
+<div class="stat"><div class="label">Carb window</div><div class="val" id="tdeeCarbs">—</div><div class="note">g on lift days</div></div>
+<div class="stat"><div class="label">Weekly loss</div><div class="val" id="tdeeRate">—</div><div class="note">lb/wk target</div></div>
+</div>
+<div class="small mt" id="tdeeNote"></div>
+</div>
+</div>
+<!-- MEAL TIMELINE -->
+<div class="card">
+<div class="card-header"><div class="card-title">Meal Schedule (Lift Day)</div></div>
+<div class="card-body">
+<div class="tl">
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--yellow-d);border-color:var(--yellow-b)">⚡</div><div class="tl-line"></div><div class="tl-time">6:30</div></div>
+<div class="tl-content"><div class="tl-title">Hydration Prime</div><ul class="tl-list"><li>16–20 oz water + black coffee</li><li>L-Carnitine 1g + Green Tea 400mg</li></ul></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--orange-d);border-color:var(--orange-b)">🥣</div><div class="tl-line"></div><div class="tl-time">8:00</div></div>
+<div class="tl-content"><div class="tl-title">Breakfast — Anabolic Prime (~65g protein)</div><ul class="tl-list"><li>Whey isolate 1.5 scoops (~38g protein)</li><li>Greek yogurt/skyr 250g (~21g protein)</li><li>Oats 60g dry · Chia 1 tbsp · Spinach</li><li>Creatine 5g · D3+K2 · Biotin · B12</li></ul></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--blue-d);border-color:var(--blue-b)">🫙</div><div class="tl-line"></div><div class="tl-time">12:30</div></div>
+<div class="tl-content"><div class="tl-title">Lunch — Solid Protein Anchor (~50g protein)</div><ul class="tl-list"><li>Paneer 200g <em>or</em> Tofu 300g + ½ scoop whey</li><li>Dal 1 cup cooked · 1 roti or ½ cup rice</li><li>Large salad + 1 tsp olive oil · Turmeric 500mg</li></ul></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--green-d);border-color:var(--green-b)">⚡</div><div class="tl-line"></div><div class="tl-time">4:00</div></div>
+<div class="tl-content"><div class="tl-title">Pre-Workout (~28g protein)</div><ul class="tl-list"><li>Whey 1 scoop + banana or 40g oats</li><li>Beta-Alanine 3–4g · Taurine 1.5g</li><li>L-Theanine 100mg (if using caffeine)</li></ul></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--green-d);border-color:var(--green-b)">💪</div><div class="tl-line"></div><div class="tl-time">6:00</div></div>
+<div class="tl-content"><div class="tl-title">Post-Workout (within 30 min)</div><ul class="tl-list"><li>Whey 1 scoop + optional fast carb</li><li>L-Glutamine 5g</li></ul></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--purple-d);border-color:var(--purple-b)">🍛</div><div class="tl-line"></div><div class="tl-time">8:00</div></div>
+<div class="tl-content"><div class="tl-title">Dinner — Satiety Fortress (~36g protein)</div><ul class="tl-list"><li>Paneer 200g or Tofu 250g</li><li>Veggies 2–3 cups · ½ avocado or 12 almonds</li><li>Carb only on leg/hike days: 1 roti or ½ cup rice</li><li>KSM-66 300mg · Zinc 25mg</li></ul></div>
+</div>
+<div class="tl-item">
+<div class="tl-left"><div class="tl-dot" style="background:var(--purple-d);border-color:var(--purple-b)">🌙</div><div class="tl-time">9:30</div></div>
+<div class="tl-content"><div class="tl-title">Pre-Bed (if protein short)</div><ul class="tl-list"><li>Skyr 200g or casein shake</li><li>Magnesium Glycinate 400mg · L-Theanine 200mg</li></ul></div>
+</div>
+</div>
+</div>
+</div>
+<!-- LEUCINE TABLE -->
+<div class="card">
+<div class="card-header"><div class="card-title">Leucine Threshold Guide</div><div class="card-sub">Every meal must clear 2.5g leucine to trigger MPS</div></div>
+<div class="card-body" style="font-size:.83rem">
+<div class="ex-row"><span class="key">Whey Isolate 1 scoop</span><span class="v">~2.7g ✅</span></div>
+<div class="ex-row"><span class="key">Paneer 200g</span><span class="v">~2.8g ✅</span></div>
+<div class="ex-row"><span class="key">Tofu 300g</span><span class="v">~1.8g ⚠️ pair with ½ scoop whey</span></div>
+<div class="ex-row"><span class="key">Dal 1 cup cooked</span><span class="v">~1.2g ⚠️ pair with paneer or whey</span></div>
+<div class="ex-row"><span class="key">Greek Yogurt 250g</span><span class="v">~1.9g ⚠️ pair with whey</span></div>
+</div>
+</div>
+<!-- CRAVING BUFFER -->
+<div class="card">
+<div class="card-header"><div class="card-title">Craving Interrupt Protocol</div><div class="card-sub">Pre-approved buffer foods — pick one</div></div>
+<div class="card-body">
+<div class="pill-row">
+<span class="pill green">Roasted chana 50g</span>
+<span class="pill green">Skyr 200g</span>
+<span class="pill green">Makhana 30g</span>
+<span class="pill green">Whey shake</span>
+<span class="pill green">Cucumber + salt + lemon</span>
+<span class="pill green">Buttermilk (chaas)</span>
+</div>
+<div class="small mt"><strong>Protocol:</strong> Craving hits → 500ml water → wait 12 min → if still there, pick one buffer food above. Never decide in the moment from an open fridge.</div>
+</div>
+</div>
+<!-- PERI-WORKOUT CARB TIMING -->
+<div class="card">
+<div class="card-header"><div class="card-title">Peri-Workout Carb Distribution<span class="card-new-badge">New</span></div><div class="card-sub">Time carbs for performance · Protect muscle · Accelerate recovery</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Total carbs today (g)</label><input id="carbTotal" max="500" min="50" step="5" type="number" value="185"/></div>
+<div class="field"><label>Session type</label>
+<select id="carbSession">
+<option value="compound">Compound strength day</option>
+<option value="hypertrophy">Hypertrophy / Upper day</option>
+<option value="hike">Hike day</option>
+<option value="recovery">Recovery / Rest day</option>
+</select>
+</div>
+<div class="field"><label>Training time</label>
+<select id="carbTrainTime">
+<option value="morning">Morning (7–10am)</option>
+<option value="midday">Midday (11am–1pm)</option>
+<option selected="" value="afternoon">Afternoon (3–6pm)</option>
+<option value="evening">Evening (6–9pm)</option>
+</select>
+</div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="calcCarbTiming()">Get timing plan →</button></div>
+<div id="carbTimingResult" style="margin-top:10px"></div>
+</div>
+</div>
+<!-- SUPPLEMENTS TIMELINE -->
+<div class="card">
+<div class="card-header"><div class="card-title">Supplement Schedule</div><div class="card-sub">Full daily timing — tap any slot to expand</div></div>
+<div id="supp-accordion"></div>
+</div>
+</div>
+</div>
+<!-- PAGE: PSYCH -->
+<div class="page" id="page-psych">
+<div class="page-header compact">
+<div class="section-kicker">Consistency</div>
+<div class="page-title-wrap"><div><div class="page-title">Mindset</div><div class="page-sub">Fail-safes · Identity anchors · Yo-yo prevention</div></div><div class="header-badge">Core</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Consistency engine</div><p class="hero-sub">This page exists to prevent drift. Use it when motivation is low and structure needs to take over.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Identity</span><span class="metric-pill"><span class="metric-dot"></span> Defaults</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main">
+<div class="command-icon">∞</div>
+<div class="command-text">
+<div class="command-kicker">Behavior rules</div>
+<div class="command-title">Mindset — Command Panel</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Systems over moods</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item" id="cmd-psych-1"><div class="item-icon">∞</div><div class="item-copy"><div class="item-title">You execute systems, not moods</div><div class="item-note">Follow the next action, not whatever your mind negotiates in the moment.</div></div></div>
+<div class="command-item" id="cmd-psych-2"><div class="item-icon">↺</div><div class="item-copy"><div class="item-title">Never miss two in a row</div><div class="item-note">Low-energy days scale down, they do not disappear.</div></div></div>
+<div class="command-item" id="cmd-psych-3"><div class="item-icon">⋂</div><div class="item-copy"><div class="item-title">Use the 5-minute morning protocol</div><div class="item-note">Start the day with water, identity, and a pre-committed food plan.</div></div></div>
+<div class="command-item" id="cmd-psych-4"><div class="item-icon">✳</div><div class="item-copy"><div class="item-title">Minimum effective day beats skipping</div><div class="item-note">One compound, one accessory, rehab, then leave. Keep the chain alive.</div></div></div>
+<div class="command-item" id="cmd-psych-5"><div class="item-icon">☉</div><div class="item-copy"><div class="item-title">Protect recovery before intensity</div><div class="item-note">The fastest way forward is usually cleaner sleep and fewer bad decisions.</div></div></div>
+</div></div>
+</details>
+<div class="danger-box"><strong>Root cause:</strong> Your 6–7 year yo-yo cycle was a systems problem, not a discipline problem. Every failure happened when motivation faded. This page replaces motivation with identity and pre-written behavioral algorithms.</div>
+<!-- IDENTITY ANCHORS -->
+<div class="card">
+<div class="card-header"><div class="card-title">Identity Anchors</div></div>
+<div class="card-body" style="font-size:.86rem">
+<div class="good-box" style="margin-bottom:10px"><strong>Statement 1:</strong> "I am an athlete maintaining my body — not a dieter fighting cravings."</div>
+<div class="good-box"><strong>Statement 2:</strong> "I follow the protocol — I don't decide whether to follow the protocol."</div>
+</div>
+</div>
+<!-- IF-THEN FAIL-SAFES -->
+<div class="card">
+<div class="card-header"><div class="card-title">If-Then Fail-Safe System</div><div class="card-sub">Pre-written responses to every relapse trigger</div></div>
+<div id="fail-safe-accordion"></div>
+</div>
+<!-- 5-MINUTE MORNING PROTOCOL -->
+<div class="card">
+<div class="card-header"><div class="card-title">5-Minute Morning Protocol</div><div class="card-sub">Non-negotiable daily keystone</div></div>
+<div class="card-body" style="font-size:.85rem">
+<ul class="check-list" id="morning-checklist">
+<li><div class="ck" onclick="toggleCheck(this)"></div><span>16 oz water before anything else</span></li>
+<li><div class="ck" onclick="toggleCheck(this)"></div><span>Check protocol — what day is it, what's scheduled</span></li>
+<li><div class="ck" onclick="toggleCheck(this)"></div><span>State one identity sentence out loud</span></li>
+<li><div class="ck" onclick="toggleCheck(this)"></div><span>Pre-commit today's meals — write or log before eating</span></li>
+<li><div class="ck" onclick="toggleCheck(this)"></div><span>Move for 5 minutes minimum — even just walking to get protein</span></li>
+</ul>
+<div class="small mt">Missing this sequence drops daily compliance by ~35%. It's not motivational — it's structural.</div>
+</div>
+</div>
+<!-- STREAK TRACKER -->
+<div class="card">
+<div class="card-header"><div class="card-title">Consistency Streak<span class="card-new-badge">New</span></div><div class="card-sub">Never Miss Two In A Row — the only rule that matters for long-term adherence</div></div>
+<div class="card-body">
+<div class="stat-grid g3" style="margin-bottom:12px">
+<div class="stat green"><div class="label">Training streak</div><div class="val" id="trainStreak">0</div><div class="note">sessions in a row</div></div>
+<div class="stat orange"><div class="label">Nutrition streak</div><div class="val" id="nutritionStreak">0</div><div class="note">on-plan days</div></div>
+<div class="stat blue"><div class="label">Sleep streak</div><div class="val" id="sleepStreak">0</div><div class="note">≥7 hrs nights</div></div>
+</div>
+<div class="form-grid">
+<div class="field"><label>Today: Training done?</label>
+<select id="dayTraining"><option value="yes">Yes — session complete</option><option value="min">Minimum effective day</option><option value="no">Missed</option></select>
+</div>
+<div class="field"><label>Today: Nutrition on-plan?</label>
+<select id="dayNutrition"><option value="yes">Yes — on target</option><option value="partial">Partial — one off-plan meal</option><option value="no">No — full off-plan day</option></select>
+</div>
+<div class="field"><label>Last night: Sleep (hrs)</label>
+<input id="daySleeep" max="12" min="0" step="0.25" type="number" value="7.5"/>
+</div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="logStreakDay()">Log today →</button></div>
+<div id="streakMessage" style="margin-top:10px"></div>
+</div>
+</div>
+<!-- YO-YO BREAK PATTERN -->
+<div class="card">
+<div class="card-header"><div class="card-title">Yo-Yo Break Pattern</div><div class="card-sub">Know your exact failure signatures — interrupt them before they compound</div></div>
+<div class="card-body" style="font-size:.85rem">
+<div class="danger-box" style="margin-bottom:12px"><strong>Your historical failure pattern:</strong> Motivation fades around week 4–6 → skips 1 session → uses it to justify a food slip → spiral begins over ~10 days. This tool tracks the early warning signs before the spiral starts.</div>
+<div id="yoyo-warnings"></div>
+</div>
+</div>
+<!-- METRICS -->
+<div class="card">
+<div class="card-header"><div class="card-title">Tracking Metrics</div></div>
+<div class="card-body" style="font-size:.84rem">
+<h3 style="margin-top:0">Every 2 Weeks (Physical)</h3>
+<ul style="margin:0;padding-left:16px">
+<li>Bodyweight: daily 7-day rolling average (not single-day panic)</li>
+<li>Waist circumference at navel</li>
+<li>Right and left calf circumference</li>
+<li>Progress photo: front, side, back — same lighting, same time</li>
+</ul>
+<h3>Every 4 Weeks (Performance)</h3>
+<ul style="margin:0;padding-left:16px">
+<li>Bench press working weight × reps</li>
+<li>RDL working weight × reps</li>
+<li>Pull-ups unassisted max clean reps</li>
+<li>DB curl working weight × reps</li>
+<li>Saturday hike: elevation gain, pace, perceived effort</li>
+</ul>
+</div>
+</div>
+<!-- PHASE 3 -->
+<div class="card">
+<div class="card-header"><div class="card-title">Phase 3 at 170 lb</div><div class="card-sub">What changes when you hit goal weight</div></div>
+<div class="card-body" style="font-size:.85rem">
+<div class="warn-box">Hitting 170 lb is the most dangerous moment of the yo-yo cycle. The protocol does not end — it evolves.</div>
+<ul style="margin:6px 0 0;padding-left:16px">
+<li>Keep exact exercise structure — same movements, same days</li>
+<li>Raise calories by +150–200 kcal/day each week until maintenance</li>
+<li>Raise protein to 175–190g/day for muscle-building phase</li>
+<li>Add 1 extra set to biceps, triceps, lateral raises on Day 2 and Day 5</li>
+<li>Keep Zone 2 at 1–2 sessions/week — do not eliminate cardio base</li>
+<li>Continue all right-side asymmetry work — indefinitely</li>
+<li>Continue full injury warm-up sequence — permanently</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: WAVE -->
+<div class="page" id="page-wave">
+<div class="page-header compact">
+<div class="section-kicker">Periodization</div>
+<div class="page-title-wrap"><div><div class="page-title">Wave</div><div class="page-sub">Weekly stress planning · Recovery-aware periodization</div></div><div class="header-badge">4W</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Run the week before you run the workouts</div><p class="hero-sub">Use this tab every Sunday to decide whether the week should build, push, peak, or downshift.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Emphasis</span><span class="metric-pill"><span class="metric-dot"></span> RPE</span><span class="metric-pill"><span class="metric-dot"></span> Recovery</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main"><div class="command-icon">↺</div><div class="command-text"><div class="command-kicker">Weekly control</div><div class="command-title">Wave — Command Panel</div></div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Choose the week, then run it</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item"><div class="item-icon">1</div><div class="item-copy"><div class="item-title">Set the week first</div><div class="item-note">Calendar week, recovery state, and joint status decide the wave.</div></div></div>
+<div class="command-item"><div class="item-icon">⊕</div><div class="item-copy"><div class="item-title">Compounds follow the wave</div><div class="item-note">The main lifts change stress before accessories do.</div></div></div>
+<div class="command-item"><div class="item-icon">↓</div><div class="item-copy"><div class="item-title">Bad recovery downshifts the week</div><div class="item-note">Poor sleep or angry joints beat the calendar every time.</div></div></div>
+</div></div>
+</details>
+<!-- PHASE-WAVE CONTROLLER -->
+<div class="card" style="margin-top:4px">
+<div class="card-header"><div class="card-title">Phase-Wave Controller</div><div class="card-sub">4-week periodization engine</div></div>
+<div class="card-body">
+<div aria-label="Phase week selector" class="week-strip" role="tablist">
+<button aria-selected="true" class="week-block active" data-week="1" onclick="setPhaseWeek('1', true)" role="tab" type="button"><div class="wk">Week 1</div><div class="wkv">Build</div></button>
+<button aria-selected="false" class="week-block" data-week="2" onclick="setPhaseWeek('2', true)" role="tab" type="button"><div class="wk">Week 2</div><div class="wkv">Push</div></button>
+<button aria-selected="false" class="week-block" data-week="3" onclick="setPhaseWeek('3', true)" role="tab" type="button"><div class="wk">Week 3</div><div class="wkv">Peak</div></button>
+<button aria-selected="false" class="week-block" data-week="4" onclick="setPhaseWeek('4', true)" role="tab" type="button"><div class="wk">Week 4</div><div class="wkv">Deload</div></button>
+</div>
+<div class="form-grid" style="margin-top:10px">
+<div class="field"><label>Current week</label>
+<select id="phaseWeek" onchange="setPhaseWeek(this.value, false)"><option value="1">Week 1</option><option value="2">Week 2</option><option value="3">Week 3</option><option value="4">Week 4 (Deload)</option></select>
+</div>
+<div class="field"><label>Goal</label>
+<select id="phaseGoal"><option value="cut">Cut</option><option value="maintain">Maintain</option><option value="build">Build</option></select>
+</div>
+<div class="field"><label>Recovery state</label>
+<select id="phaseRecovery"><option value="good">Good</option><option selected="" value="normal">Normal</option><option value="poor">Poor</option></select>
+</div>
+<div class="field"><label>Joint status</label>
+<select id="phaseJointFlag"><option selected="" value="quiet">Quiet</option><option value="stiff">Stiff</option><option value="angry">Angry</option></select>
+</div>
+<div class="field"><label>Compliance %</label><input id="phaseCompliance" max="100" min="0" step="1" type="number" value="90"/></div>
+<div class="field"><label>Strength trend</label>
+<select id="phaseStrengthTrend"><option value="up">Up</option><option selected="" value="flat">Flat</option><option value="down">Down</option></select>
+</div>
+</div>
+<div class="btn-row" style="margin-top:12px">
+<button class="btn" onclick="runPhaseWave()">Run wave</button>
+<button class="btn secondary" onclick="resetPhaseWave()">Reset</button>
+</div>
+<div class="banner blue mt" id="phaseBanner">Select wave inputs and hit Run.</div>
+<div class="stat-grid" style="margin-top:10px">
+<div class="stat"><div class="label">Emphasis</div><div class="hevy-val" id="phaseEmphasisOut" style="font-size:.88rem">—</div></div>
+<div class="stat"><div class="label">Compounds</div><div class="hevy-val" id="phaseCompoundOut" style="font-size:.88rem">—</div></div>
+<div class="stat"><div class="label">RPE target</div><div class="hevy-val" id="phaseRpeOut">—</div></div>
+<div class="stat"><div class="label">Nutrition</div><div class="hevy-val" id="phaseNutritionOut" style="font-size:.88rem">—</div></div>
+</div>
+<div class="small mt" id="phaseCoachText"></div>
+</div>
+</div>
+<div class="info" style="margin-top:4px">Use the <strong>Hevy</strong> tab to interpret your session and the <strong>Milestones</strong> tab to review strength progress.</div>
+<!-- RPE LADDER -->
+<div class="card">
+<div class="card-header"><div class="card-title">RPE Ladder</div></div>
+<div class="card-body">
+<div class="rpe-grid">
+<div class="rpe-block"><div class="rpe-head">RPE 7</div><div class="rpe-main">3 RIR</div><div class="rpe-note">Deload weeks, post-deload, stiff joints</div></div>
+<div class="rpe-block"><div class="rpe-head">RPE 8</div><div class="rpe-main">2 RIR</div><div class="rpe-note">Default target for all compounds</div></div>
+<div class="rpe-block"><div class="rpe-head">RPE 9</div><div class="rpe-main">1 RIR</div><div class="rpe-note">Top sets only, pain low, form clean</div></div>
+<div class="rpe-block"><div class="rpe-head">RPE 5–6</div><div class="rpe-main">Rehab</div><div class="rpe-note">Control and tendon tolerance only</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: HEVY -->
+<div class="page" id="page-hevy">
+<div class="page-header compact">
+<div class="section-kicker">Session interpretation</div>
+<div class="page-title-wrap"><div><div class="page-title">Hevy Coach</div><div class="page-sub">Log the set in Hevy · Decide the next move here</div></div><div class="header-badge">Live</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Let execution earn progression</div><p class="hero-sub">This tab turns logged weight, reps, RPE, and joint signals into the next coaching decision.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Reps</span><span class="metric-pill"><span class="metric-dot"></span> RPE</span><span class="metric-pill"><span class="metric-dot"></span> Tissue signal</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main"><div class="command-icon">◎</div><div class="command-text"><div class="command-kicker">Progression rules</div><div class="command-title">Hevy — Command Panel</div></div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Reps first, then load</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item"><div class="item-icon">↑</div><div class="item-copy"><div class="item-title">Top set decides</div><div class="item-note">If the top set is clean at target RPE, you earn the next progression step.</div></div></div>
+<div class="command-item"><div class="item-icon">≈</div><div class="item-copy"><div class="item-title">Back-off sets prove control</div><div class="item-note">Volume only counts when the pattern stays stable and pain stays quiet.</div></div></div>
+<div class="command-item"><div class="item-icon">!</div><div class="item-copy"><div class="item-title">Pain changes the answer</div><div class="item-note">A strong set with ugly tissue feedback is still not a green light.</div></div></div>
+</div></div>
+</details>
+<!-- HEVY COACH -->
+<div class="card">
+<div class="card-header"><div class="card-title">Hevy Session Coach</div><div class="card-sub">Log in Hevy → interpret here</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Movement class</label>
+<select id="liftClass"><option value="primary">Primary compound</option><option value="secondary">Secondary compound</option><option value="isolation">Isolation</option><option value="rehab">Rehab / stability</option></select>
+</div>
+<div class="field"><label>Rep target</label>
+<select id="repTarget"><option value="5-8">5–8</option><option selected="" value="8-10">8–10</option><option value="10-15">10–15</option><option value="12-20">12–20 / rehab</option></select>
+</div>
+<div class="field"><label>Top set weight</label><input id="topSetWeight" min="0" step="2.5" type="number" value="40"/></div>
+<div class="field"><label>Top set reps</label><input id="topSetReps" min="0" step="1" type="number" value="10"/></div>
+<div class="field"><label>Top set RPE</label><input id="topSetRpe" max="10" min="1" step="0.5" type="number" value="8"/></div>
+<div class="field"><label>Movement quality /10</label><input id="qualityScore" max="10" min="1" step="1" type="number" value="8"/></div>
+<div class="field"><label>Asymmetry /10</label><input id="asymmetryScore" max="10" min="0" step="1" type="number" value="2"/></div>
+<div class="field"><label>Joint pain /10</label><input id="jointSignal" max="10" min="0" step="1" type="number" value="2"/></div>
+<div class="field"><label>Back-off sets done</label><input id="backoffDone" max="6" min="0" step="1" type="number" value="2"/></div>
+</div>
+<div style="margin-top:12px"><button class="btn" onclick="runHevyCoach()">Coach next session →</button></div>
+<div class="banner blue mt" id="hevyBanner">Fill in the session above and hit Coach.</div>
+<div class="stat-grid" style="margin-top:10px">
+<div class="stat"><div class="label">Next move</div><div class="hevy-val" id="nextMoveOut">—</div></div>
+<div class="stat"><div class="label">Top set rule</div><div class="hevy-val" id="topSetRuleOut" style="font-size:.85rem">—</div></div>
+<div class="stat"><div class="label">Back-off rule</div><div class="hevy-val" id="backoffRuleOut" style="font-size:.85rem">—</div></div>
+<div class="stat"><div class="label">Focus</div><div class="hevy-val" id="focusRuleOut">—</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: MILESTONES -->
+<div class="page" id="page-milestones">
+<div class="page-header compact">
+<div class="section-kicker">Trend view</div>
+<div class="page-title-wrap"><div><div class="page-title">Milestones</div><div class="page-sub">Main lift targets · Visible progress you can actually review</div></div><div class="header-badge">Track</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Track the lifts that matter most</div><p class="hero-sub">Keep this page clean and visual so you can spot progress without digging through session logs.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Press</span><span class="metric-pill"><span class="metric-dot"></span> Pull</span><span class="metric-pill"><span class="metric-dot"></span> Hinge</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main"><div class="command-icon">◌</div><div class="command-text"><div class="command-kicker">Review rhythm</div><div class="command-title">Milestones — Command Panel</div></div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Update weekly, not daily</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item"><div class="item-icon">W</div><div class="item-copy"><div class="item-title">Refresh once per week</div><div class="item-note">Use the Hevy logs, then update the bars so the trend stays clean.</div></div></div>
+<div class="command-item"><div class="item-icon">◎</div><div class="item-copy"><div class="item-title">Use anchors, not every lift</div><div class="item-note">The milestone lifts tell you if the plan is working without clutter.</div></div></div>
+</div></div>
+</details>
+<!-- MILESTONE TRACKER -->
+<div class="card">
+<div class="card-header"><div class="card-title">Strength Milestones</div><div class="card-sub">Update from Hevy weekly</div></div>
+<div class="card-body">
+<div id="milestone-list"></div>
+<div style="margin-top:10px"><button class="btn ghost" onclick="updateMilestones()">Refresh bars</button></div>
+</div>
+</div>
+<!-- SESSION LOG -->
+<div class="card">
+<div class="card-header"><div class="card-title">Last Session Log<span class="card-new-badge">New</span></div><div class="card-sub">Log after each session · Use to set next session targets</div></div>
+<div class="card-body">
+<div class="form-grid">
+<div class="field"><label>Exercise</label>
+<select id="logExercise">
+<option>Barbell Bench Press</option>
+<option>High-Incline DB Press</option>
+<option>Romanian Deadlift</option>
+<option>Pull-Ups</option>
+<option>Chest-Supported Row</option>
+<option>DB Step-Ups</option>
+<option>Goblet Squat</option>
+<option>Hip Thrust</option>
+<option>DB Curl</option>
+<option>Overhead DB Extension</option>
+<option>Single-Leg Calf Raise</option>
+<option>Landmine Press</option>
+<option>Lateral Raise</option>
+</select>
+</div>
+<div class="field"><label>Weight Used (lb)</label><input id="logWeight" min="0" step="2.5" type="number" value="0"/></div>
+<div class="field"><label>Reps (top set)</label><input id="logReps" min="0" step="1" type="number" value="0"/></div>
+<div class="field"><label>RPE</label><input id="logRPE" max="10" min="1" step="0.5" type="number" value="8"/></div>
+<div class="field"><label>Joint signal /10</label><input id="logJoint" max="10" min="0" step="1" type="number" value="1"/></div>
+<div class="field"><label>Quality /10</label><input id="logQuality" max="10" min="1" step="1" type="number" value="8"/></div>
+</div>
+<div style="margin-top:12px"><button class="btn secondary" onclick="saveSessionLog()">Save this set →</button></div>
+<div id="sessionLogDisplay" style="margin-top:14px"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: RPE -->
+<div class="page" id="page-rpe">
+<div class="page-header compact">
+<div class="section-kicker">Effort scale</div>
+<div class="page-title-wrap"><div><div class="page-title">RPE</div><div class="page-sub">Know how hard to push before you touch the weight</div></div><div class="header-badge">Scale</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Effort should match the week and the tissue</div><p class="hero-sub">Use this page when you need a fast reminder of how hard the set should feel.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Compounds</span><span class="metric-pill"><span class="metric-dot"></span> Isolation</span><span class="metric-pill"><span class="metric-dot"></span> Rehab</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main"><div class="command-icon">◔</div><div class="command-text"><div class="command-kicker">Effort rules</div><div class="command-title">RPE — Command Panel</div></div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Two reps in reserve is home base</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item"><div class="item-icon">8</div><div class="item-copy"><div class="item-title">Default compounds live around RPE 8</div><div class="item-note">That is strong enough to progress without grinding yourself into the floor.</div></div></div>
+<div class="command-item"><div class="item-icon">9</div><div class="item-copy"><div class="item-title">Peak sets touch RPE 9 only when earned</div><div class="item-note">Low pain, clean reps, and the right week first.</div></div></div>
+<div class="command-item"><div class="item-icon">6</div><div class="item-copy"><div class="item-title">Rehab stays low and controlled</div><div class="item-note">Tendon work should feel deliberate, not dramatic.</div></div></div>
+</div></div>
+</details>
+<!-- RPE LADDER -->
+<div class="card">
+<div class="card-header"><div class="card-title">RPE Ladder</div></div>
+<div class="card-body">
+<div class="rpe-grid">
+<div class="rpe-block"><div class="rpe-head">RPE 7</div><div class="rpe-main">3 RIR</div><div class="rpe-note">Deload weeks, post-deload, stiff joints</div></div>
+<div class="rpe-block"><div class="rpe-head">RPE 8</div><div class="rpe-main">2 RIR</div><div class="rpe-note">Default target for all compounds</div></div>
+<div class="rpe-block"><div class="rpe-head">RPE 9</div><div class="rpe-main">1 RIR</div><div class="rpe-note">Top sets only, pain low, form clean</div></div>
+<div class="rpe-block"><div class="rpe-head">RPE 5–6</div><div class="rpe-main">Rehab</div><div class="rpe-note">Control and tendon tolerance only</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE: PRIMER -->
+<div class="page" id="page-primer">
+<div class="page-header compact">
+<div class="section-kicker">Activation</div>
+<div class="page-title-wrap"><div><div class="page-title">Primer</div><div class="page-sub">Nervous system switch-on · Compound-lift preparation</div></div><div class="header-badge">Ready</div></div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy"><div class="hero-title">Prime strength before you ask for it</div><p class="hero-sub">Use this tab right before the main lift so the first work set feels like a continuation, not a shock.</p></div>
+<div class="hero-meta"><span class="metric-pill"><span class="metric-dot"></span> Pressing</span><span class="metric-pill"><span class="metric-dot"></span> Pulling</span><span class="metric-pill"><span class="metric-dot"></span> Hinge</span></div>
+</div>
+<details class="command-card" open="">
+<summary class="command-summary">
+<div class="command-summary-main"><div class="command-icon">⚑</div><div class="command-text"><div class="command-kicker">Primer rules</div><div class="command-title">Primer — Command Panel</div></div></div>
+<div style="display:flex;align-items:center;gap:10px"><div class="command-state">Low fatigue, high intent</div><div class="command-chevron">⌄</div></div>
+</summary>
+<div class="command-body"><div class="command-list">
+<div class="command-item"><div class="item-icon">1</div><div class="item-copy"><div class="item-title">Use primers only on compounds</div><div class="item-note">Presses, pull-ups, rows, and hinges get primed. Isolation work does not.</div></div></div>
+<div class="command-item"><div class="item-icon">△</div><div class="item-copy"><div class="item-title">Explosive intent, not fatigue</div><div class="item-note">Each primer set should wake the pattern up, not tire you out.</div></div></div>
+<div class="command-item"><div class="item-icon">!</div><div class="item-copy"><div class="item-title">If the primer feels unstable, downshift the day</div><div class="item-note">The primer is a diagnostic tool as much as an activation tool.</div></div></div>
+</div></div>
+</details>
+<div class="card">
+<div class="card-header"><div class="card-title">Day-specific quick cues</div><div class="card-sub">Matched to your injuries, V-taper target, and arm-growth bias</div></div>
+<div class="card-body" style="font-size:.84rem">
+<div class="ex-row"><span class="key">Monday Push</span><span class="v">Scap control → upper-chest groove → triceps lockout</span></div>
+<div class="ex-row"><span class="key">Tuesday Pull</span><span class="v">Lat depression → row path → biceps tension without swinging</span></div>
+<div class="ex-row"><span class="key">Thursday Legs</span><span class="v">Right ankle stiffness check → knee tracking → hinge snap</span></div>
+<div class="ex-row"><span class="key">Friday Upper</span><span class="v">Delts on, lats wide, elbows warm for arm volume</span></div>
+<div class="ex-row"><span class="key">Saturday Arms</span><span class="v">Low-fatigue curl + extension activation after the hike</span></div>
+</div>
+</div>
+<!-- NEURAL PRIMER PROTOCOL -->
+<div class="card">
+<div class="card-header"><div class="card-title">Neural Primer Protocol</div><div class="card-sub">Mandatory before every compound lift</div></div>
+<div class="card-body">
+<div class="warn-box" style="margin-bottom:10px"><strong>Compounds only</strong> — bench, RDL, pull-ups, DB shoulder press. Never run primers on isolation work.</div>
+<div class="ex-row"><span class="key">Primer 1</span><span class="v">40% load · 5 reps explosive · 3-sec eccentric · 60 sec rest</span></div>
+<div class="ex-row"><span class="key">Primer 2</span><span class="v">60% load · 3–4 reps controlled · 90 sec rest</span></div>
+<div class="ex-row"><span class="key">Work Set 1</span><span class="v">100% working weight — nervous system fully primed</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- BOTTOM NAV -->
+<div class="bnav-shell">
+<nav class="bnav">
+<div class="bnav-track">
+<button class="bnav__btn active" onclick="showPage('today',this)" type="button"><span class="bnav__icon">◴</span><span class="bnav__label">Today</span></button>
+<button class="bnav__btn" onclick="showPage('train',this)" type="button"><span class="bnav__icon">△</span><span class="bnav__label">Train</span></button>
+<button class="bnav__btn" onclick="showPage('wave',this)" type="button"><span class="bnav__icon">↺</span><span class="bnav__label">Wave</span></button>
+<button class="bnav__btn" onclick="showPage('hevy',this)" type="button"><span class="bnav__icon">◎</span><span class="bnav__label">Hevy</span></button>
+<button class="bnav__btn" onclick="showPage('milestones',this)" type="button"><span class="bnav__icon">◌</span><span class="bnav__label">Milestones</span></button>
+<button class="bnav__btn" onclick="showPage('rpe',this)" type="button"><span class="bnav__icon">◔</span><span class="bnav__label">RPE</span></button>
+<button class="bnav__btn" onclick="showPage('primer',this)" type="button"><span class="bnav__icon">⚑</span><span class="bnav__label">Primer</span></button>
+<button class="bnav__btn" onclick="showPage('rehab',this)" type="button"><span class="bnav__icon">✣</span><span class="bnav__label">Rehab</span></button>
+<button class="bnav__btn" onclick="showPage('nutrition',this)" type="button"><span class="bnav__icon">◇</span><span class="bnav__label">Nutrition</span></button>
+<button class="bnav__btn" onclick="showPage('psych',this)" type="button"><span class="bnav__icon">◍</span><span class="bnav__label">Mindset</span></button>
+</div>
+</nav>
+</div>
+
+<!-- Sync consolidated into elite chrome script -->
+
+
+
+<script defer="True" src="assets/script.js"></script></body>
+</html>
