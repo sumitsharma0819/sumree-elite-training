@@ -669,3 +669,23 @@ body.ree-app>*{position:relative;z-index:2}
 .ree-hero-copy h2{margin:0 0 4px;font-size:1.18rem;letter-spacing:-.03em;color:var(--text-2)}
 .ree-hero-copy p{margin:0;color:var(--muted)}
 @media(max-width:640px){.ree-hero-portrait{flex-direction:column;align-items:flex-start}.ree-hero-portrait img{width:100%;height:auto;max-height:280px}}
+
+
+/* Fallback page backgrounds in case JS applies late */
+body.sumo-app[data-page="today"]{--page-bg-image:url("assets/images/bg-page-today.svg");}
+body.sumo-app[data-page="train"]{--page-bg-image:url("assets/images/bg-train-monday.jpg");}
+body.sumo-app[data-page="rehab"]{--page-bg-image:url("assets/images/bg-page-rehab.svg");}
+body.sumo-app[data-page="nutrition"]{--page-bg-image:url("assets/images/bg-page-nutrition.jpg");}
+body.sumo-app[data-page="psych"]{--page-bg-image:url("assets/images/bg-page-psych.svg");}
+body.sumo-app[data-page="wave"]{--page-bg-image:url("assets/images/bg-page-wave.svg");}
+body.sumo-app[data-page="hevy"]{--page-bg-image:url("assets/images/bg-page-hevy.svg");}
+body.sumo-app[data-page="milestones"]{--page-bg-image:url("assets/images/bg-page-milestones.svg");}
+body.sumo-app[data-page="rpe"]{--page-bg-image:url("assets/images/bg-page-rpe.svg");}
+body.sumo-app[data-page="primer"]{--page-bg-image:url("assets/images/bg-page-primer.svg");}
+body.sumo-app[data-page="train"][data-train-day="d1"]{--page-bg-image:url("assets/images/bg-train-monday.jpg");}
+body.sumo-app[data-page="train"][data-train-day="d2"]{--page-bg-image:url("assets/images/bg-train-tuesday.svg");}
+body.sumo-app[data-page="train"][data-train-day="d3"]{--page-bg-image:url("assets/images/bg-train-wednesday.svg");}
+body.sumo-app[data-page="train"][data-train-day="d4"]{--page-bg-image:url("assets/images/bg-train-thursday.svg");}
+body.sumo-app[data-page="train"][data-train-day="d5"]{--page-bg-image:url("assets/images/bg-train-friday.svg");}
+body.sumo-app[data-page="train"][data-train-day="d6"]{--page-bg-image:url("assets/images/bg-train-saturday.jpg");}
+body.sumo-app[data-page="train"][data-train-day="d7"]{--page-bg-image:url("assets/images/bg-train-sunday.svg");}

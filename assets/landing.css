@@ -1,6 +1,5 @@
 
 :root{--text:#fff;--glass:rgba(255,255,255,.12);--glass2:rgba(255,255,255,.18);--shadow:0 24px 60px rgba(0,0,0,.28);--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif}
-*{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:var(--font);background:#05070b;color:var(--text)}
 body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at top,rgba(87,132,255,.16),transparent 26%),linear-gradient(180deg,#08101a,#05070b)}
 .landing-shell{width:min(1180px,100%);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.72fr);gap:24px;align-items:center}
@@ -24,8 +23,12 @@ body{min-height:100vh;display:flex;align-items:center;justify-content:center;pad
 .hotspot-label{position:absolute;left:50%;bottom:100%;transform:translate(-50%,-10px);padding:10px 14px;border-radius:999px;background:rgba(7,10,18,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);font-size:.9rem;font-weight:800;letter-spacing:.02em;opacity:0;pointer-events:none;transition:.24s ease;white-space:nowrap;box-shadow:0 16px 34px rgba(0,0,0,.26)}
 .hotspot:hover .hotspot-label,.hotspot:focus-visible .hotspot-label{opacity:1;transform:translate(-50%,-18px)}
 .hotspot:hover::before,.hotspot:focus-visible::before{border-color:rgba(255,255,255,.54);box-shadow:0 0 0 10px rgba(255,255,255,.1)}
-.hotspot-male{left:21%;top:18%;width:22%;height:18%}
-.hotspot-female{left:46%;top:20%;width:20%;height:18%}
+.hotspot-male{left:18.5%;top:12.5%;width:21%;height:27%}
+.hotspot-female{left:43.5%;top:14.5%;width:20%;height:29%}
 .footer-note{margin-top:14px;color:rgba(255,255,255,.62);font-size:.82rem}
 @media(max-width:980px){.landing-shell{grid-template-columns:1fr}.hero-card{min-height:64vh}.info-panel{order:-1}}
 @media(max-width:640px){body{padding:14px}.hero-card{min-height:58vh;border-radius:24px}.hero-copy{left:18px;right:18px;bottom:18px;display:block}.hero-title{font-size:2rem}.hero-sub{font-size:.92rem}.info-panel{padding:20px;border-radius:22px}.hotspot-male{left:18%;top:17%;width:24%;height:18%}.hotspot-female{left:48%;top:21%;width:22%;height:18%}}
+@media(max-width:640px){
+  .hotspot-male{left:17%;top:11.5%;width:24%;height:28%}
+  .hotspot-female{left:43%;top:14%;width:22%;height:30%}
+}
