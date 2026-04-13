@@ -1,0 +1,1286 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Ree Sumo Cut System — 24-Week Cardio + Sculpt Protocol</title>
+<meta content="4-day cardio-forward, HIIT + light lifting transformation plan for a vegetarian female using dumbbells and barbells only." name="description"/>
+<style>
+:root{
+  --bg:#DBDBE2;
+  --surface:#FCFCFD;
+  --surface2:#F5F5F8;
+  --surface3:#EFEFF4;
+  --text:#18181B;
+  --text-2:#111214;
+  --muted:#636369;
+  --muted-2:#7B7B82;
+  --line:rgba(60,60,67,0.12);
+  --line2:rgba(60,60,67,0.18);
+  --shadow-sm:0 10px 28px rgba(15,23,42,0.055);
+  --shadow-md:0 18px 44px rgba(15,23,42,0.08);
+  --glass:rgba(250,250,252,0.76);
+  --orange:#FF6A00;
+  --orange-d:rgba(255,106,0,0.11);
+  --orange-b:rgba(255,106,0,0.18);
+  --blue:#0A84FF;
+  --blue-d:rgba(10,132,255,0.10);
+  --blue-b:rgba(10,132,255,0.17);
+  --green:#30D158;
+  --green-d:rgba(48,209,88,0.10);
+  --green-b:rgba(48,209,88,0.17);
+  --yellow:#FF9F0A;
+  --yellow-d:rgba(255,159,10,0.10);
+  --yellow-b:rgba(255,159,10,0.18);
+  --red:#FF453A;
+  --red-d:rgba(255,69,58,0.10);
+  --red-b:rgba(255,69,58,0.17);
+  --purple:#BF5AF2;
+  --purple-d:rgba(191,90,242,0.10);
+  --purple-b:rgba(191,90,242,0.17);
+  --r:22px;
+  --rs:16px;
+  --pill:999px;
+  --f:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{
+  margin:0;padding:0;
+  background:transparent;
+  color:var(--text);
+  font-family:var(--f);
+  font-size:16px;line-height:1.5;overscroll-behavior:auto;
+  min-height:100%;
+  overflow-x:hidden;
+}
+body{background-attachment:scroll}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;font-family:var(--f)}
+input,select,button,textarea{font-family:var(--f);font-size:15px}
+h1,h2,h3,h4{margin:0}
+p{margin:.35rem 0}
+strong{color:var(--text-2)}
+small{color:var(--muted)}
+:focus-visible{outline:none}
+@media (prefers-reduced-motion:no-preference){
+  .page.active{animation:pageIn .34s cubic-bezier(.22,.61,.36,1)}
+  .card,.stat,.hero-panel,.bnav,.btn,.pill,.tab-btn,.day-btn,.week-btn,.acc-header{transition:transform .22s ease, box-shadow .22s ease, background-color .22s ease, color .22s ease, opacity .22s ease, border-color .22s ease}
+  .card:hover,.stat:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(15,23,42,0.08)}
+}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.global-sumo-header{
+  position:sticky;top:0;z-index:60;
+  padding:10px 14px;
+  background:rgba(242,242,247,0.78);
+  backdrop-filter:saturate(180%) blur(18px);
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  border-bottom:1px solid rgba(60,60,67,0.12);
+}
+.global-sumo-shell{
+  width:min(100%,920px);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.global-sumo-brand{min-width:0}
+.global-sumo-name{font-size:1.2rem;font-weight:800;letter-spacing:-0.03em;color:var(--text-2);line-height:1.05}
+.global-sumo-sub{font-size:.78rem;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.global-sumo-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.global-sumo-pill{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.78);
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);font-size:.76rem;font-weight:700;color:var(--text-2)
+}
+.global-sumo-dot{width:7px;height:7px;border-radius:999px;background:#0A84FF;display:inline-block}
+.global-sumo-dot.green{background:#30D158}
+.global-sumo-dot.orange{background:#FF9F0A}
+.global-sumo-dot.red{background:#FF453A}
+
+.bnav-shell{
+  position:fixed;left:0;right:0;bottom:12px;z-index:100;pointer-events:none;padding:0 12px;
+}
+.bnav{
+  position:relative;left:50%;transform:translateX(-50%);
+  width:min(calc(100vw - 24px), 980px);
+  background:var(--glass);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(22px);
+  border:1px solid rgba(255,255,255,0.52);box-shadow:var(--shadow-md);
+  padding:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom));border-radius:26px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;pointer-events:auto;
+}
+.bnav::-webkit-scrollbar{display:none}
+.bnav-track{display:flex;align-items:stretch;gap:6px;width:max-content;min-width:100%;justify-content:center;margin:0 auto}
+.bnav__btn{
+  flex:0 0 auto;min-width:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;padding:10px 8px;border:none;background:transparent;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-radius:18px;
+}
+.bnav__btn.active{color:var(--blue);background:rgba(255,255,255,0.54);box-shadow:0 10px 18px rgba(15,23,42,0.06)}
+.bnav__icon{font-size:1rem;line-height:1;width:26px;height:26px;border-radius:999px;display:flex;align-items:center;justify-content:center}
+.bnav__btn.active .bnav__icon{background:rgba(10,132,255,0.12)}
+
+.page{display:none;min-height:auto;height:auto;padding-bottom:120px}
+.page.active{display:block}
+.page-header{
+  padding:16px 18px 14px;background:var(--glass);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);
+  border-bottom:1px solid rgba(255,255,255,0.42);box-shadow:0 1px 0 rgba(60,60,67,0.08)
+}
+.section-kicker{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.72);color:var(--muted-2);font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);margin-bottom:8px
+}
+.page-title-wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.page-title{font-size:1.45rem;font-weight:750;color:var(--text-2);margin:0;letter-spacing:-0.03em}
+.page-sub{font-size:.86rem;color:var(--muted);margin:3px 0 0}
+.header-badge{
+  display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,0.76);color:var(--blue);font-size:.88rem;font-weight:700;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)
+}
+.page-body{width:min(100%,920px);margin:0 auto;padding:18px 16px 20px;display:flex;flex-direction:column;gap:16px}
+
+.hero-panel{
+  background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,248,251,0.94));border-radius:26px;padding:16px 18px;
+  box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid rgba(255,255,255,0.55)
+}
+.hero-copy{min-width:0}
+.hero-title{font-size:1.05rem;font-weight:760;letter-spacing:-0.02em;color:var(--text-2);margin:0 0 4px}
+.hero-sub{font-size:.84rem;color:var(--muted);margin:0}
+.hero-meta{display:flex;gap:8px;flex-wrap:wrap}
+.metric-pill{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:#FFFFFF;
+  box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);font-size:.76rem;font-weight:700;color:var(--text-2)
+}
+.metric-dot{width:8px;height:8px;border-radius:999px;background:var(--blue)}
+
+.card{
+  background:var(--surface);border:none;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm)
+}
+.card-header{
+  padding:16px 18px 12px;border-bottom:1px solid rgba(60,60,67,0.08);background:linear-gradient(180deg, rgba(247,247,250,0.96), rgba(252,252,253,0.94))
+}
+.card-body{padding:16px 18px 18px}
+.card-title{font-size:1rem;font-weight:700;color:var(--text-2);margin:0;letter-spacing:-0.01em}
+.card-sub{font-size:.82rem;color:var(--muted);margin:3px 0 0}
+
+.banner,.info,.warn-box,.good-box,.danger-box{
+  border-radius:18px;padding:13px 14px;font-size:.88rem;border:1px solid
+}
+.banner.blue,.info{background:var(--blue-d);border-color:var(--blue-b);color:var(--text)}
+.banner.green,.good-box{background:var(--green-d);border-color:var(--green-b);color:var(--text)}
+.banner.yellow,.warn-box{background:var(--yellow-d);border-color:var(--yellow-b);color:var(--text)}
+.banner.red,.danger-box{background:var(--red-d);border-color:var(--red-b);color:var(--text)}
+.banner.orange{background:var(--orange-d);border-color:var(--orange-b);color:var(--text)}
+.banner.purple{background:var(--purple-d);border-color:var(--purple-b);color:var(--text)}
+.banner .sub{font-size:.82rem;font-weight:500;color:var(--text);margin-top:6px;opacity:.92}
+
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat-grid.g3{grid-template-columns:repeat(3,1fr)}
+.stat-grid.g4{grid-template-columns:repeat(4,1fr)}
+.stat{
+  background:var(--surface3);border:none;border-radius:18px;padding:14px 14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)
+}
+.stat .label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-2);margin-bottom:6px}
+.stat .val{font-size:1.35rem;font-weight:780;color:var(--text-2);letter-spacing:-.04em}
+.stat .note{font-size:.76rem;color:var(--muted);margin-top:4px}
+
+.pill-row,.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.pill{display:inline-flex;align-items:center;padding:6px 11px;border-radius:999px;font-size:.76rem;font-weight:650;border:none;background:#F4F4F7;color:var(--text)}
+.pill.orange{background:var(--orange-d);color:#B25500}
+.pill.green{background:var(--green-d);color:#167C36}
+.pill.blue{background:var(--blue-d);color:#005ECC}
+.pill.yellow{background:var(--yellow-d);color:#A66400}
+.pill.red{background:var(--red-d);color:#B42318}
+.pill.purple{background:var(--purple-d);color:#7F2DBA}
+
+.btn{
+  width:100%;padding:14px 16px;border-radius:18px;border:none;font-size:.95rem;font-weight:700;letter-spacing:-.01em;
+  background:linear-gradient(180deg, #1D9BF0, var(--blue));color:#fff;box-shadow:0 12px 24px rgba(10,132,255,0.20)
+}
+.btn.secondary{background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.10);color:var(--text-2);box-shadow:none}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+table{width:100%;border-collapse:collapse}
+thead th{
+  text-align:left;font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);
+  padding:10px 8px;border-bottom:1px solid rgba(60,60,67,0.10);background:#F8F8FB
+}
+tbody td{
+  padding:10px 8px;border-bottom:1px solid rgba(60,60,67,0.08);vertical-align:top;font-size:.88rem
+}
+tbody tr:last-child td{border-bottom:none}
+
+.acc-item{border-bottom:1px solid rgba(60,60,67,0.08)}
+.acc-item:last-child{border-bottom:none}
+.acc-header{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:8px}
+.acc-title{font-size:.9rem;font-weight:650;color:var(--text)}
+.acc-arrow{color:var(--muted);font-size:.85rem;transition:transform .2s;flex-shrink:0}
+.acc-body{padding:0 16px 0;display:block;max-height:0;opacity:0;overflow:hidden;transition:max-height .34s cubic-bezier(.22,.61,.36,1), opacity .22s ease, padding .22s ease}
+.acc-body.open{padding:0 16px 16px;max-height:900px;opacity:1}
+.acc-arrow.open{transform:rotate(180deg)}
+
+.week-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.week-btn{
+  border:none;border-radius:18px;padding:11px 8px;text-align:center;background:#FAFAFC;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);cursor:pointer
+}
+.week-btn .wk{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2)}
+.week-btn .wkv{font-size:.87rem;font-weight:700;color:var(--text-2);margin-top:5px}
+.week-btn.active{background:var(--blue-d);box-shadow:inset 0 0 0 1px rgba(10,132,255,0.16)}
+.week-btn.active .wk,.week-btn.active .wkv{color:#005ECC}
+
+.day-scroll{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.day-scroll::-webkit-scrollbar{display:none}
+.day-btn,.tab-btn{
+  flex-shrink:0;padding:10px 15px;border-radius:999px;border:none;background:rgba(255,255,255,0.74);color:var(--muted);font-size:.83rem;font-weight:650;white-space:nowrap;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.12)
+}
+.day-btn.active,.tab-btn.active{background:var(--text-2);color:#fff;box-shadow:none}
+.day-panel{display:none}
+.day-panel.active{display:block}
+
+.train-cockpit{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.95fr);gap:12px;align-items:stretch}
+.train-focus-card{background:linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,255,255,0.68));border:1px solid rgba(255,255,255,0.6);border-radius:22px;box-shadow:var(--shadow-sm);padding:16px 18px}
+.train-focus-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.train-focus-kicker{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px}
+.train-focus-title{font-size:1.08rem;font-weight:760;letter-spacing:-.03em;color:var(--text-2);margin:0}
+.train-focus-note{font-size:.88rem;color:var(--muted);margin:4px 0 0}
+.train-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.08);font-size:.78rem;font-weight:700;color:var(--text-2);white-space:nowrap}
+.train-snapshot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.snap{background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.08);border-radius:16px;padding:11px 12px}
+.snap-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px}
+.snap-value{font-size:.9rem;font-weight:700;color:var(--text-2);line-height:1.3}
+
+.quick-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.quick-action{display:flex;align-items:flex-start;gap:10px;padding:12px 13px;border-radius:18px;background:rgba(255,255,255,0.7);border:1px solid rgba(60,60,67,0.08);text-align:left;color:var(--text);box-shadow:0 8px 20px rgba(15,23,42,0.04)}
+.quick-ic{width:34px;height:34px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue-d);color:var(--blue);font-size:.95rem;font-weight:800;flex-shrink:0}
+.quick-copy strong{display:block;color:var(--text-2);font-size:.86rem;margin-bottom:2px}
+.quick-copy span{display:block;color:var(--muted);font-size:.78rem;line-height:1.35}
+
+.list-tight{margin:.35rem 0 .35rem 1rem;padding:0}
+.list-tight li{margin:.28rem 0}
+.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.phase-card{background:#fff;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.phase-card h4{font-size:.88rem;letter-spacing:-.01em;margin-bottom:6px;color:var(--text-2)}
+.phase-card p{font-size:.83rem;color:var(--muted);margin:0 0 8px}
+.phase-card ul{margin:.3rem 0 0 1rem;padding:0}
+.phase-card li{font-size:.82rem;margin:.24rem 0}
+
+.check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.check-item{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:18px;background:#FBFBFD;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.check-item input{margin-top:3px;transform:scale(1.15)}
+.footer-note{font-size:.78rem;color:var(--muted);text-align:center;padding:8px 0 4px}
+
+@media (max-width: 980px){
+  .phase-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .train-cockpit{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .stat-grid.g3,.stat-grid.g4,.week-strip{grid-template-columns:1fr 1fr}
+  .btn-row,.check-grid{grid-template-columns:1fr}
+  .page-title{font-size:1.3rem}
+  .card-header,.card-body{padding-left:15px;padding-right:15px}
+  .hero-panel{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:560px){
+  .train-snapshot,.quick-action-grid,.phase-grid{grid-template-columns:1fr}
+  .global-sumo-shell{align-items:flex-start;flex-direction:column}
+  .global-sumo-pills{justify-content:flex-start}
+}
+@media print{
+  .bnav-shell,.global-sumo-header{display:none}
+  .page{display:block !important;padding-bottom:0}
+  body{background:#fff}
+  .card,.hero-panel,.train-focus-card{box-shadow:none}
+}
+
+.mode-switch{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.mode-btn{border:none;border-radius:14px;padding:12px 10px;background:#F4F4F7;color:var(--muted);font-weight:800;font-size:.82rem;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.mode-btn.active{background:#fff;color:var(--text-2);box-shadow:0 8px 18px rgba(15,23,42,0.06), inset 0 0 0 1px rgba(60,60,67,0.10)}
+.mode-btn.green.active{background:rgba(48,209,88,0.12);color:#167C36}
+.mode-btn.yellow.active{background:rgba(255,159,10,0.12);color:#A66400}
+.mode-btn.red.active{background:rgba(255,69,58,0.12);color:#B42318}
+.today-card-grid{display:grid;grid-template-columns:1.2fr .95fr;gap:12px;margin:12px 0}
+.today-call{background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247,247,250,0.88));border:1px solid rgba(60,60,67,0.08);border-radius:22px;padding:16px 18px;box-shadow:var(--shadow-sm)}
+.today-kicker{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:6px}
+.today-title{font-size:1.05rem;font-weight:780;letter-spacing:-.03em;color:var(--text-2);margin:0}
+.today-copy{font-size:.88rem;color:var(--muted);margin:6px 0 0}
+.today-list{margin:10px 0 0;padding-left:18px}
+.today-list li{margin:6px 0;font-size:.85rem}
+.mode-note{font-size:.82rem;color:var(--muted);margin-top:10px}
+.swap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.swap-card{background:#FBFBFD;border-radius:16px;padding:12px 12px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.swap-card h4{margin:0 0 6px;font-size:.86rem}
+.swap-card p{font-size:.8rem;color:var(--muted);margin:0}
+.tracker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.log-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.log-item{background:#fff;border:1px solid rgba(60,60,67,0.08);border-radius:14px;padding:10px 12px;font-size:.82rem}
+.log-item strong{display:block;margin-bottom:3px}
+.micro-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rule-card{background:#FBFBFD;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
+.rule-card h4{margin:0 0 6px;font-size:.9rem}
+.rule-card ul{margin:8px 0 0;padding-left:18px}
+.rule-card li{font-size:.82rem;color:var(--muted)}
+@media (max-width:760px){.today-card-grid,.tracker-grid,.swap-grid,.micro-grid{grid-template-columns:1fr}.mode-switch{grid-template-columns:1fr}}
+
+body.ree-app{position:relative;isolation:isolate;min-height:100vh;background:transparent !important}
+body.ree-app::before{content:"";position:fixed;inset:0;z-index:0;background:url("assets/images/ree.jpeg") center 18%/cover no-repeat;transform:scale(1.03)}
+body.ree-app::after{content:"";position:fixed;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,10,18,.72),rgba(8,10,18,.54) 20%,rgba(8,10,18,.42) 48%,rgba(8,10,18,.72) 100%);pointer-events:none}
+body.ree-app>*{position:relative;z-index:2}
+.home-chip{position:fixed;top:14px;left:14px;z-index:90;display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,0.82);color:#111214;text-decoration:none;font-size:.82rem;font-weight:800;box-shadow:0 12px 28px rgba(15,23,42,.16);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border:1px solid rgba(255,255,255,.4)}
+.home-chip:hover{text-decoration:none}
+.ree-hero-portrait{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.86);border-radius:24px;padding:16px;border:1px solid rgba(255,255,255,.24);backdrop-filter:saturate(170%) blur(14px);-webkit-backdrop-filter:saturate(170%) blur(14px);box-shadow:0 18px 44px rgba(15,23,42,.14)}
+.ree-hero-portrait img{width:110px;height:110px;object-fit:cover;border-radius:22px;box-shadow:0 14px 30px rgba(15,23,42,.2)}
+.ree-hero-copy h2{margin:0 0 4px;font-size:1.18rem;letter-spacing:-.03em;color:var(--text-2)}
+.ree-hero-copy p{margin:0;color:var(--muted)}
+@media(max-width:640px){.ree-hero-portrait{flex-direction:column;align-items:flex-start}.ree-hero-portrait img{width:100%;height:auto;max-height:280px}.home-chip{top:10px;left:10px;padding:8px 12px}}
+
+</style>
+</head>
+<body class="ree-app">
+<a class="home-chip" href="index.html" aria-label="Back to home">← Home</a>
+<div class="global-sumo-header">
+<div class="global-sumo-shell">
+<div class="global-sumo-brand">
+<div class="global-sumo-name">Ree Sumo Cut System</div>
+<div class="global-sumo-sub">24-week lean sculpt system · readiness mode · behavior locks</div>
+</div>
+<div class="global-sumo-pills">
+<span class="global-sumo-pill"><span class="global-sumo-dot" id="modeDot"></span><span id="modeText">Build</span></span>
+<span class="global-sumo-pill"><span class="global-sumo-dot green"></span><span id="phaseText">Phase 1 · Reset</span></span>
+</div>
+</div>
+</div>
+<div class="page-body" style="padding-top:10px;padding-bottom:0">
+<div class="ree-hero-portrait">
+  <img src="assets/images/ree.jpeg" alt="Ree portrait by the ocean" />
+  <div class="ree-hero-copy">
+    <h2>Ree</h2>
+    <p>Same premium glass look, now personalized with Ree’s solo portrait and a cinematic ocean backdrop.</p>
+  </div>
+</div>
+</div>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page-today">
+<div class="page-header">
+<div class="section-kicker">Command center</div>
+<div class="page-title-wrap">
+<div>
+<div class="page-title">Today</div>
+<div class="page-sub">What to do, how hard to push, and what protects the result from rebounding</div>
+</div>
+<div class="header-badge">Now</div>
+</div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy">
+<div class="hero-title">4-day cardio-forward transformation system</div>
+<p class="hero-sub">Built for a 39-year-old vegetarian female, 5'0", now 142 lb from 158 lb, targeting 120 lb with permanent rebound control. No hiking. Sessions are 50–60 minutes with HIIT, brisk cardio, and light dumbbell/barbell training.</p>
+</div>
+<div class="hero-meta">
+<span class="metric-pill"><span class="metric-dot"></span> Fat loss first</span>
+<span class="metric-pill"><span class="metric-dot"></span> Joint-aware</span>
+<span class="metric-pill"><span class="metric-dot"></span> Muscle retention</span>
+</div>
+</div>
+<div class="today-card-grid">
+<div class="today-call">
+<div class="today-kicker">Auto today prescription</div>
+<h3 class="today-title" id="todayName">Monday - Upper Sculpt + Low-Impact HIIT</h3>
+<p class="today-copy" id="todayGoal">Primary mission: upper-body tone, 2 controlled HIIT blocks, and no sloppy shoulder reps.</p>
+<ul class="today-list" id="todayBlocks">
+<li>Mandatory warm-up + upper-day shoulder booster.</li>
+<li>Complete all strength work before intervals.</li>
+<li>Keep 2 reps in reserve on all upper-body lifts.</li>
+</ul>
+<div class="pill-row">
+<span class="pill blue" id="todayDayPill">Training day</span>
+<span class="pill green" id="todayFocusPill">HIIT day</span>
+<span class="pill orange" id="todayRecoveryPill">Tomorrow: recovery</span>
+</div>
+</div>
+<div class="today-call">
+<div class="today-kicker">Readiness toggle</div>
+<h3 class="today-title">Choose the session you earned</h3>
+<p class="today-copy" id="readinessCopy">Build mode is the default: full strength work, cardio as written, and clean technique before speed.</p>
+<div class="mode-switch">
+<button class="mode-btn green" data-mode="green">Green - Push</button>
+<button class="mode-btn yellow active" data-mode="yellow">Yellow - Build</button>
+<button class="mode-btn red" data-mode="red">Red - Protect</button>
+</div>
+<div class="mode-note" id="modeNote">Green = full plan. Yellow = normal plan. Red = cut 1 set from each lift and replace HIIT with 12-20 min Zone 2.</div>
+</div>
+</div>
+
+<div class="stat-grid g4">
+<div class="stat"><div class="label">Start</div><div class="val">158</div><div class="note">Jan 5, 2026</div></div>
+<div class="stat"><div class="label">Current</div><div class="val">142</div><div class="note">16 lb already lost</div></div>
+<div class="stat"><div class="label">Goal</div><div class="val">120</div><div class="note">22 lb remaining</div></div>
+<div class="stat"><div class="label">Structure</div><div class="val">4 days</div><div class="note">Cardio + HIIT + light lifting</div></div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">24-week roadmap</div>
+<div class="card-sub">Each phase has a different job so the body changes without mentally burning out.</div>
+</div>
+<div class="card-body">
+<div class="week-strip">
+<button class="week-btn active" data-phase="1"><div class="wk">Weeks 1–4</div><div class="wkv">Reset</div></button>
+<button class="week-btn" data-phase="2"><div class="wk">Weeks 5–12</div><div class="wkv">Drive</div></button>
+<button class="week-btn" data-phase="3"><div class="wk">Weeks 13–20</div><div class="wkv">Sculpt</div></button>
+<button class="week-btn" data-phase="4"><div class="wk">Weeks 21–24</div><div class="wkv">Lock-In</div></button>
+</div>
+<div class="banner blue" id="phasePanel" style="margin-top:12px;">
+<strong>Phase 1 — Reset:</strong> establish the meal rhythm, groove pain-free movement, and build repeatability before pushing harder.
+          <div class="sub">Calories stay controlled, HIIT stays moderate, and every workout finishes feeling like you could have done one more round.</div>
+</div>
+</div>
+</div>
+<div class="train-cockpit">
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Readiness rule</div>
+<h3 class="train-focus-title">Earn the intensity, do not guess it</h3>
+<p class="train-focus-note">Use sleep, joint feel, and stress to decide whether today is Push, Build, or Protect.</p>
+</div>
+<div class="train-badge" id="readinessBadge">Build day</div>
+</div>
+<div class="train-snapshot">
+<div class="snap"><div class="snap-label">Push</div><div class="snap-value">Sleep 7+ hr, pain 0–2/10, energy stable. Do full cardio block and full lifting volume.</div></div>
+<div class="snap"><div class="snap-label">Build</div><div class="snap-value">Sleep 6–7 hr or mild stiffness. Keep all lifts, shorten HIIT by 20% if needed.</div></div>
+<div class="snap"><div class="snap-label">Protect</div><div class="snap-value">Sleep under 6 hr, pain 4+/10, or heavy life stress. Keep warm-up, do Zone 2 only, and 2 sets per exercise.</div></div>
+<div class="snap"><div class="snap-label">Pain rule</div><div class="snap-value">0–3/10 keep going. 4–5/10 reduce range/load. 6+/10 stop that movement and swap it.</div></div>
+</div>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Weekly non-negotiables</div>
+<h3 class="train-focus-title">The four behaviors that decide everything</h3>
+<p class="train-focus-note">This is the anti–yo-yo layer. Missing one is recoverable. Missing all four starts the old cycle.</p>
+</div>
+</div>
+<div class="check-grid">
+<label class="check-item"><input type="checkbox"/> <div><strong>4 workouts completed</strong><div><small>Any duration counts if the main blocks are done.</small></div></div></label>
+<label class="check-item"><input type="checkbox"/> <div><strong>Protein floor hit 6 of 7 days</strong><div><small>Minimum 105 g before chasing lower calories.</small></div></div></label>
+<label class="check-item"><input type="checkbox"/> <div><strong>Average steps 8,000+</strong><div><small>Walks are the appetite and waistline stabilizer.</small></div></div></label>
+<label class="check-item"><input type="checkbox"/> <div><strong>One planned flex meal only</strong><div><small>No random drift. Treats are planned, not emotional.</small></div></div></label>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">Fail-safe script for relapse weeks</div>
+<div class="card-sub">These are the exact situations that usually trigger rebound regain.</div>
+</div>
+<div class="card-body" id="failsafeList">
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">If motivation drops and you want to “start again Monday”</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body">
+<div class="good-box">Do the <strong>minimum effective day</strong>: 10-minute warm-up, 15-minute brisk walk, 2 exercises, 2 sets each, and one protein-forward dinner. The identity is protected when the streak is not broken.</div>
+</div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">If the scale spikes after a family weekend or restaurant meal</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body">
+<div class="warn-box">Do <strong>not</strong> crash calories. Return to the normal plan immediately, push water and steps, and wait for the next 3 weigh-ins. Water retention is not body fat regain.</div>
+</div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">If two workouts are missed in one week</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body">
+<div class="danger-box">Activate the emergency week: perform all four sessions in shortened form, remove one indulgence meal, and pre-log dinner every day by noon. Recovery starts with structure, not guilt.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PAGE 2 -->
+<section class="page" id="page-nutrition">
+<div class="page-header">
+<div class="section-kicker">Nutrition strategy</div>
+<div class="page-title-wrap">
+<div>
+<div class="page-title">Macros &amp; Meals</div>
+<div class="page-sub">High-satiety vegetarian cutting plan designed to stop the discipline drift that caused past rebounds</div>
+</div>
+<div class="header-badge">Fuel</div>
+</div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy">
+<div class="hero-title">Protein first, appetite second, calories third</div>
+<p class="hero-sub">The plan is structured so hunger, family food exposure, and end-of-day fatigue do not control decisions. Meals are repetitive on purpose because repetition beats “being good” for 24 weeks.</p>
+</div>
+<div class="hero-meta">
+<span class="metric-pill"><span class="metric-dot"></span> 105–120 g protein</span>
+<span class="metric-pill"><span class="metric-dot"></span> 1,400–1,600 kcal</span>
+<span class="metric-pill"><span class="metric-dot"></span> 4 feedings</span>
+</div>
+</div>
+<div class="train-cockpit" style="margin-top:12px;">
+<div class="train-focus-card">
+<div class="train-focus-top"><div><div class="train-focus-kicker">Relapse-proof meal structure</div><h3 class="train-focus-title">Default meals beat motivation</h3><p class="train-focus-note">Breakfast stays fixed, lunch rotates between 2 choices, snacks have 2 emergency options, and dinner rotates between 3 protein-anchored templates.</p></div></div>
+<ul class="list-tight">
+<li><strong>Breakfast default:</strong> protein-first and repeatable 5-6 days per week.</li>
+<li><strong>Lunch default:</strong> 2 prepared choices only, both with a visible protein anchor.</li>
+<li><strong>Snack default:</strong> one rescue snack at 4-5 PM before cravings take over.</li>
+<li><strong>Dinner default:</strong> 3 rotating templates so family meals stay controlled, not random.</li>
+<li><strong>Flex meal:</strong> once weekly, protein first, no cheat-day spillover.</li>
+</ul>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top"><div><div class="train-focus-kicker">Diet break logic</div><h3 class="train-focus-title">Use relief before burnout forces it</h3><p class="train-focus-note">Long cuts are more durable when maintenance is practiced on purpose.</p></div></div>
+<ul class="list-tight">
+<li>After 8-10 hard weeks, run a <strong>10-14 day diet break</strong> at estimated maintenance.</li>
+<li>Protein stays high, meal timing stays the same, and training structure does not change.</li>
+<li>Maintenance is not a free-for-all: it is simply more carbs and calories around training.</li>
+<li>Return to the cut when scale and hunger normalize, not when guilt hits.</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><div class="card-title">Craving interrupt protocol</div><div class="card-sub">This is the anti-binge sequence for evenings, family food exposure, and stress days.</div></div>
+<div class="card-body">
+<div class="micro-grid">
+<div class="rule-card"><h4>Step 1 - Slow the trigger</h4><ul><li>Drink water first.</li><li>Walk for 10 minutes or do 2 minutes of nasal breathing.</li><li>Do not stand and eat in the kitchen.</li></ul></div>
+<div class="rule-card"><h4>Step 2 - Protein before impulse</h4><ul><li>Eat a rescue feeding first: Greek yogurt, tofu, paneer, or shake.</li><li>Wait 15 minutes before any second choice.</li><li>Never eat from packets or shared family containers.</li></ul></div>
+</div>
+</div>
+</div>
+
+<div class="phase-grid">
+<div class="phase-card">
+<h4>Phase 1: Reset</h4>
+<p>Weeks 1–4</p>
+<ul>
+<li>Training day: 1,550–1,600 kcal</li>
+<li>Rest day: 1,425–1,475 kcal</li>
+<li>Protein 105–115 g</li>
+<li>Carbs 130–155 g</li>
+<li>Fat 42–50 g</li>
+</ul>
+</div>
+<div class="phase-card">
+<h4>Phase 2: Drive</h4>
+<p>Weeks 5–12</p>
+<ul>
+<li>Training day: 1,500–1,550 kcal</li>
+<li>Rest day: 1,375–1,450 kcal</li>
+<li>Protein 110–120 g</li>
+<li>Carbs 120–145 g</li>
+<li>Fat 40–48 g</li>
+</ul>
+</div>
+<div class="phase-card">
+<h4>Phase 3: Sculpt</h4>
+<p>Weeks 13–20</p>
+<ul>
+<li>Training day: 1,450–1,525 kcal</li>
+<li>Rest day: 1,350–1,425 kcal</li>
+<li>Protein 115–120 g</li>
+<li>Carbs 110–135 g</li>
+<li>Fat 40–46 g</li>
+</ul>
+</div>
+<div class="phase-card">
+<h4>Phase 4: Lock-In</h4>
+<p>Weeks 21–24</p>
+<ul>
+<li>Training day: 1,500–1,600 kcal</li>
+<li>Rest day: 1,400–1,500 kcal</li>
+<li>Protein stays 110–120 g</li>
+<li>Carbs rise slightly around training</li>
+<li>Goal becomes maintenance practice</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">Eating schedule</div>
+<div class="card-sub">This timing keeps evening hunger from hijacking the day.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Time</th><th>Target</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>7:00–8:00 AM</td><td>Hydrate + first protein feeding</td><td>Water, chai/coffee with controlled add-ins, then 30–35 g protein breakfast.</td></tr>
+<tr><td>12:00–1:30 PM</td><td>Main meal</td><td>Paneer or tofu + lentil/bean + vegetables + one measured carb.</td></tr>
+<tr><td>4:00–5:00 PM</td><td>Craving prevention snack</td><td>20–25 g protein before hunger becomes urgent.</td></tr>
+<tr><td>7:00–8:00 PM</td><td>Dinner</td><td>Lighter carb, highest vegetables, 30–35 g protein anchor.</td></tr>
+<tr><td>Emergency only</td><td>Rescue feeding</td><td>Greek yogurt, tofu, or protein shake if cravings hit after dinner.</td></tr>
+</tbody>
+</table>
+<div class="pill-row">
+<span class="pill green">Breakfast must be protein-heavy</span>
+<span class="pill blue">Pre-log dinner by noon</span>
+<span class="pill orange">Never arrive at dinner starved</span>
+<span class="pill purple">1 planned flex meal weekly</span>
+</div>
+</div>
+</div>
+<div class="train-cockpit">
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Meal builder</div>
+<h3 class="train-focus-title">Every plate follows the same architecture</h3>
+<p class="train-focus-note">This removes decision fatigue and keeps calories controlled even when cooking for the family.</p>
+</div>
+</div>
+<div class="train-snapshot">
+<div class="snap"><div class="snap-label">Protein</div><div class="snap-value">25–35 g: paneer, tofu, dal, chana, rajma, Greek yogurt, soy chunks, optional whey.</div></div>
+<div class="snap"><div class="snap-label">Produce</div><div class="snap-value">2 fists minimum: cooked sabzi, salad, soup vegetables, cucumber, cabbage, spinach, okra, lauki.</div></div>
+<div class="snap"><div class="snap-label">Carb</div><div class="snap-value">1 measured portion: 1 roti, 1/2–3/4 cup rice, poha portion, oats, fruit, or beans as dual protein-carb.</div></div>
+<div class="snap"><div class="snap-label">Fat</div><div class="snap-value">Keep oil visible and measured: roughly 1–2 tsp per meal, not free-poured.</div></div>
+</div>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Satiety engineering</div>
+<h3 class="train-focus-title">Use fullness as a behavior tool</h3>
+<p class="train-focus-note">These are the anti-binge levers.</p>
+</div>
+</div>
+<ul class="list-tight">
+<li>Eat protein first at every meal before touching the starch.</li>
+<li>Start lunch and dinner with water + raw vegetables or soup.</li>
+<li>Use one large bowl or plate size every time; do not graze from pans.</li>
+<li>Keep “healthy but overeatable” foods out of visual range.</li>
+<li>Have a fixed replacement for sweet cravings: yogurt bowl, protein shake, fruit + seeds, or tofu chaat.</li>
+<li>When stress rises, walk for 10 minutes before opening the pantry.</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">Sample high-protein day</div>
+<div class="card-sub">Uses the exact foods she can realistically keep in rotation.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Meal</th><th>Food</th><th>Why it stays in the plan</th></tr></thead>
+<tbody>
+<tr><td>Breakfast</td><td>2 moong/besan cheela + 100 g paneer or tofu + chai with controlled milk</td><td>Front-loads protein and kills early cravings.</td></tr>
+<tr><td>Lunch</td><td>Tofu or paneer sabzi + 1 roti + cucumber salad + dal</td><td>Balanced, family-friendly, and easy to portion.</td></tr>
+<tr><td>Snack</td><td>Greek yogurt or protein shake + roasted chana</td><td>Prevents evening overeating.</td></tr>
+<tr><td>Dinner</td><td>Rajma/chole or lentil soup bowl + sautéed vegetables + extra tofu/paneer side</td><td>High fiber and high satiety without a calorie blow-up.</td></tr>
+<tr><td>Flex meal rule</td><td>One restaurant or family treat meal</td><td>Still protein-anchored, no “cheat day”, and the next meal goes back to normal.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<!-- PAGE 3 -->
+<section class="page" id="page-train">
+<div class="page-header">
+<div class="section-kicker">Training split</div>
+<div class="page-title-wrap">
+<div>
+<div class="page-title">4-Day Cardio + HIIT + Light Lift Plan</div>
+<div class="page-sub">All sessions are built around joint-safe movement, calorie burn, and muscle retention</div>
+</div>
+<div class="header-badge">Train</div>
+</div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy">
+<div class="hero-title">Weekly template</div>
+<p class="hero-sub">Suggested rhythm: Monday, Wednesday, Friday, Sunday. Tuesday, Thursday, and Saturday are recovery days. The week now waves fatigue on purpose for better fat loss and less joint backlash.</p>
+</div>
+<div class="hero-meta">
+<span class="metric-pill"><span class="metric-dot"></span> 50–60 min</span>
+<span class="metric-pill"><span class="metric-dot"></span> Low-impact HIIT</span>
+<span class="metric-pill"><span class="metric-dot"></span> DB/BB only</span>
+</div>
+</div>
+<div class="train-cockpit" style="margin-top:12px;">
+<div class="train-focus-card">
+<div class="train-focus-top"><div><div class="train-focus-kicker">Fat-loss wave</div><h3 class="train-focus-title">Weekly fatigue is sequenced on purpose</h3><p class="train-focus-note">Two HIIT exposures, one Zone 2 lower day, and one full-body metabolic day give better output with less joint and nervous-system crash.</p></div></div>
+<div class="train-snapshot">
+<div class="snap"><div class="snap-label">Monday</div><div class="snap-value">Upper + short HIIT</div></div>
+<div class="snap"><div class="snap-label">Wednesday</div><div class="snap-value">Lower + Zone 2 only</div></div>
+<div class="snap"><div class="snap-label">Friday</div><div class="snap-value">Back/arms + short HIIT</div></div>
+<div class="snap"><div class="snap-label">Sunday</div><div class="snap-value">Full-body metabolic + incline walk</div></div>
+</div>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top"><div><div class="train-focus-kicker">Progression engine</div><h3 class="train-focus-title">Reps first, then load, then density</h3><p class="train-focus-note">This plan builds with precision, not fatigue gambling.</p></div></div>
+<ul class="list-tight">
+<li>When every prescribed set reaches the <strong>top of the rep range twice</strong> with pain &lt;=3/10, increase load next week.</li>
+<li>If reps drop hard or form degrades, keep the same weight and win with cleaner execution.</li>
+<li>If energy is low for 2 straight sessions, cut total sets by 20% for 1 week before pushing again.</li>
+<li>HIIT stays capped at <strong>2 sessions per week</strong>, 10-14 minutes each.</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-title">Warm-up all 4 days</div>
+<div class="card-sub">This is mandatory, because it prepares the right ankle, right knee, and left shoulder before intensity starts.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Drill</th><th>Prescription</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>Foot tripod + toe press</td><td>2 x 20 sec / side</td><td>Turns the foot back on so the ankle and knee track better.</td></tr>
+<tr><td>Knee-to-wall ankle rocks</td><td>2 x 8 / side, extra 1 set right side</td><td>Improves dorsiflexion so squats and lunges stop stealing motion from the knee.</td></tr>
+<tr><td>Supported calf raise with 2-sec pause</td><td>2 x 10</td><td>Builds ankle stiffness and control for walking and intervals.</td></tr>
+<tr><td>Wall sit or squat hold</td><td>2 x 20–30 sec</td><td>Loads the knee in a controlled way without twisting.</td></tr>
+<tr><td>Glute bridge + march</td><td>2 x 8 / side</td><td>Stabilizes pelvis so the knee does not overwork.</td></tr>
+<tr><td>Scapular wall slide</td><td>2 x 8</td><td>Improves shoulder upward rotation and keeps pressing comfortable.</td></tr>
+<tr><td>Side-lying external rotation with very light DB</td><td>2 x 12 left side, 1 x 12 right side</td><td>Restores cuff control for the previously irritated shoulder.</td></tr>
+<tr><td>Brisk march in place</td><td>90 sec</td><td>Raises temperature before training.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><div class="card-title">Day-specific warm-up boosters</div><div class="card-sub">Do the base warm-up first, then add the relevant booster so the prep matches the session.</div></div>
+<div class="card-body">
+<div class="swap-grid">
+<div class="swap-card"><h4>Monday / Friday upper days</h4><p>Add 1 extra set of scap wall slides and 1 extra set of left-side external rotation before pressing or rows.</p></div>
+<div class="swap-card"><h4>Wednesday lower day</h4><p>Add 1 extra set of knee-to-wall rocks, 1 extra right calf set, and a 20-second split squat iso hold per side.</p></div>
+<div class="swap-card"><h4>Sunday metabolic day</h4><p>Repeat brisk march, glute bridge march, and dead bug for one quick activation round before circuits.</p></div>
+</div>
+</div>
+</div>
+
+<div class="day-scroll">
+<button class="day-btn active" data-day="d1">Monday · Upper + HIIT</button>
+<button class="day-btn" data-day="d2">Wednesday · Lower + Zone 2</button>
+<button class="day-btn" data-day="d3">Friday · Back + HIIT</button>
+<button class="day-btn" data-day="d4">Sunday · Full Body Metabolic</button>
+</div>
+<div class="day-panel active" id="d1">
+<div class="card">
+<div class="card-header">
+<div class="card-title">Monday - Upper Sculpt + Low-Impact HIIT</div>
+<div class="card-sub">Main goal: upper-body tone, calorie burn, and shoulder-safe pressing.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<tbody>
+<tr><td>A1</td><td>Incline dumbbell press, neutral grip</td><td>3 x 10–12</td><td>45 sec</td></tr>
+<tr><td>A2</td><td>1-arm dumbbell row</td><td>3 x 12 / side</td><td>45 sec</td></tr>
+<tr><td>A3</td><td>Fast march or shadow boxing</td><td>3 x 45 sec</td><td>30 sec</td></tr>
+<tr><td>B1</td><td>Seated dumbbell shoulder press, neutral grip</td><td>2–3 x 10</td><td>45 sec</td></tr>
+<tr><td>B2</td><td>Dumbbell Romanian deadlift</td><td>3 x 12</td><td>45 sec</td></tr>
+<tr><td>B3</td><td>Dead bug</td><td>3 x 8–10 / side</td><td>30 sec</td></tr>
+<tr><td>C</td><td>HIIT finisher: 20 sec fast / 40 sec easy x 8 rounds</td><td>8 min</td><td>—</td></tr>
+<tr><td>Cool-down</td><td>Breathing + calf stretch + pec doorway stretch</td><td>3–4 min</td><td>—</td></tr>
+</tbody>
+</table>
+<div class="pill-row">
+<span class="pill green">RPE 6–7</span>
+<span class="pill blue">Stop 2 reps before form breaks</span>
+<span class="pill yellow">Shoulder-friendly elbow angle</span>
+</div>
+<div class="swap-grid"><div class="swap-card"><h4>Swap press if shoulder complains</h4><p>Use floor press or incline push-up to bench height instead of shoulder press.</p></div><div class="swap-card"><h4>Swap hinge if low back is tired</h4><p>Use glute bridge or hip thrust instead of Romanian deadlift.</p></div><div class="swap-card"><h4>What to watch on demos</h4><p>Neutral wrist, elbow 30-45 degrees from torso, ribs down, and stop 2 reps before grinding.</p></div></div></div>
+</div>
+</div>
+<div class="day-panel" id="d2">
+<div class="card">
+<div class="card-header">
+<div class="card-title">Wednesday - Lower Stability + Zone 2 Cardio</div>
+<div class="card-sub">Main goal: leg strength without knee irritation, plus longer calorie-burning work.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<tbody>
+<tr><td>A1</td><td>Goblet squat to a box/bench</td><td>3 x 10–12</td><td>60 sec</td></tr>
+<tr><td>A2</td><td>Barbell or dumbbell glute bridge</td><td>3 x 12–15</td><td>45 sec</td></tr>
+<tr><td>B1</td><td>Supported reverse lunge or split squat, shallow range</td><td>2–3 x 8 / side</td><td>60 sec</td></tr>
+<tr><td>B2</td><td>Single-leg calf raise</td><td>3 x 12 / side + 1 extra set right side</td><td>30 sec</td></tr>
+<tr><td>B3</td><td>Suitcase carry</td><td>3 x 30–40 sec / side</td><td>30 sec</td></tr>
+<tr><td>C</td><td>Zone 2 brisk walk or incline walk</td><td>20–25 min</td><td>Talk test pace</td></tr>
+<tr><td>Cool-down</td><td>Quad stretch + ankle rocks + 90/90 breathing</td><td>3–4 min</td><td>—</td></tr>
+</tbody>
+</table>
+<div class="pill-row">
+<span class="pill orange">Vertical shin bias</span>
+<span class="pill blue">No twisting under fatigue</span>
+<span class="pill green">Right side gets extra ankle work</span>
+</div>
+<div class="swap-grid"><div class="swap-card"><h4>Swap squat if knee is irritated</h4><p>Use sit-to-stand from a bench or shorten the box-squat depth.</p></div><div class="swap-card"><h4>Swap split squat if balance fails</h4><p>Use supported split squat iso hold or reverse lunge slider pattern.</p></div><div class="swap-card"><h4>What to watch on demos</h4><p>Vertical shin bias, tripod foot, slow 3-second lowering, and weaker right side starts first.</p></div></div></div>
+</div>
+</div>
+<div class="day-panel" id="d3">
+<div class="card">
+<div class="card-header">
+<div class="card-title">Friday - Back, Arms, Posterior Chain + HIIT</div>
+<div class="card-sub">Main goal: build the back-width illusion, tighten arms, and keep HIIT sharp without frying recovery.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<tbody>
+<tr><td>A1</td><td>Barbell Romanian deadlift</td><td>3 x 10</td><td>60 sec</td></tr>
+<tr><td>A2</td><td>Chest-supported or tripod dumbbell row</td><td>3 x 12</td><td>45 sec</td></tr>
+<tr><td>B1</td><td>Reverse fly</td><td>2–3 x 12–15</td><td>45 sec</td></tr>
+<tr><td>B2</td><td>Floor press</td><td>2 x 10–12</td><td>45 sec</td></tr>
+<tr><td>B3</td><td>Side plank</td><td>3 x 20–30 sec / side</td><td>30 sec</td></tr>
+<tr><td>C</td><td>HIIT ladder: 30 sec work / 60 sec easy x 8 rounds</td><td>12 min</td><td>Low-impact choices only</td></tr>
+<tr><td>Cool-down</td><td>Lat stretch + child’s pose breathing</td><td>3 min</td><td>—</td></tr>
+</tbody>
+</table>
+<div class="info" style="margin-top:10px;">Every exercise row includes a demo link. Use the swap cards below each day if a joint objects, and watch the listed cue before changing load.</div>
+<div class="swap-grid"><div class="swap-card"><h4>Swap RDL if hinge feels heavy</h4><p>Use dumbbell hip hinge to wall or barbell glute bridge instead.</p></div><div class="swap-card"><h4>Swap reverse fly if shoulder pinches</h4><p>Use chest-supported rear-delt row with lighter load.</p></div><div class="swap-card"><h4>What to watch on demos</h4><p>Shoulders away from ears, sternum long, bar close to thighs, and HIIT intensity earned by breathing control.</p></div></div></div>
+</div>
+</div>
+<div class="day-panel" id="d4">
+<div class="card">
+<div class="card-header">
+<div class="card-title">Sunday - Full Body Metabolic + Incline Walk</div>
+<div class="card-sub">Main goal: finish the week athletic, breathing hard, and still fresh enough to restart Monday clean.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<tbody>
+<tr><td>Circuit 1</td><td>Goblet squat</td><td>3 rounds x 10</td><td>20 sec between moves</td></tr>
+<tr><td>Circuit 1</td><td>Dumbbell floor press</td><td>3 rounds x 10</td><td>20 sec</td></tr>
+<tr><td>Circuit 1</td><td>Dumbbell row</td><td>3 rounds x 12</td><td>60 sec after round</td></tr>
+<tr><td>Circuit 2</td><td>Barbell or dumbbell hip hinge</td><td>3 rounds x 10</td><td>20 sec</td></tr>
+<tr><td>Circuit 2</td><td>Farmer or suitcase carry</td><td>3 rounds x 30–40 sec</td><td>20 sec</td></tr>
+<tr><td>Circuit 2</td><td>Heel-elevated march or step jacks</td><td>3 rounds x 45 sec</td><td>60 sec after round</td></tr>
+<tr><td>Finisher</td><td>EMOM 8 min: 40 sec work / 20 sec transition</td><td>8 min</td><td>Alternate 2 movements</td></tr>
+<tr><td>Core</td><td>Heel taps or hollow hold regression</td><td>2 x 20 total</td><td>30 sec</td></tr>
+</tbody>
+</table>
+<div class="banner orange" style="margin-top:10px;"><strong>Important:</strong> this is a breathing-hard session, not a max-weight session. The entire day should feel athletic, smooth, and repeatable next week.</div>
+<div class="swap-grid"><div class="swap-card"><h4>Swap goblet squat if fatigue is high</h4><p>Use box squat or sit-to-stand and keep the circuit moving.</p></div><div class="swap-card"><h4>Swap step jacks if knee is sensitive</h4><p>Use fast march, low box step-up march, or incline walk intervals.</p></div><div class="swap-card"><h4>What to watch on demos</h4><p>Move smoothly, transition fast, but never let the metabolic pace destroy joint positions.</p></div></div></div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">Deload + overload rules</div>
+<div class="card-sub">This is how to progress safely without frying recovery or feeding all-or-nothing thinking.</div>
+</div>
+<div class="card-body">
+<ul class="list-tight">
+<li>Add reps before load. Only increase weight after all prescribed sets reach the top of the rep range with pain ≤3/10 and clean control.</li>
+<li>Dumbbells: add the smallest available jump. Barbell: add 5 lb total when bar speed and posture stay solid.</li>
+<li>If HIIT quality crashes, keep the same load next week and improve breathing recovery instead.</li>
+<li>Every 4th week is a deload: reduce lifting sets by about 30% and cut HIIT rounds by 25–30%.</li>
+<li>There is no grinding. This plan uses consistency, not heroics.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- PAGE 4 -->
+<section class="page" id="page-rehab">
+<div class="page-header">
+<div class="section-kicker">Biomechanics</div>
+<div class="page-title-wrap">
+<div>
+<div class="page-title">Injury &amp; Stability Protocol</div>
+<div class="page-sub">The body changes faster when the weak links stop stealing force and confidence</div>
+</div>
+<div class="header-badge">Fix</div>
+</div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy">
+<div class="hero-title">Three structural priorities</div>
+<p class="hero-sub">Right ankle: restore stiffness and range. Right knee: stabilize and reduce twist stress. Left shoulder: improve cuff control and pressing mechanics.</p>
+</div>
+<div class="hero-meta">
+<span class="metric-pill"><span class="metric-dot"></span> Ankle</span>
+<span class="metric-pill"><span class="metric-dot"></span> Knee</span>
+<span class="metric-pill"><span class="metric-dot"></span> Shoulder</span>
+</div>
+</div>
+<div class="stat-grid g3">
+<div class="stat">
+<div class="label">Right ankle</div>
+<div class="val">Stability</div>
+<div class="note">Extra mobility + calf strength every lower-body day.</div>
+</div>
+<div class="stat">
+<div class="label">Right knee</div>
+<div class="val">Tracking</div>
+<div class="note">Controlled squat/lunge depth, no pivoting fatigue reps.</div>
+</div>
+<div class="stat">
+<div class="label">Left shoulder</div>
+<div class="val">Control</div>
+<div class="note">Neutral grip pressing, wall slides, cuff work, no forced range.</div>
+</div>
+</div>
+<div class="train-cockpit" style="margin-top:12px;">
+<div class="train-focus-card">
+<div class="train-focus-top"><div><div class="train-focus-kicker">Pain-scale logic</div><h3 class="train-focus-title">She never has to guess whether to push through</h3></div></div>
+<ul class="list-tight">
+<li><strong>0-2/10:</strong> proceed as written.</li>
+<li><strong>3-4/10:</strong> reduce range, tempo down, and cut one set.</li>
+<li><strong>5+/10:</strong> stop that movement and use the listed swap immediately.</li>
+<li>Pain that worsens set to set ends the exercise for the day.</li>
+</ul>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top"><div><div class="train-focus-kicker">Unilateral correction</div><h3 class="train-focus-title">The weaker side always sets the standard</h3></div></div>
+<ul class="list-tight">
+<li>Weaker right side starts first on lower-body single-leg drills.</li>
+<li>Right calf and ankle get one extra set on Wednesday and Sunday.</li>
+<li>Tempo on split patterns is <strong>3 sec down</strong>, not rushed reps.</li>
+<li>Symmetry improves by control, not by hiding the imbalance with momentum.</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-title">Micro-dose corrective work</div>
+<div class="card-sub">Do these on rest days too if the joints feel sticky.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Area</th><th>Exercise</th><th>Dose</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td>Ankle</td><td>Knee-to-wall rocks</td><td>2 x 8–10 daily</td><td>Right side gets one extra set.</td></tr>
+<tr><td>Ankle</td><td>Single-leg balance + toe spread</td><td>2 x 20–30 sec</td><td>Stay tall, no gripping the floor with the toes.</td></tr>
+<tr><td>Ankle</td><td>Slow calf raises</td><td>2 x 12</td><td>2-second pause at the top.</td></tr>
+<tr><td>Knee</td><td>Wall sit</td><td>2 x 20–40 sec</td><td>Use pain-free depth only.</td></tr>
+<tr><td>Knee</td><td>Supported step-down to low step</td><td>2 x 6 / side</td><td>Control the lowering; knee tracks over middle toes.</td></tr>
+<tr><td>Knee</td><td>Glute bridge march</td><td>2 x 8 / side</td><td>Keep pelvis level.</td></tr>
+<tr><td>Shoulder</td><td>Scap wall slide</td><td>2 x 8</td><td>Ribs stay down, no shrugging.</td></tr>
+<tr><td>Shoulder</td><td>Side-lying external rotation</td><td>2 x 12 left, 1 x 12 right</td><td>Tiny DB only; smooth range.</td></tr>
+<tr><td>Shoulder</td><td>Prone Y or incline Y raise</td><td>2 x 8–10</td><td>Think long reach, not heavy weight.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="train-cockpit">
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Movement laws</div>
+<h3 class="train-focus-title">What she should avoid</h3>
+</div>
+</div>
+<ul class="list-tight">
+<li>No jump-heavy HIIT on bad knee days.</li>
+<li>No fast twisting or cutting motions when tired.</li>
+<li>No behind-the-neck pressing or deep painful shoulder angles.</li>
+<li>No ego loading on lunges, squats, or hinges.</li>
+</ul>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Green-light cues</div>
+<h3 class="train-focus-title">What she should feel</h3>
+</div>
+</div>
+<ul class="list-tight">
+<li>Foot pressure spread across heel, big toe, and outer foot.</li>
+<li>Knee follows the second/third toe, not collapsing inward.</li>
+<li>Shoulder packed down with neutral grip pressing.</li>
+<li>Core braced before each lower-body rep, exhale on effort.</li>
+</ul>
+</div>
+</div>
+<div class="banner purple">
+<strong>Coach note:</strong> the purpose of the stability work is not rehab for rehab’s sake. It is to make fat-loss training more efficient by giving force a cleaner path through the body.
+    </div>
+</div>
+</section>
+<!-- PAGE 5 -->
+<section class="page" id="page-progress">
+<div class="page-header">
+<div class="section-kicker">Progression</div>
+<div class="page-title-wrap">
+<div>
+<div class="page-title">Tracking &amp; Permanent Maintenance</div>
+<div class="page-sub">This is where temporary fat loss becomes identity-level body change</div>
+</div>
+<div class="header-badge">Keep</div>
+</div>
+</div>
+<div class="page-body">
+<div class="hero-panel">
+<div class="hero-copy">
+<div class="hero-title">The real scorecard</div>
+<p class="hero-sub">The body will fluctuate, but the process must not. Progress is judged from weekly averages, photos, waist measurements, session quality, and hunger control.</p>
+</div>
+<div class="hero-meta">
+<span class="metric-pill"><span class="metric-dot"></span> Weekly averages</span>
+<span class="metric-pill"><span class="metric-dot"></span> Monthly photos</span>
+<span class="metric-pill"><span class="metric-dot"></span> Compliance first</span>
+</div>
+</div>
+<div class="card" style="margin-top:12px;">
+<div class="card-header"><div class="card-title">Browser-saved measurement tracker</div><div class="card-sub">Stores the latest check-in in this browser so the plan acts like a living coaching dashboard.</div></div>
+<div class="card-body">
+<div class="tracker-grid">
+<div class="field"><label>Weekly avg weight</label><input id="trackWeight" placeholder="142.0" step="0.1" type="number"/></div>
+<div class="field"><label>Waist at navel</label><input id="trackWaist" placeholder="inches" step="0.1" type="number"/></div>
+<div class="field"><label>Lower belly</label><input id="trackLowerBelly" placeholder="inches" step="0.1" type="number"/></div>
+<div class="field"><label>Hips</label><input id="trackHips" placeholder="inches" step="0.1" type="number"/></div>
+<div class="field"><label>Avg daily steps</label><input id="trackSteps" placeholder="8000" step="100" type="number"/></div>
+<div class="field"><label>Notes</label><input id="trackNotes" placeholder="Energy, hunger, cycle, soreness"/></div>
+</div>
+<div class="btn-row" style="margin-top:12px;">
+<button class="btn" id="saveTrackBtn" type="button">Save check-in</button>
+<button class="btn secondary" id="clearTrackBtn" type="button">Clear saved data</button>
+</div>
+<div class="info" id="trackStatus" style="margin-top:12px;">Nothing saved yet in this browser.</div>
+<div class="log-list" id="trackLog"></div>
+</div>
+</div>
+<div class="card">
+<div class="card-header"><div class="card-title">Workout completion tracker</div><div class="card-sub">Use this to hold the line during chaotic weeks instead of restarting the whole system.</div></div>
+<div class="card-body">
+<div class="tracker-grid">
+<div class="field"><label>Week label</label><input id="weekLabel" placeholder="Week of Apr 12"/></div>
+<div class="field"><label>Sessions completed</label><input id="weekSessions" max="4" min="0" type="number"/></div>
+<div class="field"><label>Protein days &gt;= target</label><input id="weekProteinDays" max="7" min="0" type="number"/></div>
+</div>
+<div class="btn-row" style="margin-top:12px;">
+<button class="btn" id="saveWeekBtn" type="button">Save weekly score</button>
+<button class="btn secondary" id="resetWeekBtn" type="button">Reset weekly score</button>
+</div>
+<div class="log-list" id="weekLog"></div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-title">What to track</div>
+<div class="card-sub">Enough data to stay honest. Not so much data that it becomes another stressor.</div>
+</div>
+<div class="card-body">
+<table>
+<thead><tr><th>Metric</th><th>Frequency</th><th>Decision rule</th></tr></thead>
+<tbody>
+<tr><td>Body weight</td><td>3 mornings per week</td><td>Use the weekly average only. Never react to a single spike.</td></tr>
+<tr><td>Waist at navel + lower belly</td><td>Every 2 weeks</td><td>If scale stalls but waist is shrinking, stay the course.</td></tr>
+<tr><td>Front / side / back photos</td><td>Every 4 weeks</td><td>Same light, same clothes, same time of day.</td></tr>
+<tr><td>Workout log</td><td>Every session</td><td>Note load, reps, RPE, and any joint irritation.</td></tr>
+<tr><td>Protein compliance</td><td>Daily</td><td>Under 105 g repeatedly means appetite and recovery will worsen.</td></tr>
+<tr><td>Steps / walks</td><td>Daily average</td><td>8,000+ average keeps fat loss moving without more hunger.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="train-cockpit">
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Adjustment ladder</div>
+<h3 class="train-focus-title">Only change one variable at a time</h3>
+</div>
+</div>
+<ol class="list-tight">
+<li>First check compliance: workouts, steps, protein, and snack leakage.</li>
+<li>If compliance is solid for 14 days and progress is flat, add 10–15 minutes of walking on 3 days per week.</li>
+<li>If still flat after another 14 days, remove roughly 15–20 g carbs from rest days only.</li>
+<li>Do not stack lower calories and more HIIT at the same time.</li>
+</ol>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Maintenance bridge</div>
+<h3 class="train-focus-title">What happens at 120 lb</h3>
+</div>
+</div>
+<ul class="list-tight">
+<li>Keep 4 training days for at least 8 more weeks.</li>
+<li>Raise calories slowly by 75–100 per day each week until weight stabilizes.</li>
+<li>Protein stays high; treats remain planned.</li>
+<li>Do not celebrate by “eating normal again.” The plan becomes lighter, not absent.</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">Behavioral operating system</div>
+<div class="card-sub">The permanent-fat-loss version of discipline is not willpower. It is architecture.</div>
+</div>
+<div class="card-body">
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">Identity rule</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body"><div class="good-box">Never ask, “Do I feel like following the plan?” Ask, “What does the woman who stays at 120 do today?”</div></div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">Environment rule</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body"><div class="warn-box">Protein foods are visible and ready. Trigger foods are inconvenient, portioned, or absent. The kitchen is designed for the lean body, not the old habits.</div></div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">Minimum effective day rule</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body"><div class="info">On hard family days, do the smallest version that still counts: warm-up, 15-minute walk, 2 lifts, 1 protein-first dinner. This ends all-or-nothing thinking.</div></div>
+</div>
+<div class="acc-item">
+<div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">Recovery rule</span><span class="acc-arrow">▾</span></div>
+<div class="acc-body"><div class="danger-box">One off-plan meal is noise. Two off-plan days plus skipped workouts is a relapse pattern. The next action must be structured immediately.</div></div>
+</div>
+</div>
+</div>
+<div class="footer-note">Custom rebuild created from the original Ree lean-plan baseline and restructured into a Sumo-style coaching dashboard shell with readiness mode, trackers, progression rules, and recovery logic.</div>
+</div>
+</section>
+<div class="bnav-shell">
+<nav class="bnav">
+<div class="bnav-track">
+<button class="bnav__btn active" data-page="page-today"><span class="bnav__icon">◔</span><span class="bnav__label">Today</span></button>
+<button class="bnav__btn" data-page="page-nutrition"><span class="bnav__icon">◌</span><span class="bnav__label">Nutrition</span></button>
+<button class="bnav__btn" data-page="page-train"><span class="bnav__icon">◎</span><span class="bnav__label">Training</span></button>
+<button class="bnav__btn" data-page="page-rehab"><span class="bnav__icon">△</span><span class="bnav__label">Rehab</span></button>
+<button class="bnav__btn" data-page="page-progress"><span class="bnav__icon">✓</span><span class="bnav__label">Progress</span></button>
+</div>
+</nav>
+</div>
+<script>
+const phaseCopy = {
+  1: {
+    badge: 'Build',
+    phase: 'Phase 1 · Reset',
+    cls: 'orange',
+    text: '<strong>Phase 1 — Reset:</strong> establish the meal rhythm, groove pain-free movement, and build repeatability before pushing harder.<div class="sub">Calories stay controlled, HIIT stays moderate, and every workout finishes feeling like you could have done one more round.</div>'
+  },
+  2: {
+    badge: 'Push',
+    phase: 'Phase 2 · Drive',
+    cls: 'green',
+    text: '<strong>Phase 2 — Drive:</strong> now the plan leans harder into fat loss. Cardio volume climbs, HIIT sharpens, and load progresses only when joints stay quiet.<div class="sub">This is where the body starts looking visibly smaller through the waist and tighter through the arms and back.</div>'
+  },
+  3: {
+    badge: 'Push',
+    phase: 'Phase 3 · Sculpt',
+    cls: 'green',
+    text: '<strong>Phase 3 — Sculpt:</strong> keep fat loss moving while preserving shape. Training quality matters more than scale obsession.<div class="sub">The mission now is smaller waist, cleaner posture, and better muscle tone, not aggressive dieting.</div>'
+  },
+  4: {
+    badge: 'Protect',
+    phase: 'Phase 4 · Lock-In',
+    cls: 'red',
+    text: '<strong>Phase 4 — Lock-In:</strong> teach the body and the mind how to stay lean. Calories come up carefully and structure stays intact.<div class="sub">This phase prevents the classic “I reached the goal, then drifted” rebound.</div>'
+  }
+};
+
+function setPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active', p.id===id));
+  document.querySelectorAll('.bnav__btn').forEach(b=>b.classList.toggle('active', b.dataset.page===id));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('.bnav__btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> setPage(btn.dataset.page));
+});
+
+function setPhase(n){
+  const copy = phaseCopy[n];
+  const panel = document.getElementById('phasePanel');
+  panel.className = 'banner ' + copy.cls;
+  panel.innerHTML = copy.text;
+  document.getElementById('modeText').textContent = copy.badge;
+  document.getElementById('phaseText').textContent = copy.phase;
+  const dot = document.getElementById('modeDot');
+  dot.className = 'global-sumo-dot';
+  if(copy.badge === 'Push') dot.classList.add('green');
+  else if(copy.badge === 'Protect') dot.classList.add('red');
+  else dot.classList.add('orange');
+  document.getElementById('readinessBadge').textContent = copy.badge === 'Push' ? 'Push day' : copy.badge === 'Protect' ? 'Protect day' : 'Build day';
+  document.querySelectorAll('.week-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.phase === String(n)));
+}
+document.querySelectorAll('.week-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>setPhase(btn.dataset.phase));
+});
+
+document.querySelectorAll('.day-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const id = btn.dataset.day;
+    document.querySelectorAll('.day-btn').forEach(b=>b.classList.toggle('active', b===btn));
+    document.querySelectorAll('.day-panel').forEach(p=>p.classList.toggle('active', p.id===id));
+  });
+});
+
+function toggleAcc(header){
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.acc-arrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+setPhase(1);
+
+const todayMap = {
+  0: {name:'Sunday - Full Body Metabolic + Incline Walk', goal:'Primary mission: full-body metabolic work, then steady incline walking to finish the week athletic.', list:['Mandatory warm-up + Sunday metabolic booster.','Keep weights moderate and transitions crisp.','Finish with 10-20 min incline walk if recovery is good.'], day:'Training day', focus:'Metabolic + incline', recovery:'Tomorrow: upper + HIIT'},
+  1: {name:'Monday - Upper Sculpt + Low-Impact HIIT', goal:'Primary mission: upper-body tone, 2 controlled HIIT blocks, and no sloppy shoulder reps.', list:['Mandatory warm-up + upper-day shoulder booster.','Complete all strength work before intervals.','Keep 2 reps in reserve on all upper-body lifts.'], day:'Training day', focus:'HIIT day', recovery:'Tomorrow: recovery'},
+  2: {name:'Tuesday - Recovery / Mobility', goal:'Primary mission: protect the cut by recovering well enough to train hard tomorrow.', list:['Walk 20-40 minutes if possible.','Do the micro-dose ankle, knee, and shoulder work.','Hit protein and hydration hard today.'], day:'Recovery day', focus:'Zone 1 recovery', recovery:'Tomorrow: lower + Zone 2'},
+  3: {name:'Wednesday - Lower Stability + Zone 2', goal:'Primary mission: leg strength without knee irritation, then long steady cardio.', list:['Mandatory warm-up + lower-day ankle/knee booster.','Weaker right side starts first.','Tempo beats load today: own the lowering phase.'], day:'Training day', focus:'Zone 2 day', recovery:'Tomorrow: recovery'},
+  4: {name:'Thursday - Recovery / Mobility', goal:'Primary mission: keep steps up, reduce stiffness, and arrive fresh for Friday HIIT.', list:['Walk and mobility only.','Use the craving interrupt protocol if stress is high.','Prep tomorrow\'s protein and training clothes today.'], day:'Recovery day', focus:'Reset day', recovery:'Tomorrow: back + HIIT'},
+  5: {name:'Friday - Back, Arms, Posterior Chain + HIIT', goal:'Primary mission: back width illusion, arm tone, posterior chain work, and controlled intervals.', list:['Mandatory warm-up + upper-day shoulder booster.','Rows and hinges stay cleaner than ego.','HIIT is sharp but capped; do not chase exhaustion.'], day:'Training day', focus:'HIIT day', recovery:'Tomorrow: recovery'},
+  6: {name:'Saturday - Recovery / Family Rhythm', goal:'Primary mission: keep the structure alive even on social or family-heavy days.', list:['Hit protein early in the day.','Get steps in before dinner if possible.','Do not let one loose meal turn into a loose weekend.'], day:'Recovery day', focus:'Structure day', recovery:'Tomorrow: full body metabolic'}
+};
+const modeCopy = {
+  green: { badge:'Push day', note:'Green = full plan, top-end rep targets, and full cardio as written.', copy:'Push mode is earned: good sleep, low pain, and stable energy. Take the full training dose.' },
+  yellow: { badge:'Build day', note:'Yellow = normal plan. Keep all exercises, but quality decides pace and cardio volume.', copy:'Build mode is the default: full strength work, cardio as written, and clean technique before speed.' },
+  red: { badge:'Protect day', note:'Red = cut 1 set from each lift and replace HIIT with 12-20 min Zone 2.', copy:'Protect mode keeps the streak alive without feeding pain, fatigue, or all-or-nothing thinking.' }
+};
+function setTodayCard(){
+  const cfg = todayMap[new Date().getDay()];
+  if(!cfg) return;
+  document.getElementById('todayName').textContent = cfg.name;
+  document.getElementById('todayGoal').textContent = cfg.goal;
+  document.getElementById('todayBlocks').innerHTML = cfg.list.map(item => `<li>${item}</li>`).join('');
+  document.getElementById('todayDayPill').textContent = cfg.day;
+  document.getElementById('todayFocusPill').textContent = cfg.focus;
+  document.getElementById('todayRecoveryPill').textContent = cfg.recovery;
+}
+function setReadiness(mode){
+  const cfg = modeCopy[mode] || modeCopy.yellow;
+  document.querySelectorAll('.mode-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.mode===mode));
+  document.getElementById('readinessBadge').textContent = cfg.badge;
+  document.getElementById('modeNote').textContent = cfg.note;
+  document.getElementById('readinessCopy').textContent = cfg.copy;
+  localStorage.setItem('reeReadinessMode', mode);
+}
+document.querySelectorAll('.mode-btn').forEach(btn=>btn.addEventListener('click', ()=> setReadiness(btn.dataset.mode)));
+function renderTrackLog(){
+  const target = document.getElementById('trackLog');
+  if(!target) return;
+  const data = JSON.parse(localStorage.getItem('reeCheckins') || '[]');
+  if(!data.length){ target.innerHTML = ''; return; }
+  target.innerHTML = data.slice().reverse().slice(0,6).map(item => `<div class="log-item"><strong>${item.date}</strong>Weight ${item.weight || '-'} | Waist ${item.waist || '-'} | Lower belly ${item.lowerBelly || '-'} | Hips ${item.hips || '-'} | Steps ${item.steps || '-'}<div class="small">${item.notes || 'No notes saved.'}</div></div>`).join('');
+  document.getElementById('trackStatus').textContent = `Latest saved: ${data[data.length-1].date}. Data stays in this browser only.`;
+}
+function saveTrack(){
+  const payload = {date: new Date().toLocaleDateString(), weight: document.getElementById('trackWeight').value, waist: document.getElementById('trackWaist').value, lowerBelly: document.getElementById('trackLowerBelly').value, hips: document.getElementById('trackHips').value, steps: document.getElementById('trackSteps').value, notes: document.getElementById('trackNotes').value.trim()};
+  const data = JSON.parse(localStorage.getItem('reeCheckins') || '[]');
+  data.push(payload); localStorage.setItem('reeCheckins', JSON.stringify(data)); renderTrackLog();
+}
+function clearTrack(){ localStorage.removeItem('reeCheckins'); document.getElementById('trackStatus').textContent = 'Nothing saved yet in this browser.'; document.getElementById('trackLog').innerHTML = ''; }
+function renderWeekLog(){
+  const target = document.getElementById('weekLog');
+  if(!target) return;
+  const data = JSON.parse(localStorage.getItem('reeWeeklyScores') || '[]');
+  if(!data.length){ target.innerHTML = ''; return; }
+  target.innerHTML = data.slice().reverse().slice(0,6).map(item => `<div class="log-item"><strong>${item.label || item.date}</strong>Sessions ${item.sessions || '0'}/4 | Protein days ${item.proteinDays || '0'}/7<div class="small">${item.sessions >= 4 && item.proteinDays >= 5 ? 'Minimum week protected.' : 'Tighten structure next week before cutting harder.'}</div></div>`).join('');
+}
+function saveWeek(){
+  const payload = {date: new Date().toLocaleDateString(), label: document.getElementById('weekLabel').value.trim(), sessions: Number(document.getElementById('weekSessions').value || 0), proteinDays: Number(document.getElementById('weekProteinDays').value || 0)};
+  const data = JSON.parse(localStorage.getItem('reeWeeklyScores') || '[]');
+  data.push(payload); localStorage.setItem('reeWeeklyScores', JSON.stringify(data)); renderWeekLog();
+}
+function resetWeek(){ localStorage.removeItem('reeWeeklyScores'); document.getElementById('weekLog').innerHTML = ''; }
+document.getElementById('saveTrackBtn')?.addEventListener('click', saveTrack);
+document.getElementById('clearTrackBtn')?.addEventListener('click', clearTrack);
+document.getElementById('saveWeekBtn')?.addEventListener('click', saveWeek);
+document.getElementById('resetWeekBtn')?.addEventListener('click', resetWeek);
+setTodayCard();
+setReadiness(localStorage.getItem('reeReadinessMode') || 'yellow');
+renderTrackLog();
+renderWeekLog();
+</script>
+</body>
+</html>

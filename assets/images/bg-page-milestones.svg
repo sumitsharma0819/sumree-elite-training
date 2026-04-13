@@ -1,44 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-hidden="true">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#451a03"/>
-      <stop offset="100%" stop-color="#7c2d12"/>
-    </linearGradient>
-    <radialGradient id="glowA" cx="0.18" cy="0.22" r="0.5">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.32)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <radialGradient id="glowB" cx="0.82" cy="0.18" r="0.42">
-      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.32"/>
-      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="accentStroke" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#fde68a" stop-opacity="0.92"/>
-    </linearGradient>
-  </defs>
-  <rect width="1600" height="900" fill="url(#bg)"/>
-  <rect width="1600" height="900" fill="url(#glowA)"/>
-  <rect width="1600" height="900" fill="url(#glowB)"/>
-  <g opacity="0.18">
-    <circle cx="180" cy="140" r="6" fill="#fff"/>
-    <circle cx="300" cy="220" r="4" fill="#fff"/>
-    <circle cx="1380" cy="210" r="5" fill="#fff"/>
-    <circle cx="1260" cy="140" r="4" fill="#fff"/>
-    <circle cx="1180" cy="310" r="3" fill="#fff"/>
-    <circle cx="220" cy="320" r="3" fill="#fff"/>
-  </g>
-  <g opacity="0.12">
-    <path d="M0 720 C280 640 390 840 690 760 S1160 620 1600 760" fill="none" stroke="#fff" stroke-width="2"/>
-    <path d="M0 780 C220 700 470 830 720 770 S1220 650 1600 810" fill="none" stroke="#fff" stroke-width="2"/>
-  </g>
-  
-  <g transform="translate(300,120)">
-    <polygon points="500,0 560,140 720,140 590,228 644,390 500,298 356,390 410,228 280,140 440,140" fill="url(#accentStroke)" opacity="0.86"/>
-    <path d="M230 530 C390 430 610 430 770 530" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="18" stroke-linecap="round"/>
-    <path d="M320 580 C430 516 568 516 680 580" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity="0.24"/>
-    <circle cx="500" cy="610" r="56" fill="#fff" opacity="0.86"/>
-    <rect x="458" y="660" width="84" height="118" rx="28" fill="rgba(255,255,255,0.68)"/>
-  </g>
-
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#111827"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient>
+<radialGradient id="r1" cx="80%" cy="15%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,.22)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#g)"/>
+<circle cx="1280" cy="120" r="320" fill="rgba(255,255,255,.08)"/>
+<circle cx="280" cy="720" r="340" fill="rgba(255,255,255,.05)"/>
+<path d="M0 740 C 240 620, 420 820, 650 710 S 1060 540, 1600 760 L 1600 900 L 0 900 Z" fill="rgba(255,255,255,.06)"/>
+<path d="M0 790 C 250 680, 460 880, 720 760 S 1160 610, 1600 820 L 1600 900 L 0 900 Z" fill="rgba(0,0,0,.18)"/>
+<text x="90" y="150" fill="rgba(255,255,255,.16)" font-size="96" font-family="Arial, Helvetica, sans-serif" font-weight="700">Milestones</text>
 </svg>
