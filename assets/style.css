@@ -535,6 +535,7 @@ html, body {
 }
 body.sumo-app {
   position: relative;
+  isolation: isolate;
   min-height: 100vh;
   --page-bg-image: linear-gradient(135deg, #0f172a, #1e293b);
 }
@@ -549,7 +550,6 @@ body.sumo-app::before {
   background-repeat: no-repeat;
   transform: scale(1.03);
   transform-origin: center;
-  pointer-events: none;
 }
 body.sumo-app::after {
   content: "";
@@ -561,10 +561,6 @@ body.sumo-app::after {
     radial-gradient(circle at bottom left, rgba(10,132,255,0.12), transparent 30%),
     linear-gradient(180deg, rgba(5,10,18,0.70), rgba(8,12,20,0.52) 22%, rgba(8,12,20,0.42) 52%, rgba(8,12,20,0.64) 100%);
   pointer-events: none;
-}
-body.sumo-app > * {
-  position: relative;
-  z-index: 2;
 }
 .page, .page-body {
   position: relative;
@@ -657,3 +653,19 @@ body.sumo-app > * {
     transform: scale(1.06);
   }
 }
+
+body.sumo-app > *{position:relative;z-index:2;}
+
+.home-chip{position:fixed;top:14px;left:14px;z-index:90;display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,0.82);color:#111214;text-decoration:none;font-size:.82rem;font-weight:800;box-shadow:0 12px 28px rgba(15,23,42,.16);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border:1px solid rgba(255,255,255,.4)}
+.home-chip:hover{text-decoration:none;transform:translateY(-1px)}
+@media(max-width:720px){.home-chip{top:10px;left:10px;padding:8px 12px}}
+
+body.ree-app{position:relative;min-height:100vh;isolation:isolate;background:transparent!important}
+body.ree-app::before{content:"";position:fixed;inset:0;z-index:0;background:url("images/ree.jpeg") center 22%/cover no-repeat;transform:scale(1.03)}
+body.ree-app::after{content:"";position:fixed;inset:0;z-index:1;background:linear-gradient(180deg,rgba(7,10,18,.74),rgba(10,12,18,.56) 20%,rgba(10,12,18,.44) 48%,rgba(7,10,18,.74) 100%);pointer-events:none}
+body.ree-app>*{position:relative;z-index:2}
+.ree-hero-portrait{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.86);border-radius:24px;padding:16px;border:1px solid rgba(255,255,255,.24);backdrop-filter:saturate(170%) blur(14px);-webkit-backdrop-filter:saturate(170%) blur(14px);box-shadow:0 18px 44px rgba(15,23,42,.14)}
+.ree-hero-portrait img{width:110px;height:110px;object-fit:cover;border-radius:22px;box-shadow:0 14px 30px rgba(15,23,42,.2)}
+.ree-hero-copy h2{margin:0 0 4px;font-size:1.18rem;letter-spacing:-.03em;color:var(--text-2)}
+.ree-hero-copy p{margin:0;color:var(--muted)}
+@media(max-width:640px){.ree-hero-portrait{flex-direction:column;align-items:flex-start}.ree-hero-portrait img{width:100%;height:auto;max-height:280px}}
