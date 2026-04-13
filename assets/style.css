@@ -63,7 +63,7 @@ strong{color:var(--text-2)}
 @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes softPulse{0%{transform:scale(.985);box-shadow:0 0 0 0 rgba(10,132,255,0)}50%{transform:scale(1.01);box-shadow:0 0 0 8px rgba(10,132,255,0.08)}100%{transform:none;box-shadow:none}}
 
-/* ── BOTTOM NAV ── */
+/* â”€â”€ BOTTOM NAV â”€â”€ */
 .bnav-shell{
   position:fixed;left:0;right:0;bottom:12px;z-index:100;
   pointer-events:none;padding:0 12px;
@@ -94,7 +94,7 @@ strong{color:var(--text-2)}
 .bnav__label{transition:opacity .22s ease}
 .bnav__btn.active .bnav__icon{transform:translateY(-1px) scale(1.02);opacity:1}
 
-/* ── PAGES ── */
+/* â”€â”€ PAGES â”€â”€ */
 .page{display:none;flex-direction:column;min-height:100vh;padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 .page.active{display:flex}
 .page-header{
@@ -110,7 +110,7 @@ strong{color:var(--text-2)}
 .page-sub{font-size:.86rem;color:var(--muted);margin:3px 0 0}
 .page-body{width:min(100%,920px);margin:0 auto;padding:18px 16px 20px;display:flex;flex-direction:column;gap:16px}
 
-/* ── CARDS ── */
+/* â”€â”€ CARDS â”€â”€ */
 .card{
   background:var(--surface);
   border:none;
@@ -123,13 +123,13 @@ strong{color:var(--text-2)}
 .card-title{font-size:1rem;font-weight:700;color:var(--text-2);margin:0;letter-spacing:-0.01em}
 .card-sub{font-size:.82rem;color:var(--muted);margin:3px 0 0}
 
-/* ── HERO PANELS ── */
+/* â”€â”€ HERO PANELS â”€â”€ */
 .hero-panel{background:linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.52));backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border:1px solid rgba(255,255,255,0.55);border-radius:24px;padding:18px 18px 16px;box-shadow:var(--shadow-md)}
 .hero-eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px}
 .hero-title{font-size:1.22rem;font-weight:760;letter-spacing:-.03em;color:var(--text-2);margin:0 0 4px}
 .hero-sub{font-size:.9rem;color:var(--muted);margin:0}
 .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-/* ── BANNERS ── */
+/* â”€â”€ BANNERS â”€â”€ */
 .banner{border-radius:18px;padding:14px 16px;font-size:.92rem;font-weight:650;border:1px solid}
 .banner.green{background:var(--green-d);border-color:var(--green-b);color:#0E7A31}
 .banner.orange{background:var(--orange-d);border-color:var(--orange-b);color:#B25500}
@@ -139,14 +139,14 @@ strong{color:var(--text-2)}
 .banner.purple{background:var(--purple-d);border-color:var(--purple-b);color:#7F2DBA}
 .banner .sub{font-size:.82rem;font-weight:500;color:var(--text);margin-top:6px;opacity:.9}
 
-/* ── CALLOUT BOXES ── */
+/* â”€â”€ CALLOUT BOXES â”€â”€ */
 .info,.warn-box,.good-box,.danger-box{border-radius:18px;padding:13px 14px;font-size:.88rem;border:1px solid}
 .info{background:var(--blue-d);border-color:var(--blue-b);color:var(--text)}
 .warn-box{background:var(--yellow-d);border-color:var(--yellow-b);color:var(--text)}
 .good-box{background:var(--green-d);border-color:var(--green-b);color:var(--text)}
 .danger-box{background:var(--red-d);border-color:var(--red-b);color:var(--text)}
 
-/* ── STAT GRIDS ── */
+/* â”€â”€ STAT GRIDS â”€â”€ */
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .stat-grid.g3{grid-template-columns:repeat(3,1fr)}
 .stat{background:var(--surface3);border:none;border-radius:18px;padding:14px 14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
@@ -157,7 +157,7 @@ strong{color:var(--text-2)}
 .stat.green{background:linear-gradient(180deg, #F2FFF5, #FFFFFF)}
 .stat.blue{background:linear-gradient(180deg, #F3F9FF, #FFFFFF)}
 
-/* ── FORM ELEMENTS ── */
+/* â”€â”€ FORM ELEMENTS â”€â”€ */
 .field{display:flex;flex-direction:column;gap:7px}
 .field label{font-size:.76rem;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em}
 .field input,.field select{
@@ -170,7 +170,7 @@ strong{color:var(--text-2)}
 .field input:focus,.field select:focus{box-shadow:inset 0 0 0 2px rgba(10,132,255,0.45), 0 0 0 4px rgba(10,132,255,0.10)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-/* ── BUTTONS ── */
+/* â”€â”€ BUTTONS â”€â”€ */
 .btn{
   width:100%;padding:14px 16px;border-radius:18px;border:none;
   font-size:.95rem;font-weight:700;letter-spacing:-.01em;
@@ -183,7 +183,7 @@ strong{color:var(--text-2)}
 .btn.ghost{background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.10);color:var(--muted);padding:11px;box-shadow:none}
 .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
 
-/* ── PILLS ── */
+/* â”€â”€ PILLS â”€â”€ */
 .pill{display:inline-flex;align-items:center;padding:6px 11px;border-radius:var(--pill);font-size:.76rem;font-weight:650;border:none;background:#F4F4F7;color:var(--text)}
 .pill.orange{background:var(--orange-d);color:#B25500}
 .pill.green{background:var(--green-d);color:#167C36}
@@ -193,14 +193,14 @@ strong{color:var(--text-2)}
 .pill.purple{background:var(--purple-d);color:#7F2DBA}
 .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 
-/* ── LOAD BADGES ── */
+/* â”€â”€ LOAD BADGES â”€â”€ */
 .load-badge{display:inline-block;padding:5px 10px;border-radius:12px;font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border:none}
 .load-heavy{background:rgba(255,69,58,0.12);color:#B42318}
 .load-moderate{background:rgba(255,159,10,0.12);color:#A66400}
 .load-light{background:rgba(10,132,255,0.10);color:#005ECC}
 .load-rehab{background:rgba(48,209,88,0.12);color:#167C36}
 
-/* ── MUSCLE TAGS ── */
+/* â”€â”€ MUSCLE TAGS â”€â”€ */
 .muscle{display:inline-flex;align-items:center;gap:6px;padding:3px 8px 3px 3px;border-radius:999px;font-size:.72rem;font-weight:700;border:none;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.10)}
 .mi{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900}
 .muscle--chest{background:rgba(255,69,58,.10)}.muscle--chest .mi{background:rgba(255,69,58,.16)}
@@ -211,11 +211,11 @@ strong{color:var(--text-2)}
 .muscle--core{background:rgba(94,92,230,.10)}.muscle--core .mi{background:rgba(94,92,230,.16)}
 .muscle--grip{background:rgba(142,142,147,.12)}.muscle--grip .mi{background:rgba(142,142,147,.18)}
 
-/* ── PROGRESS BARS ── */
+/* â”€â”€ PROGRESS BARS â”€â”€ */
 .bar-shell{width:100%;height:10px;border-radius:999px;background:#ECECF1;overflow:hidden;margin:8px 0}
 .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),#5AC8FA);transition:width .4s ease}
 
-/* ── EXERCISE CARDS ── */
+/* â”€â”€ EXERCISE CARDS â”€â”€ */
 .ex-card{background:#F7F7FA;border:none;border-radius:18px;overflow:hidden;margin-bottom:12px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
 .ex-header{padding:13px 14px 11px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .ex-name{font-size:.92rem;font-weight:700;color:var(--text-2);flex:1;letter-spacing:-0.01em}
@@ -229,7 +229,7 @@ strong{color:var(--text-2)}
 .ex-toggle.open{transform:rotate(180deg);background:rgba(10,132,255,0.10);color:var(--blue)}
 .video-btn{display:inline-flex;align-items:center;gap:4px;padding:7px 11px;border-radius:12px;background:var(--blue-d);color:#005ECC;font-size:.79rem;font-weight:700;margin-top:10px}
 
-/* ── DAY SELECTOR ── */
+/* â”€â”€ DAY SELECTOR â”€â”€ */
 .day-scroll{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .day-scroll::-webkit-scrollbar{display:none}
 .day-btn{flex-shrink:0;padding:10px 15px;border-radius:999px;border:none;background:rgba(255,255,255,0.74);color:var(--muted);font-size:.83rem;font-weight:650;cursor:pointer;white-space:nowrap;transition:all .15s;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.12)}
@@ -267,7 +267,7 @@ strong{color:var(--text-2)}
   .train-snapshot,.quick-action-grid{grid-template-columns:1fr}
 }
 
-/* ── TIMELINE ── */
+/* â”€â”€ TIMELINE â”€â”€ */
 .tl{display:flex;flex-direction:column;gap:0}
 .tl-item{display:flex;gap:12px;padding-bottom:16px;position:relative}
 .tl-item:last-child{padding-bottom:0}
@@ -280,14 +280,14 @@ strong{color:var(--text-2)}
 .tl-list{margin:0;padding:0 0 0 14px;font-size:.84rem;color:var(--text)}
 .tl-list li{margin:4px 0}
 
-/* ── RPE SECTION ── */
+/* â”€â”€ RPE SECTION â”€â”€ */
 .rpe-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .rpe-block{background:#FBFBFD;border:none;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
 .rpe-head{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2)}
 .rpe-main{font-size:1.03rem;font-weight:780;color:var(--text-2);margin:6px 0 4px}
 .rpe-note{font-size:.77rem;color:var(--muted)}
 
-/* ── ACCORDION ── */
+/* â”€â”€ ACCORDION â”€â”€ */
 .acc-item{border-bottom:1px solid rgba(60,60,67,0.08)}
 .acc-item:last-child{border-bottom:none}
 .acc-header{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:8px}
@@ -297,7 +297,7 @@ strong{color:var(--text-2)}
 .acc-body.open{padding:0 16px 16px;max-height:520px;opacity:1}
 .acc-arrow.open{transform:rotate(180deg)}
 
-/* ── WEEK STRIP ── */
+/* â”€â”€ WEEK STRIP â”€â”€ */
 .week-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
 .week-block{border:none;border-radius:18px;padding:11px 8px;text-align:center;background:#FAFAFC;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);cursor:pointer;-webkit-appearance:none;appearance:none;font:inherit}
 .week-block .wk{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2)}
@@ -306,13 +306,13 @@ strong{color:var(--text-2)}
 .week-block.active .wk,.week-block.active .wkv{color:#005ECC}
 .week-block:focus-visible{outline:2px solid rgba(10,132,255,0.35);outline-offset:2px}
 
-/* ── CHECKBOX LIST ── */
+/* â”€â”€ CHECKBOX LIST â”€â”€ */
 .check-list{list-style:none;margin:0;padding:0}
 .check-list li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(60,60,67,0.08);font-size:.86rem}
 .check-list li:last-child{border-bottom:none}
 .check-list .ck{width:22px;height:22px;border-radius:7px;border:none;background:#F4F4F7;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.12)}
 .check-list .ck.done{background:var(--green);box-shadow:none}
-.check-list .ck.done::after{content:'✓';color:#fff;font-size:.72rem;font-weight:900}
+.check-list .ck.done::after{content:'âœ“';color:#fff;font-size:.72rem;font-weight:900}
 
 /* SMALL UTILS */
 .small{font-size:.8rem;color:var(--muted)}
@@ -320,7 +320,7 @@ strong{color:var(--text-2)}
 .divider{border:none;border-top:1px solid rgba(60,60,67,0.08);margin:12px 0}
 .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
 
-/* ── REHAB CARDS ── */
+/* â”€â”€ REHAB CARDS â”€â”€ */
 .rehab-site{border:none;border-radius:18px;overflow:hidden;margin-bottom:10px;background:#FFFFFF;box-shadow:var(--shadow-sm)}
 .rehab-site-header{padding:13px 15px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .rehab-site-title{font-size:.92rem;font-weight:700;color:var(--text-2)}
@@ -330,11 +330,11 @@ strong{color:var(--text-2)}
 .rehab-ex .ex-n{font-weight:700;color:var(--text-2);margin-bottom:4px}
 .rehab-ex .ex-d{color:var(--muted)}
 
-/* ── PRIORITY LIST ── */
+/* â”€â”€ PRIORITY LIST â”€â”€ */
 .priority-list{margin:0;padding:0 0 0 18px}
 .priority-list li{margin:8px 0;font-size:.86rem;line-height:1.48}
 
-/* ── HEVY OS ── */
+/* â”€â”€ HEVY OS â”€â”€ */
 .hevy-result{background:#FBFBFD;border:none;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08)}
 .hevy-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-2);margin-bottom:5px}
 .hevy-val{font-size:1rem;font-weight:720;color:var(--text-2)}
@@ -353,7 +353,7 @@ strong{color:var(--text-2)}
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
 
-/* ── SECOND PASS: NATIVE IOS REFINEMENT ── */
+/* â”€â”€ SECOND PASS: NATIVE IOS REFINEMENT â”€â”€ */
 .section-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.72);color:var(--muted-2);font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:inset 0 0 0 1px rgba(60,60,67,0.08);margin-bottom:8px}
 .page-header::after{content:'';display:block;height:2px;width:100%;margin-top:12px;background:linear-gradient(90deg, rgba(10,132,255,0.18), rgba(10,132,255,0));border-radius:999px}
 .page-title-wrap{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
@@ -457,7 +457,7 @@ body{
 }
 
 
-/* ── ELITE COMMAND PANELS ── */
+/* â”€â”€ ELITE COMMAND PANELS â”€â”€ */
 .command-card{background:rgba(255,255,255,0.72);border:1px solid rgba(60,60,67,0.08);border-radius:24px;box-shadow:0 10px 24px rgba(15,23,42,0.06);overflow:hidden;backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);margin:0 0 12px}
 .command-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer}
 .command-summary::-webkit-details-marker{display:none}
@@ -490,7 +490,7 @@ body{
 @media (max-width:720px){.command-state{display:none}}
 
 
-/* ── V2.0 OPTIMIZATIONS ── */
+/* â”€â”€ V2.0 OPTIMIZATIONS â”€â”€ */
 .card-new-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:var(--blue-d);color:var(--blue);font-size:.65rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-left:8px}
 
 /* Session log history entries */
@@ -529,7 +529,7 @@ body{
 
 /* Priority item left accent */
 .command-list{padding:0}
-/* ── GITHUB PAGES REFACTOR: VISUAL THEME LAYER ── */
+/* â”€â”€ GITHUB PAGES REFACTOR: VISUAL THEME LAYER â”€â”€ */
 html, body {
   background: transparent !important;
 }
@@ -689,3 +689,54 @@ body.sumo-app[data-page="train"][data-train-day="d4"]{--page-bg-image:url("asset
 body.sumo-app[data-page="train"][data-train-day="d5"]{--page-bg-image:url("assets/images/bg-train-friday.svg");}
 body.sumo-app[data-page="train"][data-train-day="d6"]{--page-bg-image:url("assets/images/bg-train-saturday.jpg");}
 body.sumo-app[data-page="train"][data-train-day="d7"]{--page-bg-image:url("assets/images/bg-train-sunday.svg");}
+
+
+/* â”€â”€ MOBILE NAV VISIBILITY PATCH â”€â”€ */
+:root{
+  --mobile-nav-gap: 10px;
+}
+body{
+  padding-bottom: calc(126px + env(safe-area-inset-bottom));
+}
+.bnav-shell{
+  bottom: 0;
+  padding: 0 12px calc(var(--mobile-nav-gap) + env(safe-area-inset-bottom));
+}
+.bnav{
+  width: min(calc(100vw - 24px), 980px);
+  width: min(calc(100dvw - 24px), 980px);
+  max-width: 100%;
+}
+.page{
+  padding-bottom: calc(136px + env(safe-area-inset-bottom)) !important;
+}
+@supports (min-height: 100dvh){
+  body.sumo-app{min-height:100dvh;}
+}
+@media (max-width: 768px){
+  :root{
+    --mobile-nav-gap: 8px;
+  }
+  body{
+    padding-bottom: calc(142px + env(safe-area-inset-bottom));
+  }
+  .bnav-shell{
+    padding: 0 10px calc(var(--mobile-nav-gap) + env(safe-area-inset-bottom));
+  }
+  .bnav{
+    width: calc(100vw - 20px);
+    width: calc(100dvw - 20px);
+    border-radius: 22px;
+  }
+  .bnav-track{
+    justify-content: flex-start;
+    min-width: 0;
+    padding-inline: 2px;
+  }
+  .page{
+    padding-bottom: calc(150px + env(safe-area-inset-bottom)) !important;
+  }
+  .page-body{
+    padding-bottom: calc(30px + env(safe-area-inset-bottom));
+  }
+}
