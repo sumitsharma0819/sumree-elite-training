@@ -531,25 +531,52 @@ body.ree-app::after{
   }
 }
 
+
+
+.demo-note{
+  margin:0 0 12px;
+  font-size:.82rem;
+  color:var(--muted);
+}
+.demo-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.demo-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(214,51,179,0.10);
+  border:1px solid rgba(214,51,179,0.16);
+  color:var(--blue);
+  font-size:.73rem;
+  font-weight:800;
+  line-height:1.1;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.demo-link:hover{ text-decoration:none; filter:brightness(.98); }
+.demo-link::after{ content:" ↗"; font-size:.72rem; }
 </style>
 </head>
 <body class="ree-app">
-<a class="home-chip" href="index.html" aria-label="Back to home">← Home</a>
-
+<a aria-label="Back to home" class="home-chip" href="index.html">← Home</a>
 <div class="page-body" style="padding-top:10px;padding-bottom:0">
 <div class="ree-hero-portrait">
-  <img src="assets/images/ree.jpeg" alt="Ree portrait by the ocean" />
-  <div class="ree-hero-copy">
-    <h2>Ree's System</h2>
-    <div class="global-sumo-sub">24-week lean sculpt system · readiness mode · behavior locks</div>
-    <div class="global-sumo-pills">
+<img alt="Ree portrait by the ocean" src="assets/images/ree.jpeg"/>
+<div class="ree-hero-copy">
+<h2>Ree's System</h2>
+<div class="global-sumo-sub">24-week lean sculpt system · readiness mode · behavior locks</div>
+<div class="global-sumo-pills">
 <span class="global-sumo-pill"><span class="global-sumo-dot" id="modeDot"></span><span id="modeText">Build</span></span>
 <span class="global-sumo-pill"><span class="global-sumo-dot green"></span><span id="phaseText">Phase 1 · Reset</span></span>
 </div>
-  </div>
 </div>
 </div>
-
+</div>
 <!-- PAGE 1 -->
 <section class="page active" id="page-today">
 <div class="page-header">
@@ -566,12 +593,12 @@ body.ree-app::after{
 <div class="hero-panel">
 <div class="hero-copy">
 <div class="hero-title">4-day cardio-forward transformation system</div>
-<p class="hero-sub">Built for a 39-year-old vegetarian female, 5'0", now 142 lb from 158 lb, targeting 120 lb with permanent rebound control. No hiking. Sessions are 50–60 minutes with HIIT, brisk cardio, and light dumbbell/barbell training.</p>
+<p class="hero-sub">Built for a 39-year-old vegetarian female, 5'0", 142.5 lb, with a DEXA showing 44.1% body fat and elevated visceral fat. The mission is fat loss with lean-mass protection, lower trunk fat, and controlled cardio because low iron markers can reduce high-intensity tolerance. No hiking. Sessions stay 50–60 minutes with low-impact HIIT, brisk cardio, and light dumbbell/barbell training.</p>
 </div>
 <div class="hero-meta">
-<span class="metric-pill"><span class="metric-dot"></span> Fat loss first</span>
+<span class="metric-pill"><span class="metric-dot"></span> Visceral-fat reduction</span>
 <span class="metric-pill"><span class="metric-dot"></span> Joint-aware</span>
-<span class="metric-pill"><span class="metric-dot"></span> Muscle retention</span>
+<span class="metric-pill"><span class="metric-dot"></span> Lean-mass protection</span>
 </div>
 </div>
 <div class="today-card-grid">
@@ -602,12 +629,25 @@ body.ree-app::after{
 <div class="mode-note" id="modeNote">Green = full plan. Yellow = normal plan. Red = cut 1 set from each lift and replace HIIT with 12-20 min Zone 2.</div>
 </div>
 </div>
-
 <div class="stat-grid g4">
 <div class="stat"><div class="label">Start</div><div class="val">158</div><div class="note">Jan 5, 2026</div></div>
 <div class="stat"><div class="label">Current</div><div class="val">142</div><div class="note">16 lb already lost</div></div>
 <div class="stat"><div class="label">Goal</div><div class="val">120</div><div class="note">22 lb remaining</div></div>
 <div class="stat"><div class="label">Structure</div><div class="val">4 days</div><div class="note">Cardio + HIIT + light lifting</div></div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">DEXA-informed priorities</div>
+<div class="card-sub">Use the scan to decide what matters most: lower body-fat %, reduce visceral fat, and hold onto lean mass while the scale drops.</div>
+</div>
+<div class="card-body">
+<div class="stat-grid g3">
+<div class="stat"><div class="label">Body fat</div><div class="val">44.1%</div><div class="note">Primary job: drive this down gradually, not aggressively.</div></div>
+<div class="stat"><div class="label">VAT area</div><div class="val">121.2</div><div class="note">Waistline and trunk-fat reduction now matter more than scale drama.</div></div>
+<div class="stat"><div class="label">Lean mass</div><div class="val">79.7 lb</div><div class="note">Protect this with protein, lifting quality, and recovery.</div></div>
+</div>
+<div class="banner purple" style="margin-top:12px;"><strong>Interpretation:</strong> Ree does not need extreme dieting. She needs a controlled calorie deficit, high protein, two capped HIIT exposures, and enough recovery to keep training quality up while visceral fat trends down.</div>
+</div>
 </div>
 <div class="card">
 <div class="card-header">
@@ -694,8 +734,8 @@ body.ree-app::after{
 <div class="section-kicker">Nutrition strategy</div>
 <div class="page-title-wrap">
 <div>
-<div class="page-title">Macros &amp; Meals</div>
-<div class="page-sub">High-satiety vegetarian cutting plan designed to stop the discipline drift that caused past rebounds</div>
+<div class="page-title">Macros, Meals &amp; Lab Support</div>
+<div class="page-sub">DEXA-driven vegetarian fat-loss nutrition with iron-supportive choices and potassium-aware guardrails</div>
 </div>
 <div class="header-badge">Fuel</div>
 </div>
@@ -703,33 +743,33 @@ body.ree-app::after{
 <div class="page-body">
 <div class="hero-panel">
 <div class="hero-copy">
-<div class="hero-title">Protein first, appetite second, calories third</div>
-<p class="hero-sub">The plan is structured so hunger, family food exposure, and end-of-day fatigue do not control decisions. Meals are repetitive on purpose because repetition beats “being good” for 24 weeks.</p>
+<div class="hero-title">Protein first, iron smarter, potassium calmer</div>
+<p class="hero-sub">This version keeps the calorie deficit moderate enough to protect recovery, shifts food choices toward iron-supportive pairings, and removes the easy potassium traps like coconut water, salt substitutes, and stacking multiple high-potassium foods in the same meal.</p>
 </div>
 <div class="hero-meta">
 <span class="metric-pill"><span class="metric-dot"></span> 105–120 g protein</span>
-<span class="metric-pill"><span class="metric-dot"></span> 1,400–1,600 kcal</span>
-<span class="metric-pill"><span class="metric-dot"></span> 4 feedings</span>
+<span class="metric-pill"><span class="metric-dot"></span> Iron-supportive pairings</span>
+<span class="metric-pill"><span class="metric-dot"></span> Potassium-aware</span>
 </div>
 </div>
 <div class="train-cockpit" style="margin-top:12px;">
 <div class="train-focus-card">
-<div class="train-focus-top"><div><div class="train-focus-kicker">Relapse-proof meal structure</div><h3 class="train-focus-title">Default meals beat motivation</h3><p class="train-focus-note">Breakfast stays fixed, lunch rotates between 2 choices, snacks have 2 emergency options, and dinner rotates between 3 protein-anchored templates.</p></div></div>
+<div class="train-focus-top"><div><div class="train-focus-kicker">Lab-informed meal structure</div><h3 class="train-focus-title">Default meals now solve three problems at once</h3><p class="train-focus-note">Every day should support fat loss, lean-mass retention, and better iron intake without pushing potassium higher than it needs to be.</p></div></div>
 <ul class="list-tight">
-<li><strong>Breakfast default:</strong> protein-first and repeatable 5-6 days per week.</li>
-<li><strong>Lunch default:</strong> 2 prepared choices only, both with a visible protein anchor.</li>
-<li><strong>Snack default:</strong> one rescue snack at 4-5 PM before cravings take over.</li>
-<li><strong>Dinner default:</strong> 3 rotating templates so family meals stay controlled, not random.</li>
-<li><strong>Flex meal:</strong> once weekly, protein first, no cheat-day spillover.</li>
+<li><strong>Breakfast default:</strong> 25–30 g protein plus a vitamin C food, not tea-first on an empty stomach.</li>
+<li><strong>Lunch default:</strong> one visible protein anchor plus 1 iron-supportive pairing such as lemon, berries, bell pepper, or citrus.</li>
+<li><strong>Snack default:</strong> one rescue feeding at 4–5 PM so dinner is never a rebound meal.</li>
+<li><strong>Dinner default:</strong> 3 lower-potassium templates built around tofu, paneer, yogurt, or measured dals instead of bean-heavy overloads.</li>
+<li><strong>Do not stack:</strong> coconut water, tomato-heavy curries, potatoes, spinach, bananas, or potassium salt substitutes in the same day.</li>
 </ul>
 </div>
 <div class="train-focus-card">
-<div class="train-focus-top"><div><div class="train-focus-kicker">Diet break logic</div><h3 class="train-focus-title">Use relief before burnout forces it</h3><p class="train-focus-note">Long cuts are more durable when maintenance is practiced on purpose.</p></div></div>
+<div class="train-focus-top"><div><div class="train-focus-kicker">Recovery + anemia logic</div><h3 class="train-focus-title">Do not use an aggressive deficit right now</h3><p class="train-focus-note">Low hemoglobin, hematocrit, and MCH are a reason to keep the cut controlled so recovery, walking, and lifting quality do not crash.</p></div></div>
 <ul class="list-tight">
-<li>After 8-10 hard weeks, run a <strong>10-14 day diet break</strong> at estimated maintenance.</li>
-<li>Protein stays high, meal timing stays the same, and training structure does not change.</li>
-<li>Maintenance is not a free-for-all: it is simply more carbs and calories around training.</li>
-<li>Return to the cut when scale and hunger normalize, not when guilt hits.</li>
+<li>Training days should feel fueled, not drained; under-eating will make HIIT and recovery worse.</li>
+<li>Use a <strong>moderate deficit</strong>, not “eat as little as possible.” The win is consistency plus preserved lean mass.</li>
+<li>If unusual breathlessness, dizziness, or heart-racing shows up, switch that day to Zone 2 and recovery focus.</li>
+<li>Tea and coffee belong <strong>away from iron-focused meals and iron supplements</strong>, not alongside them.</li>
 </ul>
 </div>
 </div>
@@ -738,18 +778,17 @@ body.ree-app::after{
 <div class="card-body">
 <div class="micro-grid">
 <div class="rule-card"><h4>Step 1 - Slow the trigger</h4><ul><li>Drink water first.</li><li>Walk for 10 minutes or do 2 minutes of nasal breathing.</li><li>Do not stand and eat in the kitchen.</li></ul></div>
-<div class="rule-card"><h4>Step 2 - Protein before impulse</h4><ul><li>Eat a rescue feeding first: Greek yogurt, tofu, paneer, or shake.</li><li>Wait 15 minutes before any second choice.</li><li>Never eat from packets or shared family containers.</li></ul></div>
+<div class="rule-card"><h4>Step 2 - Protein before impulse</h4><ul><li>Eat a rescue feeding first: Greek yogurt, paneer, tofu, whey isolate, or a measured yogurt bowl with berries.</li><li>Wait 15 minutes before any second choice.</li><li>Never eat from packets or shared family containers.</li></ul></div>
 </div>
 </div>
 </div>
-
 <div class="phase-grid">
 <div class="phase-card">
 <h4>Phase 1: Reset</h4>
 <p>Weeks 1–4</p>
 <ul>
-<li>Training day: 1,550–1,600 kcal</li>
-<li>Rest day: 1,425–1,475 kcal</li>
+<li>Training day: 1,525–1,600 kcal</li>
+<li>Rest day: 1,425–1,500 kcal</li>
 <li>Protein 105–115 g</li>
 <li>Carbs 130–155 g</li>
 <li>Fat 42–50 g</li>
@@ -759,7 +798,7 @@ body.ree-app::after{
 <h4>Phase 2: Drive</h4>
 <p>Weeks 5–12</p>
 <ul>
-<li>Training day: 1,500–1,550 kcal</li>
+<li>Training day: 1,475–1,550 kcal</li>
 <li>Rest day: 1,375–1,450 kcal</li>
 <li>Protein 110–120 g</li>
 <li>Carbs 120–145 g</li>
@@ -782,7 +821,7 @@ body.ree-app::after{
 <p>Weeks 21–24</p>
 <ul>
 <li>Training day: 1,500–1,600 kcal</li>
-<li>Rest day: 1,400–1,500 kcal</li>
+<li>Rest day: 1,425–1,500 kcal</li>
 <li>Protein stays 110–120 g</li>
 <li>Carbs rise slightly around training</li>
 <li>Goal becomes maintenance practice</li>
@@ -798,17 +837,17 @@ body.ree-app::after{
 <table>
 <thead><tr><th>Time</th><th>Target</th><th>Example</th></tr></thead>
 <tbody>
-<tr><td>7:00–8:00 AM</td><td>Hydrate + first protein feeding</td><td>Water, chai/coffee with controlled add-ins, then 30–35 g protein breakfast.</td></tr>
-<tr><td>12:00–1:30 PM</td><td>Main meal</td><td>Paneer or tofu + lentil/bean + vegetables + one measured carb.</td></tr>
-<tr><td>4:00–5:00 PM</td><td>Craving prevention snack</td><td>20–25 g protein before hunger becomes urgent.</td></tr>
-<tr><td>7:00–8:00 PM</td><td>Dinner</td><td>Lighter carb, highest vegetables, 30–35 g protein anchor.</td></tr>
-<tr><td>Emergency only</td><td>Rescue feeding</td><td>Greek yogurt, tofu, or protein shake if cravings hit after dinner.</td></tr>
+<tr><td>7:00–8:00 AM</td><td>Hydrate + protein breakfast</td><td>Water first, then a 25–30 g protein breakfast. Keep chai/coffee 60–90 minutes away if breakfast is one of the stronger iron meals.</td></tr>
+<tr><td>12:00–1:30 PM</td><td>Main iron-supportive meal</td><td>Paneer or tofu + lower-potassium vegetables + 1 measured carb + lemon, berries, or bell pepper for vitamin C support.</td></tr>
+<tr><td>4:00–5:00 PM</td><td>Craving prevention snack</td><td>20–25 g protein before hunger becomes urgent; avoid coconut water and electrolyte powders.</td></tr>
+<tr><td>7:00–8:00 PM</td><td>Dinner</td><td>Lighter carb, highest vegetables, 30–35 g protein anchor, and do not stack large portions of dal + potatoes + tomato gravy.</td></tr>
+<tr><td>Supplement window</td><td>Iron away from blockers</td><td>If taking an iron supplement, keep it away from tea, coffee, calcium, and high-fiber bran-heavy meals.</td></tr>
 </tbody>
 </table>
 <div class="pill-row">
-<span class="pill green">Breakfast must be protein-heavy</span>
+<span class="pill green">Pair iron with vitamin C</span>
 <span class="pill blue">Pre-log dinner by noon</span>
-<span class="pill orange">Never arrive at dinner starved</span>
+<span class="pill orange">No coconut water or salt substitutes</span>
 <span class="pill purple">1 planned flex meal weekly</span>
 </div>
 </div>
@@ -823,10 +862,10 @@ body.ree-app::after{
 </div>
 </div>
 <div class="train-snapshot">
-<div class="snap"><div class="snap-label">Protein</div><div class="snap-value">25–35 g: paneer, tofu, dal, chana, rajma, Greek yogurt, soy chunks, optional whey.</div></div>
-<div class="snap"><div class="snap-label">Produce</div><div class="snap-value">2 fists minimum: cooked sabzi, salad, soup vegetables, cucumber, cabbage, spinach, okra, lauki.</div></div>
-<div class="snap"><div class="snap-label">Carb</div><div class="snap-value">1 measured portion: 1 roti, 1/2–3/4 cup rice, poha portion, oats, fruit, or beans as dual protein-carb.</div></div>
-<div class="snap"><div class="snap-label">Fat</div><div class="snap-value">Keep oil visible and measured: roughly 1–2 tsp per meal, not free-poured.</div></div>
+<div class="snap"><div class="snap-label">Protein</div><div class="snap-value">25–35 g: paneer, tofu, Greek yogurt, whey isolate, soy chunks, or a measured dal portion instead of multiple bean sources in one meal.</div></div>
+<div class="snap"><div class="snap-label">Produce</div><div class="snap-value">2 fists minimum: cabbage, cucumber, bell pepper, okra, lauki, cauliflower, lettuce, onion, zucchini, or berries/citrus on the side.</div></div>
+<div class="snap"><div class="snap-label">Carb</div><div class="snap-value">1 measured portion: 1 roti, 1/2–3/4 cup rice, poha portion, oats, berries, apples, grapes, pears, or pineapple.</div></div>
+<div class="snap"><div class="snap-label">Potassium watch</div><div class="snap-value">Limit piling up coconut water, banana, spinach, potatoes, tomatoes, avocado, dried fruit, and salt substitutes on the same day.</div></div>
 </div>
 </div>
 <div class="train-focus-card">
@@ -839,10 +878,10 @@ body.ree-app::after{
 </div>
 <ul class="list-tight">
 <li>Eat protein first at every meal before touching the starch.</li>
-<li>Start lunch and dinner with water + raw vegetables or soup.</li>
-<li>Use one large bowl or plate size every time; do not graze from pans.</li>
-<li>Keep “healthy but overeatable” foods out of visual range.</li>
-<li>Have a fixed replacement for sweet cravings: yogurt bowl, protein shake, fruit + seeds, or tofu chaat.</li>
+<li>Start lunch and dinner with water + lower-potassium vegetables or soup.</li>
+<li>Use one bowl or plate size every time; do not graze from pans.</li>
+<li>Keep tea and coffee at least 1–2 hours away from iron-focused meals.</li>
+<li>Have a fixed sweet-craving replacement: yogurt bowl with berries, whey shake, fruit + yogurt, or tofu chaat.</li>
 <li>When stress rises, walk for 10 minutes before opening the pantry.</li>
 </ul>
 </div>
@@ -856,14 +895,51 @@ body.ree-app::after{
 <table>
 <thead><tr><th>Meal</th><th>Food</th><th>Why it stays in the plan</th></tr></thead>
 <tbody>
-<tr><td>Breakfast</td><td>2 moong/besan cheela + 100 g paneer or tofu + chai with controlled milk</td><td>Front-loads protein and kills early cravings.</td></tr>
-<tr><td>Lunch</td><td>Tofu or paneer sabzi + 1 roti + cucumber salad + dal</td><td>Balanced, family-friendly, and easy to portion.</td></tr>
-<tr><td>Snack</td><td>Greek yogurt or protein shake + roasted chana</td><td>Prevents evening overeating.</td></tr>
-<tr><td>Dinner</td><td>Rajma/chole or lentil soup bowl + sautéed vegetables + extra tofu/paneer side</td><td>High fiber and high satiety without a calorie blow-up.</td></tr>
-<tr><td>Flex meal rule</td><td>One restaurant or family treat meal</td><td>Still protein-anchored, no “cheat day”, and the next meal goes back to normal.</td></tr>
+<tr><td>Breakfast</td><td>2 besan cheela + 100 g paneer or tofu + strawberries or orange slices; chai later</td><td>Protein-forward and vitamin C supportive without leading with tea.</td></tr>
+<tr><td>Lunch</td><td>Tofu or paneer sabzi + 1 roti + cucumber-cabbage salad + lemon</td><td>Balanced, family-friendly, and easier on potassium than a bean-heavy lunch.</td></tr>
+<tr><td>Snack</td><td>Greek yogurt or whey isolate shake + berries or roasted makhana</td><td>Prevents evening overeating and keeps protein high without a potassium bomb.</td></tr>
+<tr><td>Dinner</td><td>Paneer bhurji or tofu stir-fry + okra/lauki/cauliflower + 1 roti or 1/2 cup rice</td><td>High satiety, lower-potassium vegetables, and simpler digestion before bed.</td></tr>
+<tr><td>Flex meal rule</td><td>One restaurant or family treat meal</td><td>Still protein-anchored, no “cheat day”, and skip coconut water, electrolyte drinks, or potassium salt substitutes.</td></tr>
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div class="train-cockpit">
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Iron + potassium smart swaps</div>
+<h3 class="train-focus-title">Keep the deficit clean, not nutrient-blind</h3>
+<p class="train-focus-note">Use these swaps so the diet supports low iron markers without accidentally driving potassium intake higher.</p>
+</div>
+</div>
+<table>
+<thead><tr><th>Instead of</th><th>Use more often</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Coconut water or electrolyte drinks</td><td>Plain water, lemon water, or unsweetened tea</td><td>Protects against easy extra potassium.</td></tr>
+<tr><td>Large rajma/chole + tomato gravy meals</td><td>Paneer/tofu + cabbage, cucumber, okra, lauki, cauliflower</td><td>Keeps protein high with a calmer potassium load.</td></tr>
+<tr><td>Tea right with meals</td><td>Tea 1–2 hours away from meals</td><td>Helps iron-focused meals work better.</td></tr>
+<tr><td>Banana / dried fruit smoothie add-ins</td><td>Berries, apple, grapes, pear, or pineapple</td><td>Lower-potassium fruit choices fit better here.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="train-focus-card">
+<div class="train-focus-top">
+<div>
+<div class="train-focus-kicker">Supplement strategy</div>
+<h3 class="train-focus-title">Minimal stack, labs first, no trendy extras</h3>
+<p class="train-focus-note">Because hemoglobin, hematocrit, and MCH are low, the only supplement that rises to the top is clinician-approved iron. Everything else is optional, not urgent.</p>
+</div>
+</div>
+<ul class="list-tight">
+<li><strong>Primary supplement to discuss with her clinician:</strong> an oral iron supplement. A common medical starting approach is one tablet daily of ferrous sulphate, fumarate, or gluconate; if not tolerated, every-other-day dosing is often used.</li>
+<li><strong>Take iron away from blockers:</strong> tea, coffee, calcium, and very high-fiber bran-heavy meals.</li>
+<li><strong>Helpful pairing:</strong> take iron with a vitamin C food or a small vitamin C add-on if approved.</li>
+<li><strong>Avoid for now:</strong> potassium supplements, electrolyte powders, “hydration sticks,” and potassium-based salt substitutes.</li>
+<li><strong>Worth checking, not blindly adding:</strong> ferritin, iron saturation, B12, and folate before building a bigger supplement stack.</li>
+</ul>
+<div class="banner yellow" style="margin-top:12px;"><strong>Important:</strong> if potassium stays elevated on repeat labs, the plan should shift from “potassium-aware” to a clinician-led restriction. Right now the page is written to lower easy excess potassium, not to create an extreme kidney-diet approach.</div>
 </div>
 </div>
 </section>
@@ -889,7 +965,7 @@ body.ree-app::after{
 <span class="metric-pill"><span class="metric-dot"></span> 50–60 min</span>
 <span class="metric-pill"><span class="metric-dot"></span> Low-impact HIIT</span>
 <span class="metric-pill"><span class="metric-dot"></span> DB/BB only</span>
-</div>
+<span class="metric-pill"><span class="metric-dot"></span> Tap Demo for form</span></div>
 </div>
 <div class="train-cockpit" style="margin-top:12px;">
 <div class="train-focus-card">
@@ -907,28 +983,27 @@ body.ree-app::after{
 <li>When every prescribed set reaches the <strong>top of the rep range twice</strong> with pain &lt;=3/10, increase load next week.</li>
 <li>If reps drop hard or form degrades, keep the same weight and win with cleaner execution.</li>
 <li>If energy is low for 2 straight sessions, cut total sets by 20% for 1 week before pushing again.</li>
-<li>HIIT stays capped at <strong>2 sessions per week</strong>, 10-14 minutes each.</li>
+<li>HIIT stays capped at <strong>2 sessions per week</strong>, 8–12 minutes each.</li><li>If low-iron symptoms show up (unusual breathlessness, dizziness, pounding heart), convert HIIT to Zone 2 that day.</li>
 </ul>
 </div>
 </div>
-
 <div class="card">
 <div class="card-header">
 <div class="card-title">Warm-up all 4 days</div>
 <div class="card-sub">This is mandatory, because it prepares the right ankle, right knee, and left shoulder before intensity starts.</div>
 </div>
 <div class="card-body">
-<table>
-<thead><tr><th>Drill</th><th>Prescription</th><th>Purpose</th></tr></thead>
+<p class="demo-note">Tap Demo to open a YouTube form guide for each movement.</p><table>
+<thead><tr><th>Drill</th><th>Prescription</th><th>Purpose</th><th>Demo</th></tr></thead>
 <tbody>
-<tr><td>Foot tripod + toe press</td><td>2 x 20 sec / side</td><td>Turns the foot back on so the ankle and knee track better.</td></tr>
-<tr><td>Knee-to-wall ankle rocks</td><td>2 x 8 / side, extra 1 set right side</td><td>Improves dorsiflexion so squats and lunges stop stealing motion from the knee.</td></tr>
-<tr><td>Supported calf raise with 2-sec pause</td><td>2 x 10</td><td>Builds ankle stiffness and control for walking and intervals.</td></tr>
-<tr><td>Wall sit or squat hold</td><td>2 x 20–30 sec</td><td>Loads the knee in a controlled way without twisting.</td></tr>
-<tr><td>Glute bridge + march</td><td>2 x 8 / side</td><td>Stabilizes pelvis so the knee does not overwork.</td></tr>
-<tr><td>Scapular wall slide</td><td>2 x 8</td><td>Improves shoulder upward rotation and keeps pressing comfortable.</td></tr>
-<tr><td>Side-lying external rotation with very light DB</td><td>2 x 12 left side, 1 x 12 right side</td><td>Restores cuff control for the previously irritated shoulder.</td></tr>
-<tr><td>Brisk march in place</td><td>90 sec</td><td>Raises temperature before training.</td></tr>
+<tr><td>Foot tripod + toe press</td><td>2 x 20 sec / side</td><td>Turns the foot back on so the ankle and knee track better.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=umo7ulK-u3k" rel="noopener noreferrer" target="_blank">Foot tripod</a></div></td></tr>
+<tr><td>Knee-to-wall ankle rocks</td><td>2 x 8 / side, extra 1 set right side</td><td>Improves dorsiflexion so squats and lunges stop stealing motion from the knee.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=ElrpduJn92Y" rel="noopener noreferrer" target="_blank">Ankle rocks</a></div></td></tr>
+<tr><td>Supported calf raise with 2-sec pause</td><td>2 x 10</td><td>Builds ankle stiffness and control for walking and intervals.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=CtpPV2FBkG4" rel="noopener noreferrer" target="_blank">Calf raise</a></div></td></tr>
+<tr><td>Wall sit or squat hold</td><td>2 x 20–30 sec</td><td>Loads the knee in a controlled way without twisting.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=JaZNYM3zAP0" rel="noopener noreferrer" target="_blank">Wall sit</a></div></td></tr>
+<tr><td>Glute bridge + march</td><td>2 x 8 / side</td><td>Stabilizes pelvis so the knee does not overwork.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=RESEoAnLEmk" rel="noopener noreferrer" target="_blank">Bridge march</a></div></td></tr>
+<tr><td>Scapular wall slide</td><td>2 x 8</td><td>Improves shoulder upward rotation and keeps pressing comfortable.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=Eaj_NG5_hIo" rel="noopener noreferrer" target="_blank">Wall slide</a></div></td></tr>
+<tr><td>Side-lying external rotation with very light DB</td><td>2 x 12 left side, 1 x 12 right side</td><td>Restores cuff control for the previously irritated shoulder.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=OeYz3YXDQps" rel="noopener noreferrer" target="_blank">External rotation</a></div></td></tr>
+<tr><td>Brisk march in place</td><td>90 sec</td><td>Raises temperature before training.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=QilgMPG7OaA" rel="noopener noreferrer" target="_blank">March</a></div></td></tr>
 </tbody>
 </table>
 </div>
@@ -940,6 +1015,24 @@ body.ree-app::after{
 <div class="swap-card"><h4>Monday / Friday upper days</h4><p>Add 1 extra set of scap wall slides and 1 extra set of left-side external rotation before pressing or rows.</p></div>
 <div class="swap-card"><h4>Wednesday lower day</h4><p>Add 1 extra set of knee-to-wall rocks, 1 extra right calf set, and a 20-second split squat iso hold per side.</p></div>
 <div class="swap-card"><h4>Sunday metabolic day</h4><p>Repeat brisk march, glute bridge march, and dead bug for one quick activation round before circuits.</p></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="card-title">Swap / alternative movement demos</div>
+<div class="card-sub">These are the backup movements referenced in the plan when joints feel irritated or fatigue is high.</div>
+</div>
+<div class="card-body">
+<div class="swap-grid">
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=KxtMQ317Oqc" rel="noopener noreferrer" target="_blank">Incline push-up ↗</a></h4><p>Use this when shoulder pressing feels cranky and you still want a clean press pattern.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=pF17m_CXfL0" rel="noopener noreferrer" target="_blank">Hip thrust ↗</a></h4><p>Good replacement for the hinge on days when the low back feels tired but glutes are ready to work.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=yVgHPEbqsmI" rel="noopener noreferrer" target="_blank">Sit-to-stand ↗</a></h4><p>Simple knee-friendly squat regression when box squats or goblet squats feel off.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=sh3RO6QYvew" rel="noopener noreferrer" target="_blank">Split squat iso hold ↗</a></h4><p>Use for controlled single-leg strength and balance without rushing through reps.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=WGjf5w8iaTM" rel="noopener noreferrer" target="_blank">Box squat ↗</a></h4><p>Helpful when fatigue is high and you need a depth target to keep form crisp.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=PemRK2kC_w8" rel="noopener noreferrer" target="_blank">Step-up march ↗</a></h4><p>Good lower-impact cardio substitute for step jacks when knees are sensitive.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=hmiwbQOaZmw" rel="noopener noreferrer" target="_blank">Reverse slider lunge ↗</a></h4><p>Useful when you want a smoother reverse-lunge pattern with more control.</p></div>
+<div class="swap-card"><h4><a href="https://www.youtube.com/watch?v=yoJyyK5vcyM" rel="noopener noreferrer" target="_blank">Tripod row ↗</a></h4><p>Use this when you want extra support and a more stable row setup.</p></div>
 </div>
 </div>
 </div>
@@ -957,17 +1050,17 @@ body.ree-app::after{
 <div class="card-sub">Main goal: upper-body tone, calorie burn, and shoulder-safe pressing.</div>
 </div>
 <div class="card-body">
-<table>
-<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<p class="demo-note">Tap Demo to open a YouTube form guide for each movement.</p><table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Demo</th></tr></thead>
 <tbody>
-<tr><td>A1</td><td>Incline dumbbell press, neutral grip</td><td>3 x 10–12</td><td>45 sec</td></tr>
-<tr><td>A2</td><td>1-arm dumbbell row</td><td>3 x 12 / side</td><td>45 sec</td></tr>
-<tr><td>A3</td><td>Fast march or shadow boxing</td><td>3 x 45 sec</td><td>30 sec</td></tr>
-<tr><td>B1</td><td>Seated dumbbell shoulder press, neutral grip</td><td>2–3 x 10</td><td>45 sec</td></tr>
-<tr><td>B2</td><td>Dumbbell Romanian deadlift</td><td>3 x 12</td><td>45 sec</td></tr>
-<tr><td>B3</td><td>Dead bug</td><td>3 x 8–10 / side</td><td>30 sec</td></tr>
-<tr><td>C</td><td>HIIT finisher: 20 sec fast / 40 sec easy x 8 rounds</td><td>8 min</td><td>—</td></tr>
-<tr><td>Cool-down</td><td>Breathing + calf stretch + pec doorway stretch</td><td>3–4 min</td><td>—</td></tr>
+<tr><td>A1</td><td>Incline dumbbell press, neutral grip</td><td>3 x 10–12</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=SMO17ItT5Wc" rel="noopener noreferrer" target="_blank">Press demo</a></div></td></tr>
+<tr><td>A2</td><td>1-arm dumbbell row</td><td>3 x 12 / side</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=nYFjVJqMmM8" rel="noopener noreferrer" target="_blank">Row demo</a></div></td></tr>
+<tr><td>A3</td><td>Fast march or shadow boxing</td><td>3 x 45 sec</td><td>30 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=QilgMPG7OaA" rel="noopener noreferrer" target="_blank">March</a><a class="demo-link" href="https://www.youtube.com/watch?v=J4j3AOVWuHE" rel="noopener noreferrer" target="_blank">Shadow box</a></div></td></tr>
+<tr><td>B1</td><td>Seated dumbbell shoulder press, neutral grip</td><td>2–3 x 10</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=xohVxaXGsB4" rel="noopener noreferrer" target="_blank">Shoulder press</a></div></td></tr>
+<tr><td>B2</td><td>Dumbbell Romanian deadlift</td><td>3 x 12</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=hQgFixeXdZo" rel="noopener noreferrer" target="_blank">DB RDL</a></div></td></tr>
+<tr><td>B3</td><td>Dead bug</td><td>3 x 8–10 / side</td><td>30 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=GbSC02oU3To" rel="noopener noreferrer" target="_blank">Dead bug</a></div></td></tr>
+<tr><td>C</td><td>HIIT finisher: 20 sec fast / 40 sec easy x 8 rounds</td><td>8 min</td><td>—</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=QxME1mx2yXM" rel="noopener noreferrer" target="_blank">Low-impact HIIT</a></div></td></tr>
+<tr><td>Cool-down</td><td>Breathing + calf stretch + pec doorway stretch</td><td>3–4 min</td><td>—</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=F28MGLlpP90" rel="noopener noreferrer" target="_blank">Breathing</a><a class="demo-link" href="https://www.youtube.com/watch?v=mafo7o7OnFo" rel="noopener noreferrer" target="_blank">Calf stretch</a><a class="demo-link" href="https://www.youtube.com/watch?v=M850sCj9LHQ" rel="noopener noreferrer" target="_blank">Pec stretch</a></div></td></tr>
 </tbody>
 </table>
 <div class="pill-row">
@@ -985,16 +1078,16 @@ body.ree-app::after{
 <div class="card-sub">Main goal: leg strength without knee irritation, plus longer calorie-burning work.</div>
 </div>
 <div class="card-body">
-<table>
-<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<p class="demo-note">Tap Demo to open a YouTube form guide for each movement.</p><table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Demo</th></tr></thead>
 <tbody>
-<tr><td>A1</td><td>Goblet squat to a box/bench</td><td>3 x 10–12</td><td>60 sec</td></tr>
-<tr><td>A2</td><td>Barbell or dumbbell glute bridge</td><td>3 x 12–15</td><td>45 sec</td></tr>
-<tr><td>B1</td><td>Supported reverse lunge or split squat, shallow range</td><td>2–3 x 8 / side</td><td>60 sec</td></tr>
-<tr><td>B2</td><td>Single-leg calf raise</td><td>3 x 12 / side + 1 extra set right side</td><td>30 sec</td></tr>
-<tr><td>B3</td><td>Suitcase carry</td><td>3 x 30–40 sec / side</td><td>30 sec</td></tr>
-<tr><td>C</td><td>Zone 2 brisk walk or incline walk</td><td>20–25 min</td><td>Talk test pace</td></tr>
-<tr><td>Cool-down</td><td>Quad stretch + ankle rocks + 90/90 breathing</td><td>3–4 min</td><td>—</td></tr>
+<tr><td>A1</td><td>Goblet squat to a box/bench</td><td>3 x 10–12</td><td>60 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=mIJub2k6YNg" rel="noopener noreferrer" target="_blank">Goblet box squat</a></div></td></tr>
+<tr><td>A2</td><td>Barbell or dumbbell glute bridge</td><td>3 x 12–15</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=LXBF7dU9e7g" rel="noopener noreferrer" target="_blank">Weighted bridge</a></div></td></tr>
+<tr><td>B1</td><td>Supported reverse lunge or split squat, shallow range</td><td>2–3 x 8 / side</td><td>60 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=u_zSfK5ZFU4" rel="noopener noreferrer" target="_blank">Reverse lunge</a></div></td></tr>
+<tr><td>B2</td><td>Single-leg calf raise</td><td>3 x 12 / side + 1 extra set right side</td><td>30 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=qPd73snQfUs" rel="noopener noreferrer" target="_blank">Single-leg calf raise</a></div></td></tr>
+<tr><td>B3</td><td>Suitcase carry</td><td>3 x 30–40 sec / side</td><td>30 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=y-hn_Ha1-RE" rel="noopener noreferrer" target="_blank">Suitcase carry</a></div></td></tr>
+<tr><td>C</td><td>Zone 2 brisk walk or incline walk</td><td>20–25 min</td><td>Talk test pace</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=NAsObfFJXvE" rel="noopener noreferrer" target="_blank">Incline walk</a></div></td></tr>
+<tr><td>Cool-down</td><td>Quad stretch + ankle rocks + 90/90 breathing</td><td>3–4 min</td><td>—</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=zi5__zBRzYc" rel="noopener noreferrer" target="_blank">Quad stretch</a><a class="demo-link" href="https://www.youtube.com/watch?v=ElrpduJn92Y" rel="noopener noreferrer" target="_blank">Ankle rocks</a><a class="demo-link" href="https://www.youtube.com/watch?v=LADa1fkj7kE" rel="noopener noreferrer" target="_blank">90/90 breathing</a></div></td></tr>
 </tbody>
 </table>
 <div class="pill-row">
@@ -1012,16 +1105,16 @@ body.ree-app::after{
 <div class="card-sub">Main goal: build the back-width illusion, tighten arms, and keep HIIT sharp without frying recovery.</div>
 </div>
 <div class="card-body">
-<table>
-<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<p class="demo-note">Tap Demo to open a YouTube form guide for each movement.</p><table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Demo</th></tr></thead>
 <tbody>
-<tr><td>A1</td><td>Barbell Romanian deadlift</td><td>3 x 10</td><td>60 sec</td></tr>
-<tr><td>A2</td><td>Chest-supported or tripod dumbbell row</td><td>3 x 12</td><td>45 sec</td></tr>
-<tr><td>B1</td><td>Reverse fly</td><td>2–3 x 12–15</td><td>45 sec</td></tr>
-<tr><td>B2</td><td>Floor press</td><td>2 x 10–12</td><td>45 sec</td></tr>
-<tr><td>B3</td><td>Side plank</td><td>3 x 20–30 sec / side</td><td>30 sec</td></tr>
-<tr><td>C</td><td>HIIT ladder: 30 sec work / 60 sec easy x 8 rounds</td><td>12 min</td><td>Low-impact choices only</td></tr>
-<tr><td>Cool-down</td><td>Lat stretch + child’s pose breathing</td><td>3 min</td><td>—</td></tr>
+<tr><td>A1</td><td>Barbell Romanian deadlift</td><td>3 x 10</td><td>60 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=8-Ss0IrmCNo" rel="noopener noreferrer" target="_blank">Barbell RDL</a></div></td></tr>
+<tr><td>A2</td><td>Chest-supported or tripod dumbbell row</td><td>3 x 12</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=9zkP4Cd_cz0" rel="noopener noreferrer" target="_blank">Chest-supported row</a><a class="demo-link" href="https://www.youtube.com/watch?v=yoJyyK5vcyM" rel="noopener noreferrer" target="_blank">Tripod row</a></div></td></tr>
+<tr><td>B1</td><td>Reverse fly</td><td>2–3 x 12–15</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=3MKmYlhxgOo" rel="noopener noreferrer" target="_blank">Reverse fly</a></div></td></tr>
+<tr><td>B2</td><td>Floor press</td><td>2 x 10–12</td><td>45 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=AqYFvc9t_vU" rel="noopener noreferrer" target="_blank">Floor press</a></div></td></tr>
+<tr><td>B3</td><td>Side plank</td><td>3 x 20–30 sec / side</td><td>30 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=XeN4pEZZJNI" rel="noopener noreferrer" target="_blank">Side plank</a></div></td></tr>
+<tr><td>C</td><td>HIIT ladder: 30 sec work / 60 sec easy x 8 rounds</td><td>12 min</td><td>Low-impact choices only</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=9_gI-yOf2yM" rel="noopener noreferrer" target="_blank">Low-impact HIIT</a></div></td></tr>
+<tr><td>Cool-down</td><td>Lat stretch + child’s pose breathing</td><td>3 min</td><td>—</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=ktQN4lBRh1c" rel="noopener noreferrer" target="_blank">Child's pose lat stretch</a><a class="demo-link" href="https://www.youtube.com/watch?v=F28MGLlpP90" rel="noopener noreferrer" target="_blank">Breathing</a></div></td></tr>
 </tbody>
 </table>
 <div class="info" style="margin-top:10px;">Every exercise row includes a demo link. Use the swap cards below each day if a joint objects, and watch the listed cue before changing load.</div>
@@ -1035,17 +1128,17 @@ body.ree-app::after{
 <div class="card-sub">Main goal: finish the week athletic, breathing hard, and still fresh enough to restart Monday clean.</div>
 </div>
 <div class="card-body">
-<table>
-<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th></tr></thead>
+<p class="demo-note">Tap Demo to open a YouTube form guide for each movement.</p><table>
+<thead><tr><th>Block</th><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Demo</th></tr></thead>
 <tbody>
-<tr><td>Circuit 1</td><td>Goblet squat</td><td>3 rounds x 10</td><td>20 sec between moves</td></tr>
-<tr><td>Circuit 1</td><td>Dumbbell floor press</td><td>3 rounds x 10</td><td>20 sec</td></tr>
-<tr><td>Circuit 1</td><td>Dumbbell row</td><td>3 rounds x 12</td><td>60 sec after round</td></tr>
-<tr><td>Circuit 2</td><td>Barbell or dumbbell hip hinge</td><td>3 rounds x 10</td><td>20 sec</td></tr>
-<tr><td>Circuit 2</td><td>Farmer or suitcase carry</td><td>3 rounds x 30–40 sec</td><td>20 sec</td></tr>
-<tr><td>Circuit 2</td><td>Heel-elevated march or step jacks</td><td>3 rounds x 45 sec</td><td>60 sec after round</td></tr>
-<tr><td>Finisher</td><td>EMOM 8 min: 40 sec work / 20 sec transition</td><td>8 min</td><td>Alternate 2 movements</td></tr>
-<tr><td>Core</td><td>Heel taps or hollow hold regression</td><td>2 x 20 total</td><td>30 sec</td></tr>
+<tr><td>Circuit 1</td><td>Goblet squat</td><td>3 rounds x 10</td><td>20 sec between moves</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=V0f5uvsbksg" rel="noopener noreferrer" target="_blank">Goblet squat</a></div></td></tr>
+<tr><td>Circuit 1</td><td>Dumbbell floor press</td><td>3 rounds x 10</td><td>20 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=AqYFvc9t_vU" rel="noopener noreferrer" target="_blank">DB floor press</a></div></td></tr>
+<tr><td>Circuit 1</td><td>Dumbbell row</td><td>3 rounds x 12</td><td>60 sec after round</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=nYFjVJqMmM8" rel="noopener noreferrer" target="_blank">DB row</a></div></td></tr>
+<tr><td>Circuit 2</td><td>Barbell or dumbbell hip hinge</td><td>3 rounds x 10</td><td>20 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=2W_gXhut5S8" rel="noopener noreferrer" target="_blank">Hip hinge</a></div></td></tr>
+<tr><td>Circuit 2</td><td>Farmer or suitcase carry</td><td>3 rounds x 30–40 sec</td><td>20 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=z7E_YU9P1jU" rel="noopener noreferrer" target="_blank">Farmer carry</a><a class="demo-link" href="https://www.youtube.com/watch?v=y-hn_Ha1-RE" rel="noopener noreferrer" target="_blank">Suitcase carry</a></div></td></tr>
+<tr><td>Circuit 2</td><td>Heel-elevated march or step jacks</td><td>3 rounds x 45 sec</td><td>60 sec after round</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=QilgMPG7OaA" rel="noopener noreferrer" target="_blank">March</a><a class="demo-link" href="https://www.youtube.com/watch?v=JHdVMkRBuRA" rel="noopener noreferrer" target="_blank">Step jacks</a></div></td></tr>
+<tr><td>Finisher</td><td>EMOM 8 min: 40 sec work / 20 sec transition</td><td>8 min</td><td>Alternate 2 movements</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=95I7fAGgMc8" rel="noopener noreferrer" target="_blank">EMOM format</a></div></td></tr>
+<tr><td>Core</td><td>Heel taps or hollow hold regression</td><td>2 x 20 total</td><td>30 sec</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=YIOIGUQMck8" rel="noopener noreferrer" target="_blank">Heel taps</a><a class="demo-link" href="https://www.youtube.com/watch?v=36Sdq1d2pz4" rel="noopener noreferrer" target="_blank">Hollow regression</a></div></td></tr>
 </tbody>
 </table>
 <div class="banner orange" style="margin-top:10px;"><strong>Important:</strong> this is a breathing-hard session, not a max-weight session. The entire day should feel athletic, smooth, and repeatable next week.</div>
@@ -1130,25 +1223,24 @@ body.ree-app::after{
 </ul>
 </div>
 </div>
-
 <div class="card">
 <div class="card-header">
 <div class="card-title">Micro-dose corrective work</div>
 <div class="card-sub">Do these on rest days too if the joints feel sticky.</div>
 </div>
 <div class="card-body">
-<table>
-<thead><tr><th>Area</th><th>Exercise</th><th>Dose</th><th>Rule</th></tr></thead>
+<p class="demo-note">Tap Demo to open a YouTube form guide for each movement.</p><table>
+<thead><tr><th>Area</th><th>Exercise</th><th>Dose</th><th>Rule</th><th>Demo</th></tr></thead>
 <tbody>
-<tr><td>Ankle</td><td>Knee-to-wall rocks</td><td>2 x 8–10 daily</td><td>Right side gets one extra set.</td></tr>
-<tr><td>Ankle</td><td>Single-leg balance + toe spread</td><td>2 x 20–30 sec</td><td>Stay tall, no gripping the floor with the toes.</td></tr>
-<tr><td>Ankle</td><td>Slow calf raises</td><td>2 x 12</td><td>2-second pause at the top.</td></tr>
-<tr><td>Knee</td><td>Wall sit</td><td>2 x 20–40 sec</td><td>Use pain-free depth only.</td></tr>
-<tr><td>Knee</td><td>Supported step-down to low step</td><td>2 x 6 / side</td><td>Control the lowering; knee tracks over middle toes.</td></tr>
-<tr><td>Knee</td><td>Glute bridge march</td><td>2 x 8 / side</td><td>Keep pelvis level.</td></tr>
-<tr><td>Shoulder</td><td>Scap wall slide</td><td>2 x 8</td><td>Ribs stay down, no shrugging.</td></tr>
-<tr><td>Shoulder</td><td>Side-lying external rotation</td><td>2 x 12 left, 1 x 12 right</td><td>Tiny DB only; smooth range.</td></tr>
-<tr><td>Shoulder</td><td>Prone Y or incline Y raise</td><td>2 x 8–10</td><td>Think long reach, not heavy weight.</td></tr>
+<tr><td>Ankle</td><td>Knee-to-wall rocks</td><td>2 x 8–10 daily</td><td>Right side gets one extra set.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=ElrpduJn92Y" rel="noopener noreferrer" target="_blank">Ankle rocks</a></div></td></tr>
+<tr><td>Ankle</td><td>Single-leg balance + toe spread</td><td>2 x 20–30 sec</td><td>Stay tall, no gripping the floor with the toes.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=7SF7AYh2_Yw" rel="noopener noreferrer" target="_blank">Balance</a><a class="demo-link" href="https://www.youtube.com/watch?v=PDdFm_ttD2c" rel="noopener noreferrer" target="_blank">Toe spread</a></div></td></tr>
+<tr><td>Ankle</td><td>Slow calf raises</td><td>2 x 12</td><td>2-second pause at the top.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=CtpPV2FBkG4" rel="noopener noreferrer" target="_blank">Calf raise</a></div></td></tr>
+<tr><td>Knee</td><td>Wall sit</td><td>2 x 20–40 sec</td><td>Use pain-free depth only.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=JaZNYM3zAP0" rel="noopener noreferrer" target="_blank">Wall sit</a></div></td></tr>
+<tr><td>Knee</td><td>Supported step-down to low step</td><td>2 x 6 / side</td><td>Control the lowering; knee tracks over middle toes.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=Or4C-UQ63Xc" rel="noopener noreferrer" target="_blank">Step-down</a></div></td></tr>
+<tr><td>Knee</td><td>Glute bridge march</td><td>2 x 8 / side</td><td>Keep pelvis level.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=RESEoAnLEmk" rel="noopener noreferrer" target="_blank">Bridge march</a></div></td></tr>
+<tr><td>Shoulder</td><td>Scap wall slide</td><td>2 x 8</td><td>Ribs stay down, no shrugging.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=Eaj_NG5_hIo" rel="noopener noreferrer" target="_blank">Wall slide</a></div></td></tr>
+<tr><td>Shoulder</td><td>Side-lying external rotation</td><td>2 x 12 left, 1 x 12 right</td><td>Tiny DB only; smooth range.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=OeYz3YXDQps" rel="noopener noreferrer" target="_blank">External rotation</a></div></td></tr>
+<tr><td>Shoulder</td><td>Prone Y or incline Y raise</td><td>2 x 8–10</td><td>Think long reach, not heavy weight.</td><td><div class="demo-links"><a class="demo-link" href="https://www.youtube.com/watch?v=gDHQX1iend4" rel="noopener noreferrer" target="_blank">Incline Y raise</a></div></td></tr>
 </tbody>
 </table>
 </div>
@@ -1213,6 +1305,22 @@ body.ree-app::after{
 </div>
 </div>
 <div class="card" style="margin-top:12px;">
+<div class="card-header"><div class="card-title">DEXA baseline + next target</div><div class="card-sub">The scan says the scorecard should prioritize body-fat %, VAT area, waist, and lean-mass retention.</div></div>
+<div class="card-body">
+<div class="stat-grid g4">
+<div class="stat"><div class="label">Weight</div><div class="val">142.5</div><div class="note">Current DEXA scale weight</div></div>
+<div class="stat"><div class="label">Body fat</div><div class="val">44.1%</div><div class="note">First job is trend down, not perfection</div></div>
+<div class="stat"><div class="label">VAT area</div><div class="val">121.2</div><div class="note">Push this toward double digits</div></div>
+<div class="stat"><div class="label">Lean mass</div><div class="val">79.7 lb</div><div class="note">Try to hold or improve this</div></div>
+</div>
+<div class="pill-row">
+<span class="pill blue">First checkpoint: 128–135 lb range</span>
+<span class="pill green">Waist down matters more than day-to-day scale noise</span>
+<span class="pill orange">No crash dieting: protect training quality</span>
+</div>
+</div>
+</div>
+<div class="card" style="margin-top:12px;">
 <div class="card-header"><div class="card-title">Browser-saved measurement tracker</div><div class="card-sub">Stores the latest check-in in this browser so the plan acts like a living coaching dashboard.</div></div>
 <div class="card-body">
 <div class="tracker-grid">
@@ -1246,7 +1354,6 @@ body.ree-app::after{
 <div class="log-list" id="weekLog"></div>
 </div>
 </div>
-
 <div class="card">
 <div class="card-header">
 <div class="card-title">What to track</div>
@@ -1320,7 +1427,7 @@ body.ree-app::after{
 </div>
 </div>
 </div>
-<div class="footer-note">Custom rebuild created from the original Ree lean-plan baseline and restructured into a Sumo-style coaching dashboard shell with readiness mode, trackers, progression rules, and recovery logic.</div>
+<div class="footer-note">Custom rebuild created from the original Ree lean-plan baseline and restructured into a Sumo-style coaching dashboard shell with DEXA-driven priorities, iron-supportive nutrition edits, potassium-aware guardrails, readiness mode, trackers, progression rules, and recovery logic.</div>
 </div>
 </section>
 <div class="bnav-shell">
